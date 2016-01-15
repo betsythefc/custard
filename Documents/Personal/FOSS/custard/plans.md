@@ -11,3 +11,8 @@ v0.04
 -----
 
  - Add scaling to web page (currently looks great on 1366x768, but everything is out of whack on other resolutions).
+
+v0.05
+-----
+
+ - Create a login page so only authorized techs can view the numbers.
