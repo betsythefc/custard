@@ -1,4 +1,4 @@
-# custard
+# Custard
 Open Source CSat
 
 Custard v0.02 (20160115)
