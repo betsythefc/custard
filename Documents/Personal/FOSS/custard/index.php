@@ -16,11 +16,6 @@
 
 <html>
 
-<!--
-Custard: (Cust)omer (Ard)ency
-v0.01
--->
-
 	<title>
 		Custard
 	</title>
