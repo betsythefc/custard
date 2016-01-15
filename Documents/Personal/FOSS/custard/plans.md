@@ -12,6 +12,7 @@ v0.04
 -----
 
  - Add scaling to web page (currently looks great on 1366x768, but everything is out of whack on other resolutions).
+ - Add css formatting to DIV section of "about.html" page to increase spacing (since the css reset was put in to help the top bar formatting)
 
 v0.05
 -----
