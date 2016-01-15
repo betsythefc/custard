@@ -9,5 +9,5 @@ v0.03:
  - Need to "Prettify" the landing page after a review is submitted.
  - Learn how to make it so the folder path to these documents are not super long on git.
  - Add scaling to web page (currently looks great on 1366x768, but everything is out of whack on other resolutions).
- - implement a .gitignore file
+ - Implement a .gitignore file
 
