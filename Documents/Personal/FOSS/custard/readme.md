@@ -1,9 +1,3 @@
-Project:	Custard
-
-Author:		Bryce McNab
-
-Version:	0.02
-
 Dependencies
 ------------
 
