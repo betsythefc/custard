@@ -6,6 +6,7 @@ v0.03
  - Need to "Prettify" the landing page after a review is submitted.
  - Learn how to make it so the folder path to these documents are not super long on git.
  - Implement a .gitignore file
+ - Simplify new link bash script by breaking apart the lines for easier readability and editing.
 
 v0.04
 -----
