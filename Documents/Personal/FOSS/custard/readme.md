@@ -1,7 +1,6 @@
 Dependencies
 ------------
 
-LAMP Stack:
  - Linux\*
  - Apache\*\*
  - MySQL
