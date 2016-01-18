@@ -1,7 +1,3 @@
-v0.021
-------
- - Learned how to make it so the folder path to these documents are not super long on git.
-
 v0.02
 -----
 
