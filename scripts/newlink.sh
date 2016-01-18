@@ -48,10 +48,12 @@ echo -e "<html>
 \t\t\t\t\$result = \$sql->fetch();
 
 \t\t\t\tif (strpos(\$result,${RandomNumber}) !== false) {
-\t\t\t\t\t\$sql = \$DBH->prepare(\"INSERT INTO csat VALUES (\$Review)\");
-\t\t\t\t\t\$sql->execute();
-\t\t\t\t\t\$sql = \$DBH->prepare('DELETE FROM links WHERE link = ${RandomNumber}');
-\t\t\t\t\techo \"Your review has been submitted.\";
+\t\t\t\t\tif ($Review !== 0 && $Review !== 1 && $Review !== 2) {
+\t\t\t\t\t\t\$sql = \$DBH->prepare(\"INSERT INTO csat VALUES (\$Review)\");
+\t\t\t\t\t\t\$sql->execute();
+\t\t\t\t\t\t\$sql = \$DBH->prepare('DELETE FROM links WHERE link = ${RandomNumber}');
+\t\t\t\t\t\techo \"Your review has been submitted.\";
+\t\t\t\t\t\}
 \t\t\t\t} else {
 \t\t\t\t\techo \"A review for this ticket has already been submitted.\";
 \t\t\t\t}
