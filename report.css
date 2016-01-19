@@ -20,6 +20,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -40,6 +41,7 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -100,11 +102,11 @@ ul {
 
 #widgettitle {
 	margin-top: 5px;
-	font-size: 3em;
+	font-size: 4vw;
 }
 
 #widgettext {
-	font-size: 14em;
+	font-size: 20vw;
 	height: 100%;
 	display: inline-block;
 	vertical-align: middle;
