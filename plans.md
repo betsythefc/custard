@@ -21,4 +21,4 @@ v0.04
 v0.05
 -----
 
- - Create a login page so only authorized techs can view the numbers.
+ - Create a login page so only authorized techs can view the numbers (http://www.sourcecodester.com/tutorials/php/4341/how-create-login-page-phpmysql.html).
