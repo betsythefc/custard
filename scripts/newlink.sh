@@ -16,35 +16,24 @@ echo -e "<html>
 \t</title>
 
 \t<head>
-<<<<<<< HEAD
-\t\t<link rel="stylesheet" type="text/css" href="../report.css">
+\t\t<link rel="stylesheet" type="text/css" href="report.css">
 \t</head>
 
 \t<body>
 \t\t<ul>
-\t\t\t<li>&nbsp&nbsp&nbsp<img src="../img/custard.png" width=40px height=40px>&nbsp&nbsp&nbsp</li>
+\t\t\t<li>&nbsp&nbsp&nbsp<img src="..img/custard.png" width=40px height=40px>&nbsp&nbsp&nbsp</li>
+\t\t\t<li><a href="index.php">Home</a></li>
+\t\t\t<li><a href="newlink.php">New Link</a></li>
+\t\t\t<li><a href="about.html">About</a></li>
 \t\t</ul>
 
 \t\t<div align=center>
-
-<br />
-<br />
-<br />
-<br />
-\t\t\t<?php
-\t\t\t\t\$host = 'localhost';
-\t\t\t\t\$database = 'custard';
-\t\t\t\t\$username = 'custard_admin';
-\t\t\t\t\$password = 'apache';
-\t\t\t\t\$ReviewString = \$_GET['review'];
-\t\t\t\t\$Review = (int)\$ReviewString;
 
 \t\t\t<?php\n\t\$host = 'localhost';
 \t\t\t\t\$database = 'custard';
 \t\t\t\t\$username = 'custard_admin';
 \t\t\t\t\$password = 'apache';
 \t\t\t\t\$Review = \$_GET['review'];
->>>>>>> cf7933ee66f0c8ec9a1a216920273e7731f2c5fc
 
 \t\t\t\ttry {
 \t\t\t\t\t\$DBH = new PDO(\"mysql:host=\$host;dbname=\$database\", \$username, \$password);
@@ -59,14 +48,12 @@ echo -e "<html>
 \t\t\t\t\$result = \$sql->fetch();
 
 \t\t\t\tif (strpos(\$result,${RandomNumber}) !== false) {
-\t\t\t\t\tif (\$Review == 0 || \$Review == 1 || \$Review == 2) {
+\t\t\t\t\tif ($Review !== 0 || $Review !== 1 || $Review !== 2) {
 \t\t\t\t\t\t\$sql = \$DBH->prepare(\"INSERT INTO csat VALUES (\$Review)\");
 \t\t\t\t\t\t\$sql->execute();
 \t\t\t\t\t\t\$sql = \$DBH->prepare('DELETE FROM links WHERE link = ${RandomNumber}');
 \t\t\t\t\t\techo \"Your review has been submitted.\";
-\t\t\t\t\t} else {
-\t\t\t\t\t\t echo \"Whoops, there was a problem with your review. Try resubmitting it.\";
-\t\t\t\t\t}
+\t\t\t\t\t\}
 \t\t\t\t} else {
 \t\t\t\t\techo \"A review for this ticket has already been submitted.\";
 \t\t\t\t}
