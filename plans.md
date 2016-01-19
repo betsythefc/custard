@@ -13,6 +13,10 @@ v0.04
 
  - Add scaling to web page (currently looks great on 1366x768, but everything is out of whack on other resolutions).
  - Add css formatting to DIV section of "about.html" page to increase spacing (since the css reset was put in to help the top bar formatting)
+ - Add column in MySQL table where reviews are stored to store the number that was generated.
+ - Add column in MySQL table where reviews are stored to store the date when the review was submitted.
+ - Modify PHP to move the random number to the review table along with the review and date.
+ - Modify new link script to check the MySQL database when creating a new random number to prevent duplicates
 
 v0.05
 -----
