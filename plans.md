@@ -12,7 +12,7 @@ v0.04
 -----
 
  - ~~[DONE] Add scaling of text on web page.~~
- - Add scaling to web page (Using the vw/vh/vmax/vmin font scaling in CSS: https://css-tricks.com/viewport-sized-typography/).
+ - Add scaling to web page.
  - Add css formatting to DIV section of "about.html" page to increase spacing (since the css reset was put in to help the top bar formatting)
  - Add column in MySQL table where reviews are stored to store the number that was generated.
  - Add column in MySQL table where reviews are stored to store the date when the review was submitted.
