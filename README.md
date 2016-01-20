@@ -34,7 +34,7 @@ sudo mkdir /var/www/html/custard
 
  - Copy Custard files to the folder:
 ```
-sudo cp */path/to/downloaded/files/*\* /var/www/html/custard/
+sudo cp /path/to/downloaded/files/* /var/www/html/custard/
 ```
 
 *There are some more steps but I still need to figure them out.*
