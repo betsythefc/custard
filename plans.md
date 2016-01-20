@@ -4,11 +4,12 @@ v0.04
  - Add scaling to web page
  - Add css formatting to DIV section of "about.html" page to increase spacing (since the css reset was put in to help the top bar formatting)
  - Restructure Database:
+
 open:
 
-id,date_open
-
-$RandomNumber,$Date
+id | date_open
+--- | ---
+$RandomNumber | $Date
 
 closed:
 
