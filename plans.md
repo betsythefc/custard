@@ -1,13 +1,3 @@
-v0.03
------
-
- - ~~[DONE] Learn how to make it so the folder path to these documents are not super long on git.~~
- - ~~[DONE] Simplify new link bash script by breaking apart the lines for easier readability and editing.~~
- - ~~[DONE] Implement a .gitignore file.~~
- - Set up a bash shell install script to set up MySQL (Include a way to enter in a MySQL password for the custard_admin MySQL user) and install all dependencies (look at readme.md).
- - ~~[DONE] Add logic to the actual review links that will make sure only a 0, 1 or 2 is being added (no custom typing in numbers to URLs to add above 2 or below 0).~~
- - ~~[DONE] "Prettify" the landing page after a review is submitted.~~
-
 v0.04
 -----
 
@@ -24,3 +14,4 @@ v0.05
 -----
 
  - Create a login page so only authorized techs can view the numbers (http://www.sourcecodester.com/tutorials/php/4341/how-create-login-page-phpmysql.html).
+ - Set up a bash shell install script to set up MySQL (Include a way to enter in a MySQL password for the custard_admin MySQL user) and install all dependencies (look at readme.md).
