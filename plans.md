@@ -14,7 +14,7 @@ $RandomNumber | $Date
 closed:
 
 id | review | date_submitted
---- | ---
+--- | --- | ---
 $RandomNumber | 0..2 | $Date
 
  - Modify PHP to move the random number to the review table along with the review and date.
