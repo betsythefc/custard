@@ -24,8 +24,19 @@ sudo apt-get install lamp-server^
 ```
 mysql -u root -p *password* -e 'create database custard;'
 mysql -u root -p *password* -D custard -e 'create table csat (score INT,date INT);'
+mysql -u root -p *password* -D custard -e 'create table links (link INT);'
 ```
 
-*more to come*
+ - Create the folder:
+```
+sudo mkdir /var/www/html/custard
+```
+
+ - Copy Custard files to the folder:
+```
+sudo cp */path/to/downloaded/files/\** /var/www/html/custard/
+```
+
+*There are some more steps but I still need to figure them out.*
 
 
