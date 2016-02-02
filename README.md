@@ -16,6 +16,7 @@ Install
 -------
 
  - Install LAMP stack:
+
 Instructions for installing lamp stacks can be found here: https://help.ubuntu.com/community/ApacheMySQLPHP
 
 ```
@@ -25,12 +26,12 @@ sudo apt-get install lamp-server^
  - Create the actual database:
 ```
 mysql -u root -p*password*
->CREATE DATABASE custard;
->CREATE TABLE csat (score INT,date INT);
->CREATE TABLE links (link INT);
->CREATE USER 'custard_admin'@'localhost' IDENTIFIED BY '*password*';
->GRANT ALL PRIVILEGES ON custard . * TO 'custard_admin'@'localhost';
->FLUSH PRIVILEGES;
+> CREATE DATABASE custard;
+> CREATE TABLE csat (score INT,date INT);
+> CREATE TABLE links (link INT);
+> CREATE USER 'custard_admin'@'localhost' IDENTIFIED BY '*password*';
+> GRANT ALL PRIVILEGES ON custard . * TO 'custard_admin'@'localhost';
+> FLUSH PRIVILEGES;
 ```
 
  - Create the folder:
@@ -39,10 +40,9 @@ sudo mkdir /var/www/html/custard
 ```
 
  - Copy Custard files to the folder:
+
 ```
 sudo cp /path/to/downloaded/files/* /var/www/html/custard/
 ```
-
-*There are some more steps but I still need to figure them out.*
 
 
