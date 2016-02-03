@@ -45,4 +45,6 @@ sudo mkdir /var/www/html/custard
 sudo cp /path/to/downloaded/files/* /var/www/html/custard/
 ```
 
+Congratulations! Custard is now installed.
+
 
