@@ -26,6 +26,7 @@
 				$ReviewString = $_GET['review'];
 				$Review = (int)$ReviewString;
 				$Ticket = $_GET['ticket'];
+				$Date = date('Ymd');
 
 				try {
 					$DBH = new PDO("mysql:host=$host;dbname=$database", $username, $password);
@@ -41,7 +42,7 @@
 
 				if (strpos($result,$Ticket) !== false) {
 					if ($Review == 0 || $Review == 1 || $Review == 2) {
-						$sql = $DBH->prepare("INSERT INTO csat VALUES ($Review,20160201)");
+						$sql = $DBH->prepare("INSERT INTO csat VALUES ($Review,$Date)");
 						$sql->execute();
 						$sql = $DBH->prepare("DELETE FROM links WHERE link = $Ticket");
 						$sql->execute();
