@@ -1,9 +1,9 @@
 # Custard
 Open Source CSat
 
-Custard v0.03 (20160119)
+Custard v0.04 (20160205)
 ------------------------
-It works, with lots of manual script running and 0 integration.
+It works. Far more automation. Still requires 2 bash scripts.
 
 Software Requirements
 ---------------------
