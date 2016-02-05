@@ -1,6 +1,11 @@
 #!/bin/bash
 
-RandomNumber=$RANDOM
+RandomNumber= 15459 ##$RANDOM
+Table=(`mysql -u custard_admin -papache -D custard -e "SELECT id FROM csat;"`)
+
+while [[ " ${Table[@]} " =~ " $RandomNumber " ]] ; do
+	RandomNumber=$RANDOM
+done
 
 #Set up folder
 
