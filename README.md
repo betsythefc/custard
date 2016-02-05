@@ -27,7 +27,7 @@ sudo apt-get install lamp-server^
 ```
 mysql -u root -p*password*
 > CREATE DATABASE custard;
-> CREATE TABLE csat (score INT,date INT);
+> CREATE TABLE csat (score INT,date INT,id VARCHAR(60));
 > CREATE TABLE links (link INT);
 > CREATE USER 'custard_admin'@'localhost' IDENTIFIED BY '*password*';
 > GRANT ALL PRIVILEGES ON custard . * TO 'custard_admin'@'localhost';

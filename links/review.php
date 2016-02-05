@@ -42,7 +42,7 @@
 
 				if (strpos($result,$Ticket) !== false) {
 					if ($Review == 0 || $Review == 1 || $Review == 2) {
-						$sql = $DBH->prepare("INSERT INTO csat VALUES ($Review,$Date)");
+						$sql = $DBH->prepare("INSERT INTO csat VALUES ($Review,$Date,$Ticket)");
 						$sql->execute();
 						$sql = $DBH->prepare("DELETE FROM links WHERE link = $Ticket");
 						$sql->execute();
