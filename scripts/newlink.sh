@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RandomNumber= 15459 ##$RANDOM
+RandomNumber=$RANDOM
 Table=(`mysql -u custard_admin -papache -D custard -e "SELECT id FROM csat;"`)
 
 while [[ " ${Table[@]} " =~ " $RandomNumber " ]] ; do
@@ -12,7 +12,6 @@ done
 mkdir ../links
 
 #Embedded HTML
-
-echo -e "<a href=\"review.php?review=2&ticket=${RandomNumber}\"><img src=\"http://images.clipartpanda.com/smiley-face-png-96527038_o.png\" width=150px height=150px></a>\n<a href=\"review.php?review=1&ticket=${RandomNumber}\"><img src=\"http://www.clker.com/cliparts/I/X/g/L/q/2/yellow-neutral-face-hi.png\" width=150px height=150px></a>\n<a href=\"review.php?review=0&ticket=${RandomNumber}\"><img src=\"http://images.clipartpanda.com/red-smiley-face-png-MiLkkBAia.png\" width=150px height=150px></a>" >> ../links/${RandomNumber}.html
+echo -e "<a href=\"review.php?review=2&ticket=${RandomNumber}\"><div style=\"width: 100px; height: 100px; border-radius: 10px; background-color: green; float: left; margin: 5px; font-size: 4em; line-height: 90px; text-align: center; font-weight: bold; color: black;\">:)</div></a><a href=\"review.php?review=1&ticket=${RandomNumber}\"><div style=\"width: 100px; height: 100px; border-radius: 10px; background-color: #ffa500; float: left; margin: 5px; font-size: 4em; line-height: 90px; text-align: center; font-weight: bold; color: black;\">:|</div></a><a href=\"review.php?review=0&ticket=${RandomNumber}\"><div style=\"width: 100px; height: 100px; border-radius: 10px; background-color: #c70000; float: left; margin: 5px; font-size: 4em; line-height: 90px; text-align: center; font-weight: bold; color: black;\">:(</div></a>" >> ../links/${RandomNumber}.html
 
 mysql -u custard_admin -papache -D custard -e "INSERT INTO links VALUES (${RandomNumber});"
