@@ -29,7 +29,7 @@ mysql -u root -p*password*
 > CREATE DATABASE custard;
 > CREATE TABLE csat (score INT,date INT,id VARCHAR(60));
 > CREATE TABLE links (link INT);
-CREATE TABLE \`member\` (\`mem_id\` int(11) NOT NULL AUTO_INCREMENT, \`username\` varchar(30) NOT NULL, \`password\` varchar(30) NOT NULL, PRIMARY KEY (\`mem_id\`));
+> CREATE TABLE \`member\` (\`mem_id\` int(11) NOT NULL AUTO_INCREMENT, \`username\` varchar(30) NOT NULL, \`password\` varchar(30) NOT NULL, PRIMARY KEY (\`mem_id\`));
 > CREATE USER 'custard_admin'@'localhost' IDENTIFIED BY '*password*';
 > GRANT ALL PRIVILEGES ON custard . * TO 'custard_admin'@'localhost';
 > FLUSH PRIVILEGES;
