@@ -22,6 +22,7 @@
 	
 	<head>
 		<link rel="stylesheet" type="text/css" href="report.css">
+		<link rel="shortcut icon" type="image/png" href="img/custard_favicon.png">
 	</head>
 	
 	<body>
