@@ -23,6 +23,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="report.css">
 		<link rel="shortcut icon" type="image/png" href="img/custard_favicon.png">
+		<link rel="icon" type="image/png" href="img/custard_favicon.png">
 	</head>
 	
 	<body>
@@ -34,16 +35,37 @@
 			<li><a href="reviews.php">Reviews</a></li>
 			<li><a href="about.html">About</a></li>
 		</ul>
-		
-		<!-- Content -->
-			<!-- <?php
-			
-				$sql = $DBH->prepare('SELECT score AS Score, date AS Date, id AS ID FROM csat');
-				$sql->execute();
-				$result = $sql->fetch();
-				print_r($result[Score]);
-			
-			?> -->
+
+		<div>
+		<?php
+
+		$mysql_hostname = "localhost";
+		$mysql_user     = "custard_admin";
+		$mysql_password = "apache";
+		$mysql_database = "custard";
+		$bd             = mysql_connect($mysql_hostname, $mysql_user, $mysql_password) or die("Oops some thing went wrong");
+		mysql_select_db($mysql_database, $bd) or die("Oops some thing went wrong");// we are now connected to database
+
+		$result = mysql_query("SELECT * FROM csat"); // selecting data through mysql_query()
+
+		echo '<br /><br /><br /><table id="reviews">';  // opening table tag
+		echo'<th>Score</th><th>Date</th><th>ID</th>'; //table headers
+
+		while($data = mysql_fetch_array($result))
+		{
+			// we are running a while loop to print all the rows in a table
+			$FormattedDateMonth = substr($data['date'], 4, 2);
+			$FormattedDateDay = substr($data['date'], 6, 2);
+			$FormattedDateYear = substr($data['date'], 0, 4);
+			echo'<tr>'; // printing table row
+			echo '<td>'.$data['score'].'</td><td>'.$FormattedDateMonth.' / '.$FormattedDateDay.' / '.$FormattedDateYear.'</td><td>'.$data['id'].'</td>'; // we are looping all data to be printed till last row in the table
+			echo'</tr>'; // closing table row
+		}
+
+		echo '</table>';  //closing table tag
+
+		?>
+		</div>
 	</body>
 	
 	<!-- 
@@ -63,3 +85,4 @@
 	-->
 	
 </html>
+
