@@ -48,7 +48,7 @@
 
 		$result = mysql_query("SELECT * FROM csat"); // selecting data through mysql_query()
 
-		echo '<br /><br /><br /><table id="reviews">';  // opening table tag
+		echo '<br /><br /><br /><br /><table id="reviews">';  // opening table tag
 		echo'<th>Score</th><th>Date</th><th>ID</th>'; //table headers
 
 		while($data = mysql_fetch_array($result))

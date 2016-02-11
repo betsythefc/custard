@@ -130,7 +130,7 @@ ul {
 	margin: auto;
 	text-align: center;
 	width: 33%;
-	font-size: 2.5vw;
+	font-size: 2vw;
 }
 
 #reviews th {
@@ -138,4 +138,5 @@ ul {
 	margin: auto;
 	text-align: center;
 	font-weight: bold;
+	font-size: 2.5vw;
 }
