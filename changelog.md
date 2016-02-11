@@ -1,3 +1,10 @@
+v0.05
+-----
+
+ - Created css smiley faces.
+ - Created a "Reviews" page to get a list of all reviews.
+ - Implemented a favicon.
+
 v0.04
 -----
 

@@ -1,9 +1,9 @@
 # Custard
 Open Source CSat
 
-Custard v0.04 (20160205)
+Custard v0.05 (20160211)
 ------------------------
-It works. Far more automation. Still requires 2 bash scripts.
+The project is mostly ready for prime-time. I still want to implement a "comments" section, and later some integration with OSTicket.
 
 Software Requirements
 ---------------------
