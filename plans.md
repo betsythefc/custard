@@ -10,7 +10,9 @@ v0.07
 
  - Add search criteria into the "reviews" page that allow someone to narrow down revies based on the score, date and time, or the ID. (NOTE: Use PHP GET variables. The default should be "all" while when searching, it will take what is entered and reload the page.)
  - [MAYBE] Rename the reviews page to avoid confusion with the review.php which submits the score.
- 
+
+...
+
 v1.00
 -----
  
