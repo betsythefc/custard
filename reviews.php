@@ -49,7 +49,7 @@
 		$result = mysql_query("SELECT * FROM csat"); // selecting data through mysql_query()
 
 		echo '<br /><br /><br /><br /><table id="reviews">';  // opening table tag
-		echo'<th>Score</th><th>Date</th><th>ID</th>'; //table headers
+		echo'<th>Score</th><th>Submitted</th><th>ID</th>'; //table headers
 
 		while($data = mysql_fetch_array($result))
 		{
@@ -57,8 +57,11 @@
 			$FormattedDateMonth = substr($data['date'], 4, 2);
 			$FormattedDateDay = substr($data['date'], 6, 2);
 			$FormattedDateYear = substr($data['date'], 0, 4);
+			$FormattedDateHour = substr($data['date'], 8, 2);
+			$FormattedDateMinute = substr($data['date'], 10, 2);
+			$FormattedDateSecond = substr($data['date'], 12, 2);
 			echo'<tr>'; // printing table row
-			echo '<td>'.$data['score'].'</td><td>'.$FormattedDateMonth.' / '.$FormattedDateDay.' / '.$FormattedDateYear.'</td><td>'.$data['id'].'</td>'; // we are looping all data to be printed till last row in the table
+			echo '<td>'.$data['score'].'</td><td>'.$FormattedDateMonth.' / '.$FormattedDateDay.' / '.$FormattedDateYear.' '.$FormattedDateHour.':'.$FormattedDateMinute.':'.$FormattedDateSecond.'</td><td>'.$data['id'].'</td>'; // we are looping all data to be printed till last row in the table
 			echo'</tr>'; // closing table row
 		}
 

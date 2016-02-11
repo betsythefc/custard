@@ -26,7 +26,7 @@
 				$ReviewString = $_GET['review'];
 				$Review = (int)$ReviewString;
 				$Ticket = $_GET['ticket'];
-				$Date = date('Ymd');
+				$Date = date('YmdHis');
 
 				try {
 					$DBH = new PDO("mysql:host=$host;dbname=$database", $username, $password);
