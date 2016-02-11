@@ -1,7 +1,7 @@
 v0.05
 -----
 
- - Set up a bash shell install script to set up MySQL (Include a way to enter in a MySQL password for the custard_admin MySQL user) and install all dependencies (look at readme.md).
+ - Set up a bash shell install script to set up MySQL and install all dependencies (look at readme.md).
  - [DONE] ~~Create own smiley faces (currently using random Google images).~~
  - [DONE] ~~Create a "Reviews" page to get a list of all reviews and maybe some good graphics with CSS?~~
  - [DONE] ~~Implement a favicon.~~
