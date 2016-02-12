@@ -3,6 +3,7 @@
 		$SearchScore = $_GET['score'];
 		$SearchDate = $_GET['date'];
 		$SearchID = $_GET['id'];
+		$SearchComment = $_GET['comment'];
 ?>
 
 <html>
@@ -35,9 +36,10 @@
 		<form>
 			<table id="reviews">
 				<tr>
-					<td><input type="text" name="score" value="<?php echo $SearchScore; ?>" class="reviewsearch"></td>
-					<td><input type="text" name="date" value="<?php echo $SearchDate; ?>" class="reviewsearch"></td>
-					<td><input type="text" name="id" value="<?php echo $SearchID; ?>" class="reviewsearch"></td>
+					<td class="reviewsearchtd"><input type="text" name="score" value="<?php echo $SearchScore; ?>" class="reviewsearch"></td>
+					<td class="reviewsearchtd"><input type="text" name="date" value="<?php echo $SearchDate; ?>" class="reviewsearch"></td>
+					<td class="reviewsearchtd"><input type="text" name="id" value="<?php echo $SearchID; ?>" class="reviewsearch"></td>
+					<!-- <td><input type="text" name="comment" value="<?php echo $SearchComment; ?>" class="reviewsearch"></td> -->
 				</tr>
 				<tr>
 					<td></td>
@@ -67,8 +69,12 @@
 			$FormattedDateHour = substr($data['date'], 8, 2);
 			$FormattedDateMinute = substr($data['date'], 10, 2);
 			$FormattedDateSecond = substr($data['date'], 12, 2);
+			
 			echo'<tr>'; // printing table row
-			echo '<td>'.$data['score'].'</td><td>'.$FormattedDateMonth.' / '.$FormattedDateDay.' / '.$FormattedDateYear.' '.$FormattedDateHour.':'.$FormattedDateMinute.':'.$FormattedDateSecond.'</td><td>'.$data['id'].'</td>'; // we are looping all data to be printed till last row in the table
+			echo '<td class="scorecolumn">'.$data['score'].'</td>
+			<td class="datecolumn">'.$FormattedDateMonth.' / '.$FormattedDateDay.' / '.$FormattedDateYear.' '.$FormattedDateHour.':'.$FormattedDateMinute.':'.$FormattedDateSecond.'</td>
+			<td class="idcolumn">'.$data['id'].'</td>';
+			// we are looping all data to be printed till last row in the table
 			echo'</tr>'; // closing table row
 		}
 

@@ -1,7 +1,7 @@
 v0.06
 -----
 
- - Add better text formatting to the "Reviews" page.
+ - Add better text formatting to the "Reviews" page. (Change from using tables to using DIV display: table and table-cell to format and make the form look like the widgets (lighter background colors, rounded corners, etc).)
  - Add a comments section to the review for AFTER the review has been submitted.
  - [DONE] ~~Increase logged date to include hour, minute and second.~~
  
