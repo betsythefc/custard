@@ -8,8 +8,9 @@ v0.06
 v0.07
 -----
 
- - Add search criteria into the "reviews" page that allow someone to narrow down reviews based on the score, date and time, or the ID. (NOTE: Use PHP GET variables. The default should be "all" while when searching, it will take what is entered and reload the page.)
+ - [DONE] ~~Add search criteria into the "reviews" page that allow someone to narrow down reviews based on the score, date and time, or the ID. (NOTE: Use PHP GET variables. The default should be "all" while when searching, it will take what is entered and reload the page.)~~
  - [MAYBE] Rename the reviews page to avoid confusion with the review.php which submits the score.
+ - Create a way to download reviews as a CSV file (http://code.stephenmorley.org/php/creating-downloadable-csv-files/)
 
 ...
 

@@ -1,17 +1,8 @@
 <?php
-	//Database Credentials
-	$host = 'localhost';
-	$database = 'custard';
-	$username = 'custard_admin';
-	$password = 'apache';
-
-	try {
-		$DBH = new PDO("mysql:host=$host;dbname=$database", $username, $password);
-	}
-	
-	catch(PDOException $e) {
-		echo $e->getMessage();
-	}
+		//Variables
+		$SearchScore = $_GET['score'];
+		$SearchDate = $_GET['date'];
+		$SearchID = $_GET['id'];
 ?>
 
 <html>
@@ -44,9 +35,14 @@
 		<form>
 			<table id="reviews">
 				<tr>
-				<td><input type="text" name="score"></td>
-				<td><input type="text" name="date"></td>
-				<td><input type="text" name="id"></td>
+					<td><input type="text" name="score" value="<?php echo $SearchScore; ?>" class="reviewsearch"></td>
+					<td><input type="text" name="date" value="<?php echo $SearchDate; ?>" class="reviewsearch"></td>
+					<td><input type="text" name="id" value="<?php echo $SearchID; ?>" class="reviewsearch"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td><input type="submit" name="submit" value="Search"></td>
 				</tr>
 		<?php
 
@@ -55,11 +51,12 @@
 		$mysql_password = "apache";
 		$mysql_database = "custard";
 		$bd             = mysql_connect($mysql_hostname, $mysql_user, $mysql_password) or die("Oops some thing went wrong");
+		
 		mysql_select_db($mysql_database, $bd) or die("Oops some thing went wrong");// we are now connected to database
 
-		$result = mysql_query("SELECT * FROM csat"); // selecting data through mysql_query()
+		$result = mysql_query("SELECT * FROM csat WHERE score LIKE '%$SearchScore%' AND date LIKE '%$SearchDate%' AND id LIKE '%$SearchID%'"); // selecting data through mysql_query()
 		
-		echo'<th>Score</th><th>Submitted</th><th>ID</th>'; //table headers
+		echo'<th>Score</th><th>Date</th><th>ID</th>'; //table headers
 
 		while($data = mysql_fetch_array($result))
 		{
