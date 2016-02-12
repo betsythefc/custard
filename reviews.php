@@ -37,6 +37,17 @@
 		</ul>
 
 		<div>
+		<br />
+		<br />
+		<br />
+		<br />
+		<form>
+			<table id="reviews">
+				<tr>
+				<td><input type="text" name="score"></td>
+				<td><input type="text" name="date"></td>
+				<td><input type="text" name="id"></td>
+				</tr>
 		<?php
 
 		$mysql_hostname = "localhost";
@@ -47,8 +58,7 @@
 		mysql_select_db($mysql_database, $bd) or die("Oops some thing went wrong");// we are now connected to database
 
 		$result = mysql_query("SELECT * FROM csat"); // selecting data through mysql_query()
-
-		echo '<br /><br /><br /><br /><table id="reviews">';  // opening table tag
+		
 		echo'<th>Score</th><th>Submitted</th><th>ID</th>'; //table headers
 
 		while($data = mysql_fetch_array($result))
