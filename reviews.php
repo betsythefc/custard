@@ -46,9 +46,9 @@
 					<th><input type="text" name="id" placeholder="ID" value="<?php echo $SearchID; ?>" class="reviewsearch"></th>
 				</tr>
 				<tr>
-					<td></td>
-					<td></td>
-					<td><input type="submit" name="submit" value="Search"></td>
+					<td class="searchoptions"><input type="button" name="export" value="Export to CSV"></td>
+					<td class="searchoptions"></td>
+					<td class="searchoptions"><input type="submit" name="submit" value="Search"></td>
 				</tr>
 		<?php
 
