@@ -1,3 +1,10 @@
+v0.06
+-----
+
+ - Added better text formatting to the "Reviews" page.
+ - Increased logged date to include hour, minute and second.
+ - Added search criteria into the "reviews" page that allow someone to narrow down reviews based on the score, date and time, or the ID.
+
 v0.05
 -----
 

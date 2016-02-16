@@ -131,55 +131,48 @@ ul {
 }
 
 #reviews {
-	border: 1px solid black;
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
 	margin: auto;
 	text-align: center;
 	width: 90%;
 }
 
-/* #reviews td {
-	border: 1px solid black;
-	margin: auto;
-	text-align: center;
-	width: 33%;
-	font-size: 1.75vw;
-} */
-
-.scorecolumn {
-	border: 1px solid black;
-	margin: auto;
-	text-align: center;
-	width: 10%;
-	font-size: 1.75vw;
-}
-
-.datecolumn {
-	border: 1px solid black;
-	margin: auto;
-	text-align: center;
-	width: 20%;
-	font-size: 1.75vw;
-}
-
-
-.idcolumn {
-	border: 1px solid black;
-	margin: auto;
-	text-align: center;
-	width: 10%;
-	font-size: 1.75vw;
-}
-
-.reviewsearchtd {
-	border: 1px solid black;
-}
-
 #reviews th {
-	border: 1px solid black;
+	border: 1px solid gray;
 	margin: auto;
 	text-align: center;
 	font-weight: bold;
 	font-size: 2vw;
+}
+
+.scorecolumn {
+	border-top: 1px solid gray;
+	margin: auto;
+	text-align: center;
+	width: 10%;
+	font-size: 1.5vw;
+}
+
+.datecolumn {
+	border-top: 1px solid gray;
+	margin: auto;
+	text-align: center;
+	width: 20%;
+	font-size: 1.5vw;
+}
+
+
+.idcolumn {
+	border-top: 1px solid gray;
+	margin: auto;
+	text-align: center;
+	width: 10%;
+	font-size: 1.5vw;
+}
+
+.reviewsearchtd {
+	border-top: 1px solid gray;
 }
 
 .reviewsearch {

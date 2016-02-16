@@ -1,9 +1,9 @@
 # Custard
 Open Source CSat
 
-Custard v0.05 (20160211)
+Custard v0.06 (20160211)
 ------------------------
-The project is mostly ready for prime-time. I still want to implement a "comments" section, and later some integration with OSTicket.
+Reviews page now included searching.
 
 Software Requirements
 ---------------------

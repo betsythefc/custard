@@ -1,7 +1,12 @@
 <?php
 		//Variables
 		$SearchScore = $_GET['score'];
-		$SearchDate = $_GET['date'];
+		$SearchDateString = $_GET['date'];
+		$SearchDateString = str_replace("-","",$SearchDateString);
+		$SearchDateString = str_replace("T","",$SearchDateString);
+		$SearchDate = str_replace(":","",$SearchDateString);
+		$SearchTimeString = $_GET['time'];
+		$SearchTime = str_replace(":","",$SearchTimeString);
 		$SearchID = $_GET['id'];
 		$SearchComment = $_GET['comment'];
 ?>
@@ -36,10 +41,9 @@
 		<form>
 			<table id="reviews">
 				<tr>
-					<td class="reviewsearchtd"><input type="text" name="score" value="<?php echo $SearchScore; ?>" class="reviewsearch"></td>
-					<td class="reviewsearchtd"><input type="text" name="date" value="<?php echo $SearchDate; ?>" class="reviewsearch"></td>
-					<td class="reviewsearchtd"><input type="text" name="id" value="<?php echo $SearchID; ?>" class="reviewsearch"></td>
-					<!-- <td><input type="text" name="comment" value="<?php echo $SearchComment; ?>" class="reviewsearch"></td> -->
+					<th><input type="number" name="score" placeholder="Score" value="<?php echo $SearchScore; ?>" min="0" max="2" class="reviewsearch"></th>
+					<th><input type="date" name="date" placeholder="Date" value="<?php echo $SearchDateString; ?>" class="reviewsearch">&nbsp;&nbsp;<input type="time" name="time" placeholder="Time" class="reviewsearch"></th>
+					<th><input type="text" name="id" placeholder="ID" value="<?php echo $SearchID; ?>" class="reviewsearch"></th>
 				</tr>
 				<tr>
 					<td></td>
@@ -56,9 +60,7 @@
 		
 		mysql_select_db($mysql_database, $bd) or die("Oops some thing went wrong");// we are now connected to database
 
-		$result = mysql_query("SELECT * FROM csat WHERE score LIKE '%$SearchScore%' AND date LIKE '%$SearchDate%' AND id LIKE '%$SearchID%'"); // selecting data through mysql_query()
-		
-		echo'<th>Score</th><th>Date</th><th>ID</th>'; //table headers
+		$result = mysql_query("SELECT * FROM csat WHERE score LIKE '%$SearchScore%' AND date LIKE '%$SearchDate$SearchTime%' AND id LIKE '%$SearchID%'"); // selecting data through mysql_query()
 
 		while($data = mysql_fetch_array($result))
 		{
@@ -67,12 +69,21 @@
 			$FormattedDateDay = substr($data['date'], 6, 2);
 			$FormattedDateYear = substr($data['date'], 0, 4);
 			$FormattedDateHour = substr($data['date'], 8, 2);
+			if ($FormattedDateHour > 12) {
+				$FormattedDateHour = $FormattedDateHour - 12;
+				$AMorPM = "PM";
+				if ($FormattedDateHour < 10) {
+					$FormattedDateHour = "0$FormattedDateHour";
+				}
+			} else {
+				$AMorPM = "AM";
+			}
 			$FormattedDateMinute = substr($data['date'], 10, 2);
 			$FormattedDateSecond = substr($data['date'], 12, 2);
 			
 			echo'<tr>'; // printing table row
 			echo '<td class="scorecolumn">'.$data['score'].'</td>
-			<td class="datecolumn">'.$FormattedDateMonth.' / '.$FormattedDateDay.' / '.$FormattedDateYear.' '.$FormattedDateHour.':'.$FormattedDateMinute.':'.$FormattedDateSecond.'</td>
+			<td class="datecolumn">'.$FormattedDateMonth.' / '.$FormattedDateDay.' / '.$FormattedDateYear.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$FormattedDateHour.':'.$FormattedDateMinute.':'.$FormattedDateSecond.'&nbsp;&nbsp;'.$AMorPM.'</td>
 			<td class="idcolumn">'.$data['id'].'</td>';
 			// we are looping all data to be printed till last row in the table
 			echo'</tr>'; // closing table row
