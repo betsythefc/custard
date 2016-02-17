@@ -156,6 +156,7 @@ ul {
 	text-align: center;
 	width: 10%;
 	font-size: 1.5vw;
+	height: 2vw;
 }
 
 .datecolumn {
@@ -181,4 +182,8 @@ ul {
 
 .reviewsearch {
 	text-align: center;
+}
+
+.scoresearch {
+	width: 50px;
 }

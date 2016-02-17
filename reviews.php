@@ -41,12 +41,19 @@
 		<form>
 			<table id="reviews">
 				<tr>
-					<th><input type="number" name="score" placeholder="Score" value="<?php echo $SearchScore; ?>" min="0" max="2" class="reviewsearch"></th>
+					<th>
+						<select name="score" class="scoresearch">
+							<option value=""></option>
+							<option value="0">:(</option>
+							<option value="1">:|</option>
+							<option value="2">:)</option>
+						</select>
+					</th>
 					<th><input type="date" name="date" placeholder="Date" value="<?php echo $SearchDateString; ?>" class="reviewsearch">&nbsp;&nbsp;<input type="time" name="time" placeholder="Time" class="reviewsearch"></th>
 					<th><input type="text" name="id" placeholder="ID" value="<?php echo $SearchID; ?>" class="reviewsearch"></th>
 				</tr>
 				<tr>
-					<td class="searchoptions"><input type="button" name="export" value="Export to CSV"></td>
+					<td class="searchoptions"></td>
 					<td class="searchoptions"></td>
 					<td class="searchoptions"><input type="submit" name="submit" value="Search"></td>
 				</tr>
@@ -69,20 +76,28 @@
 			$FormattedDateDay = substr($data['date'], 6, 2);
 			$FormattedDateYear = substr($data['date'], 0, 4);
 			$FormattedDateHour = substr($data['date'], 8, 2);
-			if ($FormattedDateHour > 12) {
-				$FormattedDateHour = $FormattedDateHour - 12;
-				$AMorPM = "PM";
-				if ($FormattedDateHour < 10) {
-					$FormattedDateHour = "0$FormattedDateHour";
+				if ($FormattedDateHour > 12) {
+					$FormattedDateHour = $FormattedDateHour - 12;
+					$AMorPM = "PM";
+					if ($FormattedDateHour < 10) {
+						$FormattedDateHour = "0$FormattedDateHour";
+					}
+				} else {
+					$AMorPM = "AM";
 				}
-			} else {
-				$AMorPM = "AM";
-			}
 			$FormattedDateMinute = substr($data['date'], 10, 2);
 			$FormattedDateSecond = substr($data['date'], 12, 2);
 			
+			if ($data['score'] == 0) {
+				$Smiley = '&nbsp;&nbsp;<div style="display: inline-block; color: black; background-color: #c70000; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:(</div>';
+			} elseif ($data['score'] == 1) {
+				$Smiley = '&nbsp;&nbsp;<div style="display: inline-block; color: black; background-color: #ffa500; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:|</div>';
+			} elseif ($data['score'] == 2) {
+				$Smiley = '&nbsp;&nbsp;<div style="display: inline-block; color: black; background-color: green; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:)</div>';
+			}
+			
 			echo'<tr>'; // printing table row
-			echo '<td class="scorecolumn">'.$data['score'].'</td>
+			echo '<td class="scorecolumn">'.$Smiley.'</td>
 			<td class="datecolumn">'.$FormattedDateMonth.' / '.$FormattedDateDay.' / '.$FormattedDateYear.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$FormattedDateHour.':'.$FormattedDateMinute.':'.$FormattedDateSecond.'&nbsp;&nbsp;'.$AMorPM.'</td>
 			<td class="idcolumn">'.$data['id'].'</td>';
 			// we are looping all data to be printed till last row in the table
