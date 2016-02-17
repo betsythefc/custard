@@ -5,6 +5,7 @@ v0.07
  - Add a comments section to the review for AFTER the review has been submitted.
  - [DONE] ~~Include smiley next to CSAT score on review page.~~
  - Create "PHP" folder and remove embedded PHP to separate PHP scripts and use "include_once" to call.
+ - Make table on reviews page alternate a darker color and a lighter color for easier viewing.
 
 v0.08
 -----
