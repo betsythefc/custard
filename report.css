@@ -144,6 +144,7 @@ ul {
 	text-align: center;
 	font-weight: bold;
 	font-size: 2vw;
+	background-color: #e3e2e2;
 }
 
 .searchoptions {
@@ -186,4 +187,8 @@ ul {
 
 .scoresearch {
 	width: 50px;
+}
+
+table tr:nth-child(odd) td{
+	background-color: #e3e2e2;
 }
