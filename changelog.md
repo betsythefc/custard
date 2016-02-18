@@ -1,3 +1,13 @@
+v0.7
+-----
+
+ - Renamed the reviews page to avoid confusion with the review.php which submits the score.
+ - Included smiley next to CSAT score on review page.
+ - Created "PHP" folder and remove embedded PHP to separate PHP scripts.
+ - Moved all standard design elements to php "require" calls.
+ - Made table on reviews page alternate a darker color and a lighter color for easier viewing.
+ - Changed version scheme (e.g. v0.07 becomes v0.7)
+
 v0.06
 -----
 
