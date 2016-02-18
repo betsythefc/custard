@@ -12,19 +12,16 @@
 	<body>
 	
 		<!-- Top Menu -->
-		<ul>
-			<li>&nbsp&nbsp&nbsp<img src="img/custard.png" width=40px height=40px>&nbsp&nbsp&nbsp</li>
-			<li><a href="index.php">CSat</a></li>
-			<li><a href="reviews.php">Reviews</a></li>
-			<li><a href="about.html">About</a></li>
-		</ul>
+			<?php
+				require 'php/topmenu.php';
+			?>
 		
 		<div align=center class="license">
 			<br />
 			<br />
 			<img src="img/custard.png" width=250px height=250px><br />
 			Custard<br />
-			v0.06<br />
+			v0.6<br />
 			<br />
 			Copyright 2015 Bryce McNab<br />
 			<br />
