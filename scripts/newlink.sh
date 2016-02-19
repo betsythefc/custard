@@ -2,7 +2,7 @@
 
 RandomNumber=$RANDOM
 Table=(`mysql -u custard_admin -papache -D custard -e "SELECT id FROM csat;"`)
-Domain="http://192.168.8.234/custard"
+Domain="http://192.168.8.101/custard"
 
 while [[ " ${Table[@]} " =~ " $RandomNumber " ]] ; do
 	RandomNumber=$RANDOM

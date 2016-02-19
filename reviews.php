@@ -56,6 +56,9 @@
 			require 'php/reviewstable.php';
 		?>
 		</div>
+		<?php 
+			require 'php/footer.php';
+		?>
 	</body>	
 </html>
 

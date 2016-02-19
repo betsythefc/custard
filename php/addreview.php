@@ -3,6 +3,7 @@
 	$Review = (int)$ReviewString;
 	$Ticket = $_GET['ticket'];
 	$Date = date('YmdHis');
+	$Comment = "None";
 				
 	require 'php/mysqlconnect.php';
 
