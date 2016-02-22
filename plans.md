@@ -20,3 +20,4 @@ Future
  
  - Create a login page (http://www.sourcecodester.com/tutorials/php/4341/how-create-login-page-phpmysql.html).
  - Add a comments section to the review for AFTER the review has been submitted.
+ - Create "reports" page that can generate reports for download that include graphs, and "actionable" reviews (":|" & ":(")
