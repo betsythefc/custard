@@ -21,7 +21,7 @@
 			<br />
 			<img src="img/custard.png" width=250px height=250px><br />
 			Custard<br />
-			v0.6<br />
+			v0.7<br />
 			<br />
 			Copyright 2015 - <?php require 'php/year.php'; ?> Bryce McNab<br />
 			<br />
