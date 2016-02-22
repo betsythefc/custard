@@ -20,4 +20,6 @@ Future
  
  - Create a login page (http://www.sourcecodester.com/tutorials/php/4341/how-create-login-page-phpmysql.html).
  - Add a comments section to the review for AFTER the review has been submitted.
- - Create "reports" page that can generate reports for download that include graphs, and "actionable" reviews (":|" & ":(")
+ - Create "reports" page that can generate reports for download that include graphs, and "actionable" reviews (":|" & ":(").
+ - Create a "Settings" page.
+ - Implemement a "Dark theme" that can be toggled with using PHP as the CSS page (https://css-tricks.com/css-variables-with-php/) and a config file that the PHP parses.
