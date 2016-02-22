@@ -1,4 +1,70 @@
 <?php
+		$SearchScoreNumber = $_GET['score'];
+		if ($SearchScoreNumber == 0) {
+			$SearchScoreNumber = "";
+		} else {
+			$SearchScore = $SearchScoreNumber - 1;
+		}
+		$SearchDateStringOriginal = $_GET['date'];
+		$SearchDateString = str_replace("-","",$SearchDateStringOriginal);
+		$SearchDateString = str_replace("T","",$SearchDateString);
+		$SearchDate = str_replace(":","",$SearchDateString);
+		$SearchTimeString = $_GET['time'];
+		$SearchTime = str_replace(":","",$SearchTimeString);
+		$SearchID = $_GET['id'];
+		$SearchComment = $_GET['comment'];
+
+		echo '	<form>
+				<table id="reviews">
+					<tr>
+						<th>';
+
+		if ($SearchScoreNumber == 0) {
+			echo '	<select name="score" class="scoresearch">
+					<option value="0" selected="selected"></option>
+					<option value="1">:(</option>
+					<option value="2">:|</option>
+					<option value="3">:)</option>
+				</select>';
+		} elseif ($SearchScoreNumber == 1) {
+			echo '	<select name="score" class="scoresearch">
+					<option value="0"></option>
+					<option value="1" selected="selected">:(</option>
+					<option value="2">:|</option>
+					<option value="3">:)</option>
+				</select>';
+		} elseif ($SearchScoreNumber == 2) {
+			echo '	<select name="score" class="scoresearch">
+					<option value="0"></option>
+					<option value="1">:(</option>
+					<option value="2" selected="selected">:|</option>
+					<option value="3">:)</option>
+				</select>';
+		} elseif ($SearchScoreNumber == 3) {
+			echo '	<select name="score" class="scoresearch">
+					<option value="0"></option>
+					<option value="1">:(</option>
+					<option value="2">:|</option>
+					<option value="3" selected="selected">:)</option>
+				</select>';
+		}
+		
+		echo '	</th>
+			<th>
+				<input type="date" name="date" placeholder="Date" value="'.$SearchDateStringOriginal.'" class="reviewsearch">&nbsp;&nbsp;
+				<input type="time" name="time" placeholder="Time" value="'.$SearchTimeString.'" class="reviewsearch">
+			</th>
+			<th>
+				<input type="text" name="id" placeholder="ID" value="'.$SearchID.'" class="reviewsearch">
+			</th>
+		</tr>
+		<tr>
+			<td class="searchoptions"></td>
+			<td class="searchoptions"></td>
+			<td class="searchoptions">
+				<input type="submit" name="submit" value="Search">
+			</td>
+		</tr>';
 
 		$mysql_hostname = "localhost";
 		$mysql_user     = "custard_admin";
@@ -46,5 +112,4 @@
 		}
 
 		echo '</table>';  //closing table tag
-
-		?>
+?>

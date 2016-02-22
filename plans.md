@@ -1,12 +1,18 @@
 v0.8
------
+----
 
  - Create a way to download reviews as a CSV file (http://code.stephenmorley.org/php/creating-downloadable-csv-files/)
  - [DONE] ~~Add footer to all pages that includes a link to the Apache license.~~
- - Have date searched set in the date box persistently.
- - Have time searched set in the time box persistently.
- - Have the smiley set in the smiley search box persistently.
+ - [DONE] ~~Have date searched set in the date box persistently.~~
+ - [DONE] ~~Have time searched set in the time box persistently.~~
+ - [DONE] ~~Have the smiley set in the smiley search box persistently.~~
 
+v0.9
+----
+
+ - Create "review details" page that will list the details, any comments and an enlarged copy of the smiley face.
+ - Make table sortable (http://www.kryogenix.org/code/browser/sorttable/ OR http://www.codeproject.com/Articles/1604/Sorting-HTML-Tables-using-Javascript)
+ 
 .....
 
 Future
