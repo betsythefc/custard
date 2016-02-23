@@ -5,14 +5,23 @@
 		} else {
 			$SearchScore = $SearchScoreNumber - 1;
 		}
-		$SearchDateStringOriginal = $_GET['date'];
-		$SearchDateString = str_replace("-","",$SearchDateStringOriginal);
-		$SearchDateString = str_replace("T","",$SearchDateString);
-		$SearchDate = str_replace(":","",$SearchDateString);
+		
+		$SearchDateString = $_GET['date'];
+		$SearchDate = str_replace("-","",$SearchDateString);
+		//$SearchDateString = str_replace("T","",$SearchDateString);
+		//$SearchDate = str_replace(":","",$SearchDateString);
+		//$SearchMonth = $_GET['month'];
+		//$Months = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+		//$SearchYear = '^[0-9]{4}';
+		//$SearchDay = '[0-9]{2}';
+		//$SearchDate = "${SearchYear}${SearchMonth}${SearchDay}";
+		
 		$SearchTimeOriginal = $_GET['time'];
 		$SearchTime = "${SearchTimeOriginal}[0-9]{4}$";
-		$Hours = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23)
+		$Hours = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23");
+		
 		$SearchID = $_GET['id'];
+		
 		$SearchComment = $_GET['comment'];
 
 		echo '	<form>
@@ -20,7 +29,7 @@
 					<tr>
 						<th>
 							<select name="score" class="scoresearch">';
-
+		//Change to forloop like the Hours dropdown.
 		if ($SearchScoreNumber == 0) {
 			echo '	<option value="0" selected="selected"></option>
 				<option value="1">:(</option>
@@ -46,34 +55,40 @@
 		echo '	</select>
 			</th>
 			<th>
-				<input type="date" name="date" placeholder="Date" value="'.$SearchDateStringOriginal.'" class="reviewsearch">&nbsp;&nbsp;
-				<select name="time">'
-					//Put foreachloop here.
-				echo '	<option value=""></option>
-					<option value="00">12 AM</option>
-					<option value="02">2 AM</option>
-					<option value="03">3 AM</option>
-					<option value="04">4 AM</option>
-					<option value="05">5 AM</option>
-					<option value="06">6 AM</option>
-					<option value="07">7 AM</option>
-					<option value="08">8 AM</option>
-					<option value="09">9 AM</option>
-					<option value="10">10 AM</option>
-					<option value="11">11 AM</option>
-					<option value="12">12 PM</option>
-					<option value="13">1 PM</option>
-					<option value="14">2 PM</option>
-					<option value="15">3 PM</option>
-					<option value="16">4 PM</option>
-					<option value="17">5 PM</option>
-					<option value="18">6 PM</option>
-					<option value="19">7 PM</option>
-					<option value="20">8 PM</option>
-					<option value="21">9 PM</option>
-					<option value="22">10 PM</option>
-					<option value="23">11 PM</option>
-				</select>
+				<input type="date" name="date" placeholder="Date" value="'.$SearchDateStringOriginal.'" class="reviewsearch">&nbsp;
+				<select name="time">
+					<option value="">Hour</option>';
+					
+					foreach ($Hours as $Hour) {
+						if ($Hour == 0 || $Hour == 12) {
+							if ($Hour == 0) {
+								$TwelveHourFormat = "12 AM";
+							} elseif ($Hour == 12) {
+								$TwelveHourFormat = "12 PM";
+							}
+						} elseif ($Hour >= 13) {
+							$TwelveHourFormatNumber = $Hour - 12;
+							$SearchParamAMorPM = "PM";
+							$TwelveHourFormat = "$TwelveHourFormatNumber $SearchParamAMorPM";
+						} elseif ($Hour <= 11) {
+							if ($Hour >= 10 && $Hour <= 11) {
+								$SearchParamAMorPM = "AM";
+								$TwelveHourFormat = "$Hour $SearchParamAMorPM";
+							} elseif ($Hour <= 9) {
+								$SearchParamAMorPM = "AM";
+								$TwelveHourFormat = "$Hour $SearchParamAMorPM";
+								$Hour = "0$Hour";
+							}
+						}
+						
+						if ($SearchTimeOriginal == $Hour) {
+							echo '<option value="'.$Hour.'" selected="selected">'.$TwelveHourFormat.'</option>';	
+						} else {
+							echo '<option value="'.$Hour.'">'.$TwelveHourFormat.'</option>';
+						}
+					}
+					
+				echo '</select>
 			</th>
 			<th>
 				<input type="text" name="id" placeholder="ID" value="'.$SearchID.'" class="reviewsearch">
@@ -87,13 +102,15 @@
 			</td>
 		</tr>';
 
+		//require 'php/mysqlconnect.php';
+
 		$mysql_hostname = "localhost";
 		$mysql_user     = "custard_admin";
 		$mysql_password = "apache";
 		$mysql_database = "custard";
 		$bd             = mysql_connect($mysql_hostname, $mysql_user, $mysql_password) or die("Oops some thing went wrong");
 		
-		mysql_select_db($mysql_database, $bd) or die("Oops some thing went wrong");// we are now connected to database
+		mysql_select_db($mysql_database, $bd) or die("Oops something went wrong");// we are now connected to database
 
 		$result = mysql_query("SELECT * FROM csat WHERE score LIKE '%$SearchScore%' AND date REGEXP '$SearchDate$SearchTime' AND id LIKE '%$SearchID%'"); // selecting data through mysql_query()
 
@@ -106,12 +123,12 @@
 			$FormattedDateHour = substr($data['date'], 8, 2);
 				if ($FormattedDateHour > 12) {
 					$FormattedDateHour = $FormattedDateHour - 12;
-					$AMorPM = "PM";
+					$SearchResultAMorPM = "PM";
 					if ($FormattedDateHour < 10) {
 						$FormattedDateHour = "0$FormattedDateHour";
 					}
 				} else {
-					$AMorPM = "AM";
+					$SearchResultAMorPM = "AM";
 				}
 			$FormattedDateMinute = substr($data['date'], 10, 2);
 			$FormattedDateSecond = substr($data['date'], 12, 2);
@@ -126,7 +143,7 @@
 			
 			echo'<tr>'; // printing table row
 			echo '<td class="scorecolumn">'.$Smiley.'</td>
-			<td class="datecolumn">'.$FormattedDateMonth.' / '.$FormattedDateDay.' / '.$FormattedDateYear.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$FormattedDateHour.':'.$FormattedDateMinute.':'.$FormattedDateSecond.'&nbsp;&nbsp;'.$AMorPM.'</td>
+			<td class="datecolumn">'.$FormattedDateMonth.' / '.$FormattedDateDay.' / '.$FormattedDateYear.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$FormattedDateHour.':'.$FormattedDateMinute.':'.$FormattedDateSecond.'&nbsp;&nbsp;'.$SearchResultAMorPM.'</td>
 			<td class="idcolumn">'.$data['id'].'</td>';
 			// we are looping all data to be printed till last row in the table
 			echo'</tr>'; // closing table row
