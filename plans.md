@@ -1,5 +1,3 @@
-
-
 v0.9
 ----
 
@@ -8,6 +6,7 @@ v0.9
  - Use Javascript to make the number of days accurate in the day dropdown.
  - Change Smiley dropdown to use a foreach loop.
  - Change search.php to use mysqlconnect.php to connect to database.
+ - Center text in dropdown boxes on search page.
  
 .....
 
