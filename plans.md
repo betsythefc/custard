@@ -1,19 +1,13 @@
-v0.8
-----
 
- - [DONE] ~~Add footer to all pages that includes a link to the Apache license.~~
- - [DONE] ~~Have date searched set in the date box persistently.~~
- - [DONE] ~~Have time searched set in the time box persistently.~~
- - [DONE] ~~Have the smiley set in the smiley search box persistently.~~
- - Allow to search for reviews by only putting in 02 instead of filling in the month, day and year.
- - [DONE] ~~Allow to search for reviews by only entering the hour, instead of reqiuring both hour and minute.~~
- - [DONE] ~~Use a foreach loop to loop through all "options" for hours and write out which one is selected.~~
 
 v0.9
 ----
 
  - Create "review details" page that will list the details, any comments and an enlarged copy of the smiley face.
  - Make table sortable (http://www.kryogenix.org/code/browser/sorttable/ OR http://www.codeproject.com/Articles/1604/Sorting-HTML-Tables-using-Javascript)
+ - Use Javascript to make the number of days accurate in the day dropdown.
+ - Change Smiley dropdown to use a foreach loop.
+ - Change search.php to use mysqlconnect.php to connect to database.
  
 .....
 

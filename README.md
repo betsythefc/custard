@@ -1,7 +1,7 @@
 # Custard
 Open Source CSat
 
-Custard v0.7 (20160218)
+Custard v0.8 (20160224)
 ------------------------
 Reviews page now included searching.
 

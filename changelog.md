@@ -1,3 +1,14 @@
+v0.8
+----
+
+ - Added footer to all pages that includes a link to the Apache license.
+ - Have date searched set in the date box persistently.
+ - Have time searched set in the time box persistently.
+ - Have the smiley set in the smiley search box persistently.
+ - Allowed to search for reviews by only putting in 02 instead of filling in the month, day and year.
+ - Allowed to search for reviews by only entering the hour, instead of reqiuring both hour and minute.
+ - Used a foreach loop to loop through all "options" for hours and write out which one is selected.
+
 v0.7
 -----
 

@@ -6,19 +6,29 @@
 			$SearchScore = $SearchScoreNumber - 1;
 		}
 		
-		$SearchDateString = $_GET['date'];
-		$SearchDate = str_replace("-","",$SearchDateString);
-		//$SearchDateString = str_replace("T","",$SearchDateString);
-		//$SearchDate = str_replace(":","",$SearchDateString);
-		//$SearchMonth = $_GET['month'];
-		//$Months = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
-		//$SearchYear = '^[0-9]{4}';
-		//$SearchDay = '[0-9]{2}';
-		//$SearchDate = "${SearchYear}${SearchMonth}${SearchDay}";
+
+		$SearchMonth = $_GET['month'];
+		if (empty($SearchMonth)) {
+			$SearchMonth = "__";
+		}
+
+		$SearchYear = $_GET['year'];
+		if (empty($SearchYear)) {
+			$SearchYear = "____";
+		}		
 		
-		$SearchTimeOriginal = $_GET['time'];
-		$SearchTime = "${SearchTimeOriginal}[0-9]{4}$";
+		$SearchDate = "${SearchYear}${SearchMonth}__";
+		$Months = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+		
+		$SearchTimeString = $_GET['time'];
+		if (empty($SearchTimeString)) {
+			$SearchTime = "______";
+		} else {
+			$SearchTime = "${SearchTimeString}____";
+		}
 		$Hours = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23");
+		
+		$SearchDateTime = "${SearchDate}${SearchTime}";
 		
 		$SearchID = $_GET['id'];
 		
@@ -54,8 +64,25 @@
 		
 		echo '	</select>
 			</th>
-			<th>
-				<input type="date" name="date" placeholder="Date" value="'.$SearchDateStringOriginal.'" class="reviewsearch">&nbsp;
+			<th>';	
+				
+				echo '<select name="month">
+					<option value="">Month</option>';
+					
+					$MonthIncrement = 0;
+					foreach ($Months as $Month) {
+						$MonthIncrement = $MonthIncrement + 1;
+						if ($MonthIncrement <= 9) {
+							$MonthIncrement = "0$MonthIncrement";
+						}
+						if ($MonthIncrement == $SearchMonth) {
+							echo '<option value="'.$MonthIncrement.'" selected="selected">'.$Month.'</option>';
+						} else {
+							echo '<option value="'.$MonthIncrement.'">'.$Month.'</option>';
+						}
+					}
+					
+			echo '	</select>
 				<select name="time">
 					<option value="">Hour</option>';
 					
@@ -81,7 +108,7 @@
 							}
 						}
 						
-						if ($SearchTimeOriginal == $Hour) {
+						if ($SearchTimeString == $Hour) {
 							echo '<option value="'.$Hour.'" selected="selected">'.$TwelveHourFormat.'</option>';	
 						} else {
 							echo '<option value="'.$Hour.'">'.$TwelveHourFormat.'</option>';
@@ -112,7 +139,7 @@
 		
 		mysql_select_db($mysql_database, $bd) or die("Oops something went wrong");// we are now connected to database
 
-		$result = mysql_query("SELECT * FROM csat WHERE score LIKE '%$SearchScore%' AND date REGEXP '$SearchDate$SearchTime' AND id LIKE '%$SearchID%'"); // selecting data through mysql_query()
+		$result = mysql_query("SELECT * FROM csat WHERE score LIKE '%$SearchScore%' AND date LIKE '$SearchDateTime' AND id LIKE '%$SearchID%'"); // selecting data through mysql_query()
 
 		while($data = mysql_fetch_array($result))
 		{
