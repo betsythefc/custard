@@ -2,11 +2,9 @@ v0.9
 ----
 
  - Create "review details" page that will list the details, any comments and an enlarged copy of the smiley face.
- - Make table sortable (http://www.kryogenix.org/code/browser/sorttable/ OR http://www.codeproject.com/Articles/1604/Sorting-HTML-Tables-using-Javascript)
- - Use Javascript to make the number of days accurate in the day dropdown.
- - Change Smiley dropdown to radio buttons.
+ - [DONE] ~~Change Smiley dropdown to radio buttons.~~
  - Change search.php to use mysqlconnect.php to connect to database.
- - Center text in dropdown boxes on search page.
+ - [NULLIFIED] ~~Center text in dropdown boxes on search page.~~
  - [DONE] ~~Change Date search to a date range.~~
  
 .....
@@ -20,3 +18,4 @@ Future
  - Create "reports" page that can generate reports for download that include graphs, and "actionable" reviews (":|" & ":(").
  - Create a "Settings" page.
  - Implemement a "Dark theme" that can be toggled with using PHP as the CSS page (https://css-tricks.com/css-variables-with-php/) and a config file that the PHP parses.
+ - Make table sortable (http://www.kryogenix.org/code/browser/sorttable/ OR http://www.codeproject.com/Articles/1604/Sorting-HTML-Tables-using-Javascript)

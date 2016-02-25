@@ -3,5 +3,10 @@
 	$sql->execute();
 	$resultPercent = $sql->fetch();
 	$Percent = (($resultPercent[Score]) / ($resultTotal[TotalScores] * 2)) * 100;
-	echo round($Percent, 1, PHP_ROUND_HALF_UP);
+	$PercentFormatted = round($Percent, 1, PHP_ROUND_HALF_UP);
+	if (strlen($PercentFormatted) == 2) {
+		echo "$PercentFormatted.0";
+	} else {
+		echo "$PercentFormatted";
+	}
 ?>

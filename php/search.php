@@ -1,11 +1,53 @@
 <?php
-		$SearchScoreNumber = $_GET['score'];
-		if ($SearchScoreNumber == 0) {
-			$SearchScoreNumber = "";
-		} else {
-			$SearchScore = $SearchScoreNumber - 1;
-		}
+		//$SearchScoreNumber = $_GET['score'];
+		//if ($SearchScoreNumber == 0) {
+		//	$SearchScoreNumber = "";
+		//} else {
+		//	$SearchScore = $SearchScoreNumber - 1;
+		//}
 		
+		$SearchScoreChecks = $_GET['happysmiley'] + $_GET['neutralsmiley'] + $_GET['sadsmiley'];
+		if ($SearchScoreChecks == 1) {
+			$SearchScore = "0";
+			$SadSmileyChecked = "checked";
+			$NeutralSmileyChecked = "";
+			$HappySmileyChecked = "";
+		} elseif ($SearchScoreChecks == 2) {
+			$SearchScore = "1";
+			$SadSmileyChecked = "";
+			$NeutralSmileyChecked = "checked";
+			$HappySmileyChecked = "";
+		} elseif ($SearchScoreChecks == 4) {
+			$SearchScore = "2";
+			$SadSmileyChecked = "";
+			$NeutralSmileyChecked = "";
+			$HappySmileyChecked = "checked";
+		} elseif ($SearchScoreChecks == 3) {
+			$SearchScore = "0|1";
+			$SadSmileyChecked = "checked";
+			$NeutralSmileyChecked = "checked";
+			$HappySmileyChecked = "";
+		} elseif ($SearchScoreChecks == 5) {
+			$SearchScore = "0|2";
+			$SadSmileyChecked = "checked";
+			$NeutralSmileyChecked = "";
+			$HappySmileyChecked = "checked";
+		} elseif ($SearchScoreChecks == 6) {
+			$SearchScore = "1|2";
+			$SadSmileyChecked = "";
+			$NeutralSmileyChecked = "checked";
+			$HappySmileyChecked = "checked";
+		} elseif ($SearchScoreChecks == 7) {
+			$SearchScore = "0|1|2";
+			$SadSmileyChecked = "checked";
+			$NeutralSmileyChecked = "checked";
+			$HappySmileyChecked = "checked";
+		} elseif (empty($SearchScoreChecks)) {
+			$SearchScore = "0|1|2";
+			$SadSmileyChecked = "";
+			$NeutralSmileyChecked = "";
+			$HappySmileyChecked = "";
+		}		
 
 		$SearchMonth = $_GET['month'];
 		if (empty($SearchMonth)) {
@@ -55,34 +97,12 @@
 				<table id="reviews">
 					<tr>
 						<th>
-				<div style="display: inline-block; color: black; background-color: green; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:)</div>		
-				<div style="display: inline-block; color: black; background-color: #ffa500; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:|</div>
-				<div style="display: inline-block; color: black; background-color: #c70000; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:(</div><br />
-							<select name="score" class="scoresearch" style="margin-top: 5px;">';
-		//Change to forloop like the Hours dropdown.
-		if ($SearchScoreNumber == 0) {
-			echo '	<option value="0" selected="selected"></option>
-				<option value="1">:(</option>
-				<option value="2">:|</option>
-				<option value="3">:)</option>';
-		} elseif ($SearchScoreNumber == 1) {
-			echo '	<option value="0"></option>
-				<option value="1" selected="selected">:(</option>
-				<option value="2">:|</option>
-				<option value="3">:)</option>';
-		} elseif ($SearchScoreNumber == 2) {
-			echo '	<option value="0"></option>
-				<option value="1">:(</option>
-				<option value="2" selected="selected">:|</option>
-				<option value="3">:)</option>';
-		} elseif ($SearchScoreNumber == 3) {
-			echo '	<option value="0"></option>
-				<option value="1">:(</option>
-				<option value="2">:|</option>
-				<option value="3" selected="selected">:)</option>';
-		}
-		
-		echo '	</select>
+				<label><input type="checkbox" value="4" name="happysmiley" '.$HappySmileyChecked.'><div style="display: inline-block; color: black; background-color: green; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:)</div></label>
+				<label><input type="checkbox" value="2" name="neutralsmiley" '.$NeutralSmileyChecked.'><div style="display: inline-block; color: black; background-color: #ffa500; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:|</div></label>
+				<label><input type="checkbox" value="1" name="sadsmiley" '.$SadSmileyChecked.'><div style="display: inline-block; color: black; background-color: #c70000; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:(</div></label><br />
+				
+					
+				
 			</th>
 			<th>
 			Start:&nbsp;<input type="datetime-local" name="startdate" value="'.$SearchStartDateOriginal.'"><br />
@@ -90,19 +110,17 @@
 
 			</th>
 			<th>
-				<input type="text" name="id" placeholder="ID" value="'.$SearchID.'" class="reviewsearch">
-			</th>
-		</tr>
-		<tr>
-			<td class="searchoptions"></td>
-			<td class="searchoptions"></td>
-			<td class="searchoptions">
+				<input type="text" name="id" placeholder="ID" value="'.$SearchID.'" class="reviewsearch"><br />
 				<input type="submit" name="submit" value="Search">
-			</td>
+			</th>
 		</tr>';
 
 		//require 'php/mysqlconnect.php';
-
+		
+		//$sql = $DBH->prepare("SELECT * FROM csat WHERE score REGEXP '$SearchScore' AND date >= '$SearchStartDate' AND date <= '$SearchEndDate' AND id LIKE '%$SearchID%'");
+		//$sql->execute();
+		//$result = $sql->fetch();
+		
 		$mysql_hostname = "localhost";
 		$mysql_user     = "custard_admin";
 		$mysql_password = "apache";
@@ -111,7 +129,7 @@
 		
 		mysql_select_db($mysql_database, $bd) or die("Oops something went wrong");// we are now connected to database
 
-		$result = mysql_query("SELECT * FROM csat WHERE score LIKE '%$SearchScore%' AND date >= '$SearchStartDate' AND date <= '$SearchEndDate' AND id LIKE '%$SearchID%'"); // selecting data through mysql_query()
+		$result = mysql_query("SELECT * FROM csat WHERE score REGEXP '$SearchScore' AND date >= '$SearchStartDate' AND date <= '$SearchEndDate' AND id LIKE '%$SearchID%'"); // selecting data through mysql_query()
 
 		while($data = mysql_fetch_array($result))
 		{
