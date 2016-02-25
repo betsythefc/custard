@@ -15,7 +15,24 @@
 		$SearchYear = $_GET['year'];
 		if (empty($SearchYear)) {
 			$SearchYear = "____";
-		}		
+		}
+		
+		$SearchStartDateOriginal = $_GET['startdate'];
+		$SearchStartDateString = str_replace("-","",$SearchStartDateOriginal);
+		$SearchStartDateString = str_replace("T","",$SearchStartDateString);
+		$SearchStartDate = str_replace(":","",$SearchStartDateString);
+		if (empty($SearchStartDate)) {
+			$SearchStartDate = "19700101000000";
+		}
+		
+		$SearchEndDateOriginal = $_GET['enddate'];
+		$SearchEndDateString = str_replace("-","",$SearchEndDateOriginal);
+		$SearchEndDateString = str_replace("T","",$SearchEndDateString);
+		$SearchEndDate = str_replace(":","",$SearchEndDateString);
+		if (empty($SearchEndDate)) {
+			$Date = date('YmdHis');
+			$SearchEndDate = $Date + 10000000000;
+		}
 		
 		$SearchDate = "${SearchYear}${SearchMonth}__";
 		$Months = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
@@ -38,7 +55,10 @@
 				<table id="reviews">
 					<tr>
 						<th>
-							<select name="score" class="scoresearch">';
+				<div style="display: inline-block; color: black; background-color: green; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:)</div>		
+				<div style="display: inline-block; color: black; background-color: #ffa500; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:|</div>
+				<div style="display: inline-block; color: black; background-color: #c70000; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:(</div><br />
+							<select name="score" class="scoresearch" style="margin-top: 5px;">';
 		//Change to forloop like the Hours dropdown.
 		if ($SearchScoreNumber == 0) {
 			echo '	<option value="0" selected="selected"></option>
@@ -64,58 +84,10 @@
 		
 		echo '	</select>
 			</th>
-			<th>';	
-				
-				echo '<select name="month">
-					<option value="">Month</option>';
-					
-					$MonthIncrement = 0;
-					foreach ($Months as $Month) {
-						$MonthIncrement = $MonthIncrement + 1;
-						if ($MonthIncrement <= 9) {
-							$MonthIncrement = "0$MonthIncrement";
-						}
-						if ($MonthIncrement == $SearchMonth) {
-							echo '<option value="'.$MonthIncrement.'" selected="selected">'.$Month.'</option>';
-						} else {
-							echo '<option value="'.$MonthIncrement.'">'.$Month.'</option>';
-						}
-					}
-					
-			echo '	</select>
-				<select name="time">
-					<option value="">Hour</option>';
-					
-					foreach ($Hours as $Hour) {
-						if ($Hour == 0 || $Hour == 12) {
-							if ($Hour == 0) {
-								$TwelveHourFormat = "12 AM";
-							} elseif ($Hour == 12) {
-								$TwelveHourFormat = "12 PM";
-							}
-						} elseif ($Hour >= 13) {
-							$TwelveHourFormatNumber = $Hour - 12;
-							$SearchParamAMorPM = "PM";
-							$TwelveHourFormat = "$TwelveHourFormatNumber $SearchParamAMorPM";
-						} elseif ($Hour <= 11) {
-							if ($Hour >= 10 && $Hour <= 11) {
-								$SearchParamAMorPM = "AM";
-								$TwelveHourFormat = "$Hour $SearchParamAMorPM";
-							} elseif ($Hour <= 9) {
-								$SearchParamAMorPM = "AM";
-								$TwelveHourFormat = "$Hour $SearchParamAMorPM";
-								$Hour = "0$Hour";
-							}
-						}
-						
-						if ($SearchTimeString == $Hour) {
-							echo '<option value="'.$Hour.'" selected="selected">'.$TwelveHourFormat.'</option>';	
-						} else {
-							echo '<option value="'.$Hour.'">'.$TwelveHourFormat.'</option>';
-						}
-					}
-					
-				echo '</select>
+			<th>
+			Start:&nbsp;<input type="datetime-local" name="startdate" value="'.$SearchStartDateOriginal.'"><br />
+			End:&nbsp;&nbsp;&nbsp;<input type="datetime-local" name="enddate" value="'.$SearchEndDateOriginal.'">
+
 			</th>
 			<th>
 				<input type="text" name="id" placeholder="ID" value="'.$SearchID.'" class="reviewsearch">
@@ -139,7 +111,7 @@
 		
 		mysql_select_db($mysql_database, $bd) or die("Oops something went wrong");// we are now connected to database
 
-		$result = mysql_query("SELECT * FROM csat WHERE score LIKE '%$SearchScore%' AND date LIKE '$SearchDateTime' AND id LIKE '%$SearchID%'"); // selecting data through mysql_query()
+		$result = mysql_query("SELECT * FROM csat WHERE score LIKE '%$SearchScore%' AND date >= '$SearchStartDate' AND date <= '$SearchEndDate' AND id LIKE '%$SearchID%'"); // selecting data through mysql_query()
 
 		while($data = mysql_fetch_array($result))
 		{
