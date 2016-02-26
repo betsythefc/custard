@@ -93,11 +93,11 @@
 			</th>
 		</tr>';
 
-		//require 'php/mysqlconnect.php';
+		require 'php/mysqlconnect.php';
 		
-		//$sql = $DBH->prepare("SELECT * FROM csat WHERE score REGEXP '$SearchScore' AND date >= '$SearchStartDate' AND date <= '$SearchEndDate' AND id LIKE '%$SearchID%'");
-		//$sql->execute();
-		//$result = $sql->fetch();
+		$sql = $DBH->prepare("SELECT * FROM csat WHERE score REGEXP '$SearchScore' AND date >= '$SearchStartDate' AND date <= '$SearchEndDate' AND id LIKE '%$SearchID%'");
+		$sql->execute();
+		$result = $sql->fetch();
 		
 		$mysql_hostname = "localhost";
 		$mysql_user     = "custard_admin";
