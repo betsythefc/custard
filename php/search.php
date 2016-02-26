@@ -6,6 +6,7 @@
 		//	$SearchScore = $SearchScoreNumber - 1;
 		//}
 		
+		//Change to a more logical approach
 		$SearchScoreChecks = $_GET['happysmiley'] + $_GET['neutralsmiley'] + $_GET['sadsmiley'];
 		if ($SearchScoreChecks == 1) {
 			$SearchScore = "0";
@@ -47,16 +48,6 @@
 			$SadSmileyChecked = "";
 			$NeutralSmileyChecked = "";
 			$HappySmileyChecked = "";
-		}		
-
-		$SearchMonth = $_GET['month'];
-		if (empty($SearchMonth)) {
-			$SearchMonth = "__";
-		}
-
-		$SearchYear = $_GET['year'];
-		if (empty($SearchYear)) {
-			$SearchYear = "____";
 		}
 		
 		$SearchStartDateOriginal = $_GET['startdate'];
@@ -75,19 +66,6 @@
 			$Date = date('YmdHis');
 			$SearchEndDate = $Date + 10000000000;
 		}
-		
-		$SearchDate = "${SearchYear}${SearchMonth}__";
-		$Months = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
-		
-		$SearchTimeString = $_GET['time'];
-		if (empty($SearchTimeString)) {
-			$SearchTime = "______";
-		} else {
-			$SearchTime = "${SearchTimeString}____";
-		}
-		$Hours = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23");
-		
-		$SearchDateTime = "${SearchDate}${SearchTime}";
 		
 		$SearchID = $_GET['id'];
 		
@@ -151,15 +129,15 @@
 			$FormattedDateSecond = substr($data['date'], 12, 2);
 			
 			if ($data['score'] == 0) {
-				$Smiley = '&nbsp;&nbsp;<div style="display: inline-block; color: black; background-color: #c70000; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:(</div>';
+				$Smiley = '<div style="display: inline-block; color: black; background-color: #c70000; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:(</div>';
 			} elseif ($data['score'] == 1) {
-				$Smiley = '&nbsp;&nbsp;<div style="display: inline-block; color: black; background-color: #ffa500; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:|</div>';
+				$Smiley = '<div style="display: inline-block; color: black; background-color: #ffa500; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:|</div>';
 			} elseif ($data['score'] == 2) {
-				$Smiley = '&nbsp;&nbsp;<div style="display: inline-block; color: black; background-color: green; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:)</div>';
+				$Smiley = '<div style="display: inline-block; color: black; background-color: green; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:)</div>';
 			}
 			
 			echo'<tr>'; // printing table row
-			echo '<td class="scorecolumn">'.$Smiley.'</td>
+			echo '<td class="scorecolumn">&nbsp;&nbsp;<a href="details.php?score='.$data['score'].'&id='.$data['id'].'">'.$Smiley.'</a></td>
 			<td class="datecolumn">'.$FormattedDateMonth.' / '.$FormattedDateDay.' / '.$FormattedDateYear.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$FormattedDateHour.':'.$FormattedDateMinute.':'.$FormattedDateSecond.'&nbsp;&nbsp;'.$SearchResultAMorPM.'</td>
 			<td class="idcolumn">'.$data['id'].'</td>';
 			// we are looping all data to be printed till last row in the table
