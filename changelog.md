@@ -1,3 +1,10 @@
+v0.9
+----
+
+ - Created "review details" page that will list the details, any comments and an enlarged copy of the smiley face.
+ - Changed Smiley dropdown to check boxes.
+ - Changed Date search to a date range.
+
 v0.8
 ----
 

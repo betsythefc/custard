@@ -1,11 +1,3 @@
-v0.9
-----
-
- - [DONE] ~~Create "review details" page that will list the details, any comments and an enlarged copy of the smiley face.~~
- - [DONE] ~~Change Smiley dropdown to radio buttons.~~
- - [NULLIFIED] ~~Center text in dropdown boxes on search page.~~
- - [DONE] ~~Change Date search to a date range.~~
-
 v1.0
 ----
  
