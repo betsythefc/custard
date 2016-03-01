@@ -1,16 +1,14 @@
 v0.9
 ----
 
- - [DONE] ~Create "review details" page that will list the details, any comments and an enlarged copy of the smiley face.~~
+ - [DONE] ~~Create "review details" page that will list the details, any comments and an enlarged copy of the smiley face.~~
  - [DONE] ~~Change Smiley dropdown to radio buttons.~~
  - Change search.php to use mysqlconnect.php to connect to database.
  - [NULLIFIED] ~~Center text in dropdown boxes on search page.~~
  - [DONE] ~~Change Date search to a date range.~~
- 
-.....
 
-Future
-------
+v1.0
+----
  
  - Create a way to download reviews as a CSV file (http://code.stephenmorley.org/php/creating-downloadable-csv-files/)
  - Create a login page (http://www.sourcecodester.com/tutorials/php/4341/how-create-login-page-phpmysql.html).
