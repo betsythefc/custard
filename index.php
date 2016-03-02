@@ -1,5 +1,6 @@
 <?php
 	require 'php/mysqlconnect.php';
+	require_once('auth.php');
 ?>
 
 <html>
