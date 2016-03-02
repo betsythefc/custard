@@ -12,7 +12,7 @@ v1.0
  - Implemement a "Dark theme" that can be toggled with using PHP as the CSS page (https://css-tricks.com/css-variables-with-php/) and a config file that the PHP parses.
  - Make table sortable (http://www.kryogenix.org/code/browser/sorttable/ OR http://www.codeproject.com/Articles/1604/Sorting-HTML-Tables-using-Javascript)
  
- Future
- ------
+Future
+------
  
-  - Change search.php to use mysqlconnect.php to connect to database.
+ - Change search.php to use mysqlconnect.php to connect to database.
