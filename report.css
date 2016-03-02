@@ -146,6 +146,10 @@ ul {
 	background-color: #e3e2e2;
 }
 
+#reviews table tr:nth-child(odd) td{
+	background-color: #e3e2e2;
+}
+
 .searchoptions {
 	border: 1px solid gray;
 }
@@ -188,6 +192,22 @@ ul {
 	width: 50px;
 }
 
-table tr:nth-child(odd) td{
-	background-color: #e3e2e2;
+.loginform {
+	margin: auto;
+	width: 400px;
+}
+
+.loginform_username {
+	width: 150px;
+	float: left;
+}
+
+.loginform_password {
+	float: left;
+}
+
+.loginform_text {
+	text-align: center;
+	float: left;
+	width: 150px;
 }
