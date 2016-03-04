@@ -28,16 +28,14 @@
 <br />
 			<form name="loginform" action="login_exec.php" method="post">
 				<div class="loginform">
-					<div>
+					<div class="loginform_container">
 						<div class="loginform_text">Username</div>
-						<div class="loginform_username"><input name="username" type="text" /></div>
-					</div>
-					<div>
+						<div class="loginform_username"><input class="input" name="username" type="text" /></div>
 						<div class="loginform_text">Password</div>
-						<div class="loginform_password"><input name="password" type="password" /></div>
+						<div class="loginform_password"><input class="input" name="password" type="password" /></div>
 					</div>
 					<div>
-						<div><input name="" type="submit" value="login" /></div>
+						<input id="loginform_submit" name="" type="submit" value="login" />
 					</div>
 				</div>
 				<div>

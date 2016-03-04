@@ -4,7 +4,7 @@ v1.0
  - Create a way to download reviews as a CSV file (http://code.stephenmorley.org/php/creating-downloadable-csv-files/)
  - [DONE] ~~Create a login page (http://www.sourcecodester.com/tutorials/php/4341/how-create-login-page-phpmysql.html).~~
  - [DONE] ~~Make passwords hashed in database. (https://stackoverflow.com/questions/20764031/php-salt-and-hash-sha256-for-login-password#20764228)~~
- - Prettify the login page.
+ - [DONE] ~~Prettify the login page.~~
  - [DONE] ~~Prettify the logout page.~~
  - [Maybe] Find a way to cleanup the php files.
  - [DONE] ~~Make logout page redirect to login page after 3 seconds.~~

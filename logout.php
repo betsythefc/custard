@@ -14,7 +14,7 @@
 	<head>
 		<link rel=stylesheet type=text/css href="report.css">
 		<script type="text/javascript" language="JavaScript">
-				setTimeout(function() {window.location = 'login.php'}, (3 * 1000));
+				setTimeout(function() {window.location = 'login.php'}, 1000);
              </script>
 	</head>
 
