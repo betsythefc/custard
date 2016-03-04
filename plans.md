@@ -13,7 +13,14 @@ v1.0
  - Create a "Settings" page.
  - Implemement a "Dark theme" that can be toggled with using PHP as the CSS page (https://css-tricks.com/css-variables-with-php/) and a config file that the PHP parses.
  - Make table sortable (http://www.kryogenix.org/code/browser/sorttable/ OR http://www.codeproject.com/Articles/1604/Sorting-HTML-Tables-using-Javascript)
- 
+
+v1.1
+----
+
+ - Add user creation to settings page.
+
+......
+
 Future
 ------
  

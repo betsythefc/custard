@@ -1,5 +1,4 @@
 <?php
-	require 'php/mysqlconnect.php';
 	require_once('auth.php');
 ?>
 
@@ -10,7 +9,7 @@
 	</title>
 	
 	<head>
-		<link rel="stylesheet" type="text/css" href="report.css">
+		<?php require 'php/css.php'; ?>
 		<link rel="shortcut icon" type="image/png" href="img/custard_favicon.png">
 		<link rel="icon" type="image/png" href="img/custard_favicon.png">
 	</head>

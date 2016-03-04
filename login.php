@@ -12,7 +12,7 @@
 	</title>
 
 	<head>
-		<link rel=stylesheet type=text/css href="report.css">
+		<?php require 'php/css.php'; ?>
 	</head>
 
 	<body>

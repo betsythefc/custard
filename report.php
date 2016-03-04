@@ -1,4 +1,16 @@
-/* CSS style reset */
+<?php
+
+//Theme
+$theme = file_get_contents('config/theme.cfg');
+if (strpos($theme, 'light') !== false) {
+	$PageBackgroundColor = "#eee";
+	$WidgetBackgroundColor = "#f2f2f2";
+} elseif (strpos($theme, 'dark') !== false) {
+	$PageBackgroundColor = "#383838";
+	$WidgetBackgroundColor = "#4b4b4b";
+}
+
+echo "/* CSS style reset */
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -28,7 +40,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-	background-color: #eee;
+	background-color: $PageBackgroundColor;
 }
 ol, ul {
 	list-style: none;
@@ -96,7 +108,7 @@ ul {
 	border: 1px black solid;
 	display: inline-block;
 	border-radius: 25px;
-	background-color: #f2f2f2;
+	background-color: $WidgetBackgroundColor;
 	text-align: center;
 }
 
@@ -236,4 +248,6 @@ ul {
 
 #loginform_submit {
 	margin-top: 10px;
-}
+}";
+
+?>

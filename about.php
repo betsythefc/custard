@@ -8,7 +8,7 @@
 	</title>
 	
 	<head>
-		<link rel="stylesheet" type="text/css" href="report.css">
+		<?php require 'php/css.php'; ?>
 		<link rel="icon" type="image/png" href="img/custard_favicon.png">
 	</head>
 	

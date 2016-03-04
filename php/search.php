@@ -1,75 +1,68 @@
-<?php
-		//$SearchScoreNumber = $_GET['score'];
-		//if ($SearchScoreNumber == 0) {
-		//	$SearchScoreNumber = "";
-		//} else {
-		//	$SearchScore = $SearchScoreNumber - 1;
-		//}
+<?php		
+	//Change to a more logical approach
+	$SearchScoreChecks = $_GET['happysmiley'] + $_GET['neutralsmiley'] + $_GET['sadsmiley'];
+	if ($SearchScoreChecks == 1) {
+		$SearchScore = "0";
+		$SadSmileyChecked = "checked";
+		$NeutralSmileyChecked = "";
+		$HappySmileyChecked = "";
+	} elseif ($SearchScoreChecks == 2) {
+		$SearchScore = "1";
+		$SadSmileyChecked = "";
+		$NeutralSmileyChecked = "checked";
+		$HappySmileyChecked = "";
+	} elseif ($SearchScoreChecks == 4) {
+		$SearchScore = "2";
+		$SadSmileyChecked = "";
+		$NeutralSmileyChecked = "";
+		$HappySmileyChecked = "checked";
+	} elseif ($SearchScoreChecks == 3) {
+		$SearchScore = "0|1";
+		$SadSmileyChecked = "checked";
+		$NeutralSmileyChecked = "checked";
+		$HappySmileyChecked = "";
+	} elseif ($SearchScoreChecks == 5) {
+		$SearchScore = "0|2";
+		$SadSmileyChecked = "checked";
+		$NeutralSmileyChecked = "";
+		$HappySmileyChecked = "checked";
+	} elseif ($SearchScoreChecks == 6) {
+		$SearchScore = "1|2";
+		$SadSmileyChecked = "";
+		$NeutralSmileyChecked = "checked";
+		$HappySmileyChecked = "checked";
+	} elseif ($SearchScoreChecks == 7) {
+		$SearchScore = "0|1|2";
+		$SadSmileyChecked = "checked";
+		$NeutralSmileyChecked = "checked";
+		$HappySmileyChecked = "checked";
+	} elseif (empty($SearchScoreChecks)) {
+		$SearchScore = "0|1|2";
+		$SadSmileyChecked = "";
+		$NeutralSmileyChecked = "";
+		$HappySmileyChecked = "";
+	}
 		
-		//Change to a more logical approach
-		$SearchScoreChecks = $_GET['happysmiley'] + $_GET['neutralsmiley'] + $_GET['sadsmiley'];
-		if ($SearchScoreChecks == 1) {
-			$SearchScore = "0";
-			$SadSmileyChecked = "checked";
-			$NeutralSmileyChecked = "";
-			$HappySmileyChecked = "";
-		} elseif ($SearchScoreChecks == 2) {
-			$SearchScore = "1";
-			$SadSmileyChecked = "";
-			$NeutralSmileyChecked = "checked";
-			$HappySmileyChecked = "";
-		} elseif ($SearchScoreChecks == 4) {
-			$SearchScore = "2";
-			$SadSmileyChecked = "";
-			$NeutralSmileyChecked = "";
-			$HappySmileyChecked = "checked";
-		} elseif ($SearchScoreChecks == 3) {
-			$SearchScore = "0|1";
-			$SadSmileyChecked = "checked";
-			$NeutralSmileyChecked = "checked";
-			$HappySmileyChecked = "";
-		} elseif ($SearchScoreChecks == 5) {
-			$SearchScore = "0|2";
-			$SadSmileyChecked = "checked";
-			$NeutralSmileyChecked = "";
-			$HappySmileyChecked = "checked";
-		} elseif ($SearchScoreChecks == 6) {
-			$SearchScore = "1|2";
-			$SadSmileyChecked = "";
-			$NeutralSmileyChecked = "checked";
-			$HappySmileyChecked = "checked";
-		} elseif ($SearchScoreChecks == 7) {
-			$SearchScore = "0|1|2";
-			$SadSmileyChecked = "checked";
-			$NeutralSmileyChecked = "checked";
-			$HappySmileyChecked = "checked";
-		} elseif (empty($SearchScoreChecks)) {
-			$SearchScore = "0|1|2";
-			$SadSmileyChecked = "";
-			$NeutralSmileyChecked = "";
-			$HappySmileyChecked = "";
-		}
-		
-		$SearchStartDateOriginal = $_GET['startdate'];
-		$SearchStartDateString = str_replace("-","",$SearchStartDateOriginal);
-		$SearchStartDateString = str_replace("T","",$SearchStartDateString);
-		$SearchStartDate = str_replace(":","",$SearchStartDateString);
-		if (empty($SearchStartDate)) {
-			$SearchStartDate = "19700101000000";
-		}
-		
-		$SearchEndDateOriginal = $_GET['enddate'];
-		$SearchEndDateString = str_replace("-","",$SearchEndDateOriginal);
-		$SearchEndDateString = str_replace("T","",$SearchEndDateString);
-		$SearchEndDate = str_replace(":","",$SearchEndDateString);
-		if (empty($SearchEndDate)) {
-			$Date = date('YmdHis');
-			$SearchEndDate = $Date + 10000000000;
-		}
-		
-		$SearchID = $_GET['id'];
-		
-		$SearchComment = $_GET['comment'];
+	$SearchStartDateOriginal = $_GET['startdate'];
+	$SearchStartDateString = str_replace("-","",$SearchStartDateOriginal);
+	$SearchStartDateString = str_replace("T","",$SearchStartDateString);
+	$SearchStartDate = str_replace(":","",$SearchStartDateString);
+	if (empty($SearchStartDate)) {
+		$SearchStartDate = "19700101000000";
+	}
+	
+	$SearchEndDateOriginal = $_GET['enddate'];
+	$SearchEndDateString = str_replace("-","",$SearchEndDateOriginal);
+	$SearchEndDateString = str_replace("T","",$SearchEndDateString);
+	$SearchEndDate = str_replace(":","",$SearchEndDateString);
+	if (empty($SearchEndDate)) {
+		$Date = date('YmdHis');
+		$SearchEndDate = $Date + 10000000000;
+	}
+	
+	$SearchID = $_GET['id'];
+	
+	$SearchComment = $_GET['comment'];
 
 		echo '	<form>
 				<table id="reviews">

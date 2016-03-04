@@ -1,4 +1,5 @@
 <?php
+	require "php/mysqlconnect.php";
 	$sql = $DBH->prepare('SELECT SUM(Score) AS Score FROM csat');
 	$sql->execute();
 	$resultPercent = $sql->fetch();

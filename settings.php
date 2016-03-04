@@ -9,7 +9,6 @@
 	
 	<head>
 		<?php require 'php/css.php'; ?>
-		<link rel="shortcut icon" type="image/png" href="img/custard_favicon.png">
 		<link rel="icon" type="image/png" href="img/custard_favicon.png">
 	</head>
 	
@@ -19,19 +18,19 @@
 			<?php
 				require 'php/topmenu.php';
 			?>
-
+		
 		<div>
-		<br />
-		<br />
-		<br />
-		<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<div align="center">
+			Coming Soon.<br />
 			<?php
-				require 'php/search.php';
+				require 'php/getsettings.php';
 			?>
+			</div>
+
 		</div>
-		<?php 
-			require 'php/footer.php';
-		?>
 	</body>	
 </html>
-
