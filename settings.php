@@ -25,7 +25,6 @@
 			<br />
 			<br />
 			<div align="center">
-			Coming Soon.<br />
 			<?php
 				require 'php/getsettings.php';
 			?>

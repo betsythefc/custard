@@ -42,13 +42,16 @@
 		header("location: index.php");
 		exit();
 	}
+	
+	//Hash username
+	$username = hash('sha256', "$username");
  
  	//Get Salt
 	$sql = $DBH->prepare("SELECT salt FROM member WHERE username='$username'");
 	$sql->execute();
 	$salt = $sql->fetch();
 	$salt = $salt[salt];
- 
+ 	
  	//Hash password
  	$password = "${password}${salt}";
  	$password = hash('sha256', "$password");

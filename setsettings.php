@@ -1,16 +1,24 @@
 <?php
-	error_reporting(E_ERROR);
-	$CurrentTheme = file_get_contents('config/theme.cfg');
-	echo "Current Theme: $CurrentTheme<br />";
+	require_once('auth.php');
+	require "php/mysqlconnect.php";
 	
-	$theme = $_GET['theme'];
-	echo "Select Theme: $theme<br />";
+	//Theme
+		$NewTheme = $_GET['theme'];
 	
-	$themefile = "config/theme.cfg";
-	$fh = fopen($themefile, 'w');
-	fwrite($fh, $theme);
-	fclose($fh);
-	$theme = file_get_contents('config/theme.cfg');
-	echo "New Theme: $theme<br />";
+		$sql = $DBH->prepare('SELECT parameter FROM settings WHERE setting="theme"');
+		$sql->execute();
+		$themeResult = $sql->fetch();
+		$CurrentTheme = "${themeResult[parameter]}";
 	
+		if ($CurrentTheme !== $NewTheme) {
+			$sql = $DBH->prepare("UPDATE settings SET parameter='$NewTheme' WHERE setting='theme'");
+			$sql->execute();
+		}
+	
+	//Create new user
+		
+	
+	echo "	<script type=\"text/javascript\" language=\"JavaScript\">
+			setTimeout(function() {window.location = 'settings.php'}, 0);
+             	</script>";
 ?>

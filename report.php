@@ -1,7 +1,12 @@
 <?php
 
 //Theme
-$theme = file_get_contents('config/theme.cfg');
+require "php/mysqlconnect.php";
+$sql = $DBH->prepare('SELECT parameter FROM settings WHERE setting="theme"');
+$sql->execute();
+$themeResult = $sql->fetch();
+$theme = "${themeResult[parameter]}";
+
 if (strpos($theme, 'light') !== false) {
 	$PageBackgroundColor = "#eee";
 	$WidgetBackgroundColor = "#f2f2f2";

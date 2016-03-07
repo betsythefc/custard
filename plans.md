@@ -8,16 +8,17 @@ v1.0
  - [DONE] ~~Prettify the logout page.~~
  - [Maybe] Find a way to cleanup the php files.
  - [DONE] ~~Make logout page redirect to login page after 3 seconds.~~
+ - [DONE] ~~Added username hash (no salt).~~
  - Add a comments section to the review for AFTER the review has been submitted.
- - Create "reports" page that can generate reports for download that include graphs, and "actionable" reviews (":|" & ":(").
- - Create a "Settings" page.
- - Implemement a "Dark theme" that can be toggled with using PHP as the CSS page (https://css-tricks.com/css-variables-with-php/) and a config file that the PHP parses.
- - Make table sortable (http://www.kryogenix.org/code/browser/sorttable/ OR http://www.codeproject.com/Articles/1604/Sorting-HTML-Tables-using-Javascript)
+ - [DONE] ~~Create a "Settings" page.~~
+ - [DONE] ~~Implemement a "Dark theme" that can be toggled with using PHP as the CSS page (https://css-tricks.com/css-variables-with-php/) and a config file that the PHP parses.~~
+ - [DONE] ~~Add a user creation setting in settings page.~~
 
 v1.1
 ----
 
- - Add user creation to settings page.
+ - Create a tabbed settings interface: General & User Management.
+ - Create "reports" page that can generate reports for download that include graphs, and "actionable" reviews (":|" & ":(").
 
 ......
 
@@ -25,3 +26,4 @@ Future
 ------
  
  - Change search.php to use mysqlconnect.php to connect to database.
+ - Make table sortable (http://www.kryogenix.org/code/browser/sorttable/ OR http://www.codeproject.com/Articles/1604/Sorting-HTML-Tables-using-Javascript)

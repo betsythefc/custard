@@ -30,7 +30,7 @@ mysql -u root -p*password*
 > CREATE TABLE csat (score INT,date VARCHAR(60),id VARCHAR(60));
 > CREATE TABLE links (link INT);
 > CREATE TABLE member (mem_id int(11) NOT NULL AUTO_INCREMENT, username varchar(30) NOT NULL, password varchar(180) NOT NULL, salt VARCHAR(60) NOT NULL, PRIMARY KEY (mem_id));
-> CREATE TABLE globalsettings(setting VARCHAR(60) NOT NULL,parameter VARCHAR(120) NOT NULL);
+> CREATE TABLE settings(setting VARCHAR(60) NOT NULL,parameter VARCHAR(120) NOT NULL);
 > CREATE USER 'custard_admin'@'localhost' IDENTIFIED BY '*password*';
 > GRANT ALL PRIVILEGES ON custard . * TO 'custard_admin'@'localhost';
 > FLUSH PRIVILEGES;
