@@ -1,3 +1,19 @@
+v1.0
+----
+ 
+ - Cleaned up the php files.
+ - Created a way to download reviews as a CSV file.
+ - Added a comments section to the review for AFTER the review has been submitted.
+ - Created a login page.
+ - Hashed & salted passwords in databse
+ - Prettified the login page.
+ - Prettified the logout page.
+ - Made logout page redirect to login page after 1 seconds.
+ - Created a "Settings" page.
+ - Implememented a "Dark theme" that can be toggled with using PHP as the CSS page.
+ - Added a user creation setting in settings page.
+
+
 v0.9
 ----
 

@@ -26,7 +26,7 @@
 			Custard<br />
 			v0.9<br />
 			<br />
-			Copyright 2015 - <?php require 'php/year.php'; ?> Bryce McNab<br />
+			Copyright 2015 - <?php $Year = date('Y'); echo "$Year"; ?> Bryce McNab<br />
 			<br />
 	Licensed under the Apache License, Version 2.0 (the "License");<br />
 	you may not use this file except in compliance with the License.<br />

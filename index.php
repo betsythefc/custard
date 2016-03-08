@@ -1,5 +1,6 @@
 <?php
 	require_once('auth.php');
+	require "php/mysqlconnect.php";
 ?>
 
 <html>
@@ -29,8 +30,11 @@
 						Number of reviews<br />
 					</div>
 					<div id="widgettext">
-						<?php
-							require 'php/numberofreviews.php';
+						<?php							
+							$sql = $DBH->prepare('SELECT COUNT(*) AS TotalScores FROM csat');
+							$sql->execute();
+							$resultTotal = $sql->fetch();
+							print_r($resultTotal[TotalScores]);
 						?>
 					</div>
 				</div>
@@ -42,7 +46,16 @@
 					</div>
 					<div id="widgettext">
 						<?php
-							require 'php/csatscore.php';
+							$sql = $DBH->prepare('SELECT SUM(score) AS Score FROM csat');
+							$sql->execute();
+							$resultPercent = $sql->fetch();
+							$Percent = (($resultPercent[Score]) / ($resultTotal[TotalScores] * 2)) * 100;
+							$PercentFormatted = round($Percent, 1, PHP_ROUND_HALF_UP);
+							if (strlen($PercentFormatted) == 2) {
+								echo "$PercentFormatted.0";
+							} else {
+								echo "$PercentFormatted";
+							}
 						?>
 						<br />
 						<font size=7>%</font>

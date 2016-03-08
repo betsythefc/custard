@@ -1,9 +1,11 @@
 # Custard
 Open Source CSat
 
-Custard v0.9 (20160301)
+Custard v1.0 (20160308)
 ------------------------
-Reviews page now included searching.
+Can now export reports.
+Settings page.
+New dark theme!
 
 Software Requirements
 ---------------------
