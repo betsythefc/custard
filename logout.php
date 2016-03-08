@@ -15,7 +15,7 @@
 		<?php require 'php/css.php'; ?>
 		<script type="text/javascript" language="JavaScript">
 				setTimeout(function() {window.location = 'login.php'}, 1000);
-             </script>
+		</script>
 	</head>
 
 	<body>
