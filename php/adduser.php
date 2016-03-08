@@ -29,6 +29,6 @@
 	}
 	
 	echo "	<script type=\"text/javascript\" language=\"JavaScript\">
-			setTimeout(function() {window.location = 'settings.php'}, 0);
+			setTimeout(function() {window.location = '../settings.php'}, 0);
              	</script>";
 ?>
