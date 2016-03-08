@@ -2,7 +2,7 @@ v1.0
 ----
  
  - Create a way to download reviews as a CSV file (http://code.stephenmorley.org/php/creating-downloadable-csv-files/)
- - Add a comments section to the review for AFTER the review has been submitted.
+ - [DONE] ~~Add a comments section to the review for AFTER the review has been submitted.~~
  - [Maybe] Find a way to cleanup the php files.
  - [DONE] ~~Create a login page (http://www.sourcecodester.com/tutorials/php/4341/how-create-login-page-phpmysql.html).~~
  - [DONE] ~~Make passwords hashed in database. (https://stackoverflow.com/questions/20764031/php-salt-and-hash-sha256-for-login-password#20764228)~~

@@ -19,7 +19,7 @@
 	</head>
 
 	<body>
-		<ul>
+		<ul id="topmenu">
 			<li>&nbsp&nbsp&nbsp<img src="img/custard.png" width=40px height=40px>&nbsp&nbsp&nbsp</li>
 		</ul>
 

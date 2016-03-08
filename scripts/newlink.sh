@@ -2,7 +2,8 @@
 
 RandomNumber=$RANDOM
 Table=(`mysql -u custard_admin -papache -D custard -e "SELECT id FROM csat;"`)
-Domain="http://192.168.8.101/custard"
+IP=`ip addr | grep "inet " | grep -v "127.0.0.1" | grep -oh '[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*' | grep -v 255`
+Domain="http://$IP/custard"
 
 while [[ " ${Table[@]} " =~ " $RandomNumber " ]] ; do
 	RandomNumber=$RANDOM

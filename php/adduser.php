@@ -12,8 +12,6 @@
 		return $str;
 	}
 	if ($password == $password_verify) {
-		//Hash username
-			$username = hash('sha256', "$username");
 		//Salt and Hash password
 			$salt = rand_string( 60 );
 			$password = "${password}${salt}";

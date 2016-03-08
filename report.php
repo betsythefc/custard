@@ -18,7 +18,7 @@ if (strpos($theme, 'light') !== false) {
 echo "/* CSS style reset */
 
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+h1, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -66,33 +66,63 @@ table {
 
 /* Begin CSS */
 
-li {
-	float: left;
-}
+/* Top Menu */
+	#topmenu {
+		list-style: none;
+		background-color: #333;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		position: fixed;
+		top: 0;
+		width: 100%;
+	}
+	
+	#topmenu li {
+		float: left;
+	}
+	
+	#topmenu li a {
+		display: block;
+		color: white;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+	}
+	
+	#topmenu li a:hover {
+		background-color: #e2b816;
+		color: black;
+	}
 
-li a {
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-}
+/* Settings Menu */
+	#settingsmenu {
+		list-style: none;
+		background-color: #555;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		position: fixed;
+		top: 44px;
+		width: 100%;
+	}
 
-li a:hover {
-	background-color: #e2b816;
-	color: black;
-}
-
-ul {
-	list-style: none;
-	background-color: #333;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	position: fixed;
-	top: 0;
-	width: 100%;
-}
+	#settingsmenu li {
+		float: left;
+	}
+	
+	#settingsmenu li a {
+		display: block;
+		color: white;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+	}
+	
+	#settingsmenu li a:hover {
+		background-color: #e2b816;
+		color: black;
+	}
 
 #widgets {
 	margin: auto;
@@ -253,6 +283,63 @@ ul {
 
 #loginform_submit {
 	margin-top: 10px;
-}";
+}
+
+/* User managment */
+	/* Add User */
+		#adduser_container {
+			width: 400px;
+			height: 200px;
+			margin: 0 auto;
+			border: 1px black solid;
+			display: table-cell;
+			border-radius: 25px;
+			background-color: $WidgetBackgroundColor;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		#adduser {
+			width: 100%;
+			float: left;
+			display: inline-block;
+			text-align: center;
+		}
+
+		.addusertext {
+			float: left;
+			text-align: right;
+			width: 50%;
+		}
+		
+	/* User list */
+		
+/* General Settings */
+	/* Theme */
+		#theme_container {
+			width: 400px;
+			height: 200px;
+			margin: 0 auto;
+			border: 1px black solid;
+			display: table-cell;
+			border-radius: 25px;
+			background-color: $WidgetBackgroundColor;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		#theme {
+			width: 100%;
+			float: left;
+			display: inline-block;
+			text-align: center;
+		}
+
+		.themetext {
+			float: left;
+			text-align: right;
+			width: 50%;
+		}";
+		
 
 ?>
