@@ -2,8 +2,8 @@ v1.0
 ----
  
  - Create a way to download reviews as a CSV file (http://code.stephenmorley.org/php/creating-downloadable-csv-files/)
- - [DONE] ~~Add a comments section to the review for AFTER the review has been submitted.~~
  - [Maybe] Find a way to cleanup the php files.
+ - [DONE] ~~Add a comments section to the review for AFTER the review has been submitted.~~
  - [DONE] ~~Create a login page (http://www.sourcecodester.com/tutorials/php/4341/how-create-login-page-phpmysql.html).~~
  - [DONE] ~~Make passwords hashed in database. (https://stackoverflow.com/questions/20764031/php-salt-and-hash-sha256-for-login-password#20764228)~~
  - [DONE] ~~Prettify the login page.~~
@@ -17,8 +17,8 @@ v1.0
 v1.1
 ----
 
- - Create a tabbed settings interface: General & User Management.
  - Create "reports" page that can generate reports for download that include graphs, and "actionable" reviews (":|" & ":(").
+ - [DONE] ~~Create a tabbed settings interface: General & User Management.~~
 
 ......
 
