@@ -99,7 +99,7 @@
 										<label><input type="checkbox" value="2" name="neutralsmiley" '.$NeutralSmileyChecked.'><div style="display: inline-block; color: black; background-color: #ffa500; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:|</div></label>
 										<label><input type="checkbox" value="1" name="sadsmiley" '.$SadSmileyChecked.'><div style="display: inline-block; color: black; background-color: #c70000; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:(</div></label><br />
 										<br />
-										<a href="php/downloadcsv.php">Export to CSV</a>
+										<a href="php/downloadcsv.php">Export All to CSV</a>
 									</th>
 									<th>
 										Start:&nbsp;<input type="datetime-local" name="startdate" value="'.$SearchStartDateOriginal.'"><br />
