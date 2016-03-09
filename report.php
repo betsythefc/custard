@@ -10,9 +10,17 @@ $theme = "${themeResult[parameter]}";
 if (strpos($theme, 'light') !== false) {
 	$PageBackgroundColor = "#eee";
 	$WidgetBackgroundColor = "#f2f2f2";
+	$ReviewsPageTableRowColor = "#e3e2e2";
+	$TextboxBackgroundColor = "#eee";
+	$SearchButtonBackground = "#e2b816";
+	$TextColor = "#000";
 } elseif (strpos($theme, 'dark') !== false) {
 	$PageBackgroundColor = "#383838";
 	$WidgetBackgroundColor = "#4b4b4b";
+	$ReviewsPageTableRowColor = "#4b4b4b";
+	$TextboxBackgroundColor = "#777";
+	$SearchButtonBackground = "#777";
+	$TextColor = "#bbb";
 }
 
 echo "/* CSS style reset */
@@ -46,6 +54,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	background-color: $PageBackgroundColor;
+	color: $TextColor;
 }
 ol, ul {
 	list-style: none;
@@ -177,117 +186,164 @@ table {
 	line-height: 1.3;
 }
 
-#reviews {
-	border-top: 1px solid gray;
-	border-bottom: 1px solid gray;
-	margin: auto;
-	text-align: center;
-	width: 90%;
-}
+/* Search page */
+	#reviews {
+		border-top: 1px solid gray;
+		border-bottom: 1px solid gray;
+		margin: auto;
+		text-align: center;
+		width: 90%;
+	}
 
-#reviews th {
-	border-top: 1px solid gray;
-	margin: auto;
-	text-align: center;
-	font-weight: bold;
-	background-color: #e3e2e2;
-}
+	#reviews th {
+		border-top: 1px solid gray;
+		margin: auto;
+		text-align: center;
+		font-weight: bold;
+		background-color: $ReviewsPageTableRowColor;
+	}
 
-#reviews table tr:nth-child(odd) td{
-	background-color: #e3e2e2;
-}
+	.rowtype0 {
+		background-color: $PageBackgroundColor;
+	}
+	
+	.rowtype1 {
+		background-color: $ReviewsPageTableRowColor;
+	}
 
-.searchoptions {
-	border: 1px solid gray;
-}
+	.searchoptions {
+		border: 1px solid gray;
+	}
 
-.scorecolumn {
-	border-top: 1px solid gray;
-	margin: auto;
-	text-align: center;
-	width: 10%;
-	font-size: 1.5vw;
-	height: 2vw;
-}
+	.scorecolumn {
+		border-top: 1px solid gray;
+		margin: auto;
+		text-align: center;
+		width: 10%;
+		font-size: 1.5vw;
+		height: 2vw;
+	}
+	
+	.datecolumn {
+		border-top: 1px solid gray;
+		margin: auto;
+		text-align: center;
+		width: 20%;
+		font-size: 1.5vw;
+	}
+	
+	
+	.idcolumn {
+		border-top: 1px solid gray;
+		margin: auto;
+		text-align: center;
+		width: 10%;
+		font-size: 1.5vw;
+	}
+	
+	.reviewsearchtd {
+		border-top: 1px solid gray;
+	}
+	
+	.reviewsearch {
+		text-align: center;
+		background-color: $TextboxBackgroundColor;
+	}
+	
+	.scoresearch {
+		width: 50px;
+	}
+	
+	.searchdatetime {
+		background-color: $TextboxBackgroundColor;
+	}
+	
+	#search {
+		border: 1px solid $SearchButtonBackground;
+		background-color: $SearchButtonBackground;
+		margin-top: 8px;
+		height: 25px;
+		font-size: 1em;
+		width: 25%;
+	}
+	
+	#export_container {
+		width: 100%;
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	
+	.exporttocsv {
+		background-color: $SearchButtonBackground;
+		margin: auto;
+		width: 25%;
+		display: inline-block;
+		color: black;
+		text-decoration: none;
+	}
+	
+	.exporttocsv a {
+		background-color: $SearchButtonBackground;
+		color: black;
+		padding: 0px 0px;
+		text-align: center; 
+		text-decoration: none;
+		display: inline-block;
+		margin: 5px;
+		font-size: 1em;
+		font-weight: normal;
+	}
 
-.datecolumn {
-	border-top: 1px solid gray;
-	margin: auto;
-	text-align: center;
-	width: 20%;
-	font-size: 1.5vw;
-}
-
-
-.idcolumn {
-	border-top: 1px solid gray;
-	margin: auto;
-	text-align: center;
-	width: 10%;
-	font-size: 1.5vw;
-}
-
-.reviewsearchtd {
-	border-top: 1px solid gray;
-}
-
-.reviewsearch {
-	text-align: center;
-}
-
-.scoresearch {
-	width: 50px;
-}
-
-.loginform {
-	width: 400px;
-	height: 200px;
-	margin: 0 auto;
-	border: 1px black solid;
-	display: table-cell;
-	border-radius: 25px;
-	background-color: #f2f2f2;
-	text-align: center;
-	vertical-align: middle;
-}
-
-.loginform_container {
-	width: 100%;
-	float: left;
-	display: inline-block;
-	text-align: center;
-}
-
-.loginform_username {
-	width: 66%;
-	float: left;
-	margin-top: 5px;
-}
-
-.loginform_password {
-	width: 66%;
-	float: left;
-	margin-top: 5px;
-}
-
-.loginform_text {
-	text-align: right;
-	float: left;
-	width: 33%;
-	margin-top: 5px;
-}
-
-.input {
-	width: 200px;
-}
-
-#loginform_submit {
-	margin-top: 10px;
-}
+/* Login */
+	.loginform {
+		width: 400px;
+		height: 200px;
+		margin: 0 auto;
+		border: 1px black solid;
+		display: table-cell;
+		border-radius: 25px;
+		background-color: #f2f2f2;
+		text-align: center;
+		vertical-align: middle;
+	}
+	
+	.loginform_container {
+		width: 100%;
+		float: left;
+		display: inline-block;
+		text-align: center;
+	}
+	
+	.loginform_username {
+		width: 66%;
+		float: left;
+		margin-top: 5px;
+	}
+	
+	.loginform_password {
+		width: 66%;
+		float: left;
+		margin-top: 5px;
+	}
+	
+	.loginform_text {
+		text-align: right;
+		float: left;
+		width: 33%;
+		margin-top: 5px;
+	}
+	
+	.input {
+		width: 200px;
+	}
+	
+	#loginform_submit {
+		margin-top: 10px;
+	}
 
 /* User managment */
-	/* Add User */
-		#adduser_container {
+	/* Add Users / List & Delete User */
+		#user_container {
 			width: 400px;
 			height: 200px;
 			margin: 0 auto;
@@ -299,14 +355,14 @@ table {
 			vertical-align: middle;
 		}
 
-		#adduser {
+		#user {
 			width: 100%;
 			float: left;
 			display: inline-block;
 			text-align: center;
 		}
 
-		.addusertext {
+		.usertext {
 			float: left;
 			text-align: right;
 			width: 50%;

@@ -1,4 +1,9 @@
 <?php
+	$SearchScore = $_GET['score'];
+	$SearchStartDate = $_GET['startdate'];
+	$SearchEndDate = $_GET['enddate'];
+	$SearchID = $_GET['id'];
+	
 	// output headers so that the file is downloaded rather than displayed
 	header('Content-Type: text/csv; charset=utf-8');
 	header('Content-Disposition: attachment; filename=data.csv');
@@ -23,7 +28,8 @@
 		
 					mysql_select_db($mysql_database, $bd) or die("Oops something went wrong");// we are now connected to database
 
-					$result = mysql_query("SELECT * FROM csat"); // selecting data through mysql_query()
+					//$result = mysql_query("SELECT * FROM csat"); // selecting data through mysql_query()
+					$result = mysql_query("SELECT * FROM csat WHERE score REGEXP '$SearchScore' AND date >= '$SearchStartDate' AND date <= '$SearchEndDate' AND id LIKE '%$SearchID%'");
 
 					while($data = mysql_fetch_array($result))
 					{

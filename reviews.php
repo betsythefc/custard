@@ -98,17 +98,16 @@
 										<label><input type="checkbox" value="4" name="happysmiley" '.$HappySmileyChecked.'><div style="display: inline-block; color: black; background-color: green; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:)</div></label>
 										<label><input type="checkbox" value="2" name="neutralsmiley" '.$NeutralSmileyChecked.'><div style="display: inline-block; color: black; background-color: #ffa500; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:|</div></label>
 										<label><input type="checkbox" value="1" name="sadsmiley" '.$SadSmileyChecked.'><div style="display: inline-block; color: black; background-color: #c70000; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:(</div></label><br />
-										<br />
-										<a href="php/downloadcsv.php">Export All to CSV</a>
+										<div id="export_container"><div class="exporttocsv"><a href="php/downloadcsv.php?score='.$SearchScore.'&startdate='.$SearchStartDate.'&enddate='.$SearchEndDate.'&id='.$SearchID.'">Export</a></div></div>
 									</th>
 									<th>
-										Start:&nbsp;<input type="datetime-local" name="startdate" value="'.$SearchStartDateOriginal.'"><br />
-										End:&nbsp;&nbsp;&nbsp;<input type="datetime-local" name="enddate" value="'.$SearchEndDateOriginal.'">
+										Start:&nbsp;<input type="datetime-local" name="startdate" value="'.$SearchStartDateOriginal.'" class="searchdatetime"><br />
+										End:&nbsp;&nbsp;&nbsp;<input type="datetime-local" name="enddate" value="'.$SearchEndDateOriginal.'" class="searchdatetime">
 
 									</th>
 									<th>
 										<input type="text" name="id" placeholder="ID" value="'.$SearchID.'" class="reviewsearch"><br />
-										<input type="submit" name="submit" value="Search">
+										<input type="submit" name="submit" value="Search" id="search">
 									</th>
 								</tr>';
 
@@ -127,7 +126,9 @@
 					mysql_select_db($mysql_database, $bd) or die("Oops something went wrong");// we are now connected to database
 
 					$result = mysql_query("SELECT * FROM csat WHERE score REGEXP '$SearchScore' AND date >= '$SearchStartDate' AND date <= '$SearchEndDate' AND id LIKE '%$SearchID%'"); // selecting data through mysql_query()
-
+					
+					$RowNumber = "0";
+					
 					while($data = mysql_fetch_array($result))
 					{
 						// we are running a while loop to print all the rows in a table
@@ -154,13 +155,20 @@
 						} elseif ($data['score'] == 2) {
 							$Smiley = '<div style="display: inline-block; color: black; background-color: green; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:)</div>';
 						}
-			
-						echo'<tr>'; // printing table row
+						
+						
+						echo"<tr class=\"rowtype${RowNumber}\">"; // printing table row
 						echo '<td class="scorecolumn">&nbsp;&nbsp;<a href="details.php?score='.$data['score'].'&id='.$data['id'].'">'.$Smiley.'</a></td>
 						<td class="datecolumn">'.$FormattedDateMonth.' / '.$FormattedDateDay.' / '.$FormattedDateYear.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$FormattedDateHour.':'.$FormattedDateMinute.':'.$FormattedDateSecond.'&nbsp;&nbsp;'.$SearchResultAMorPM.'</td>
 						<td class="idcolumn">'.$data['id'].'</td>';
 						// we are looping all data to be printed till last row in the table
 						echo'</tr>'; // closing table row
+						
+						if ($RowNumber == "0") {
+							$RowNumber = "1";
+						} elseif ($RowNumber == "1") {
+							$RowNumber = "0";
+						}
 					}
 
 					echo '</table>';  //closing table tag

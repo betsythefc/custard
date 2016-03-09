@@ -22,6 +22,7 @@
 			<ul id="settingsmenu">
 				<li><a href="settings.php?page=general">General</a></li>
 				<li><a href="settings.php?page=users">Users</a></li>
+				<li><a href="settings.php?page=integration">Integration</a></li>
 			</ul>
 			<br />
 			<br />
@@ -76,17 +77,36 @@
 					} elseif ($page == "users") {
 					// User Management
 						// New User
-						echo "	<div id=\"adduser_container\">
-								<div id=\"adduser\">
+						echo "	<div id=\"user_container\">
+								<div id=\"user\">
 									<h2>Add User</h2>
-									<form action=\"php/adduser.php\" method=\"post\">
-										<div class=\"addusertext\">Username: </div><input type=\"text\" name=\"username\" /><br />
-										<div class=\"addusertext\">Password: </div><input type=\"password\"name=\"password\" /><br />
-										<div class=\"addusertext\">Repeat Password: </div><input type=\"password\" name=\"password_verify\" /><br />
+									<form action=\"php/moduser.php?mode=add\" method=\"post\">
+										<div class=\"usertext\">Username: </div><input type=\"text\" name=\"username\" /><br />
+										<div class=\"usertext\">Password: </div><input type=\"password\"name=\"password\" /><br />
+										<div class=\"usertext\">Repeat Password: </div><input type=\"password\" name=\"password_verify\" /><br />
 										<input type=\"submit\" value=\"Add\">
 									</form>
 								</div>
-							</div>";
+							</div><br />";
+						// User List
+						$sql = $DBH->prepare('SELECT username FROM member');
+						$sql->execute();
+						$userArr = $sql->fetchAll();
+						echo "	<div id=\"user_container\">
+								<div id=\"user\">
+									<h2>User List</h2>
+									<form action=\"php/moduser.php?mode=del\" method=\"post\">
+										<select multiple name=\"username[]\">";
+										foreach ($userArr as $user) {
+											echo "<option>${user["username"]}</option>";
+										}
+									echo "	</select><br />
+										<input type=\"submit\" value=\"Remove User\" />
+									</form>
+								</div>
+							</div>";						
+					} elseif ($page == "integration") {
+						echo "Coming soon.";
 					}
 					?>		
 			</div>

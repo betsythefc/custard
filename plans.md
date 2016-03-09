@@ -1,8 +1,15 @@
 v1.1
 ----
 
- - Create "reports" page that can generate reports for download that include graphs, and "actionable" reviews (":|" & ":(").
  - [DONE] ~~Create a tabbed settings interface: General & User Management.~~
+ - [DONE] ~~Improve the "Dark" theme.~~
+ - [DONE] ~~When clicking "Export all to CSV", change it so it will only print what is searched.~~
+ - [DONE] ~~Change submit buttons to flat icons.~~
+ - [DONE] ~~Add a list of users in the settings page.~~
+ - [DONE] ~~Add a "Remove user" button.~~
+ - Add warning when removing users.
+ - Make database field "username" unique.
+ - Add a failure notice if the passwords do not match, or the username is taken.
 
 ......
 
