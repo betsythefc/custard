@@ -368,8 +368,6 @@ table {
 			width: 50%;
 		}
 		
-	/* User list */
-		
 /* General Settings */
 	/* Theme */
 		#theme_container {
@@ -395,7 +393,36 @@ table {
 			float: left;
 			text-align: right;
 			width: 50%;
-		}";
+		}
+
+/* Integration */
+	#integration_container {
+			width: 400px;
+			height: 200px;
+			margin: 0 auto;
+			border: 1px black solid;
+			display: table-cell;
+			border-radius: 25px;
+			background-color: $WidgetBackgroundColor;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		#integration {
+			width: 100%;
+			float: left;
+			display: inline-block;
+			text-align: center;
+		}
+
+		.integrationtext {
+			float: left;
+			text-align: right;
+			width: 50%;
+		}	
+
+
+";
 		
 
 ?>

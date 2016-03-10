@@ -7,9 +7,11 @@ v1.1
  - [DONE] ~~Change submit buttons to flat icons.~~
  - [DONE] ~~Add a list of users in the settings page.~~
  - [DONE] ~~Add a "Remove user" button.~~
- - Add warning when removing users.
- - Make database field "username" unique.
- - Add a failure notice if the passwords do not match, or the username is taken.
+ - [DONE] ~~Add warning when removing users.~~
+ - [DONE] ~~Make database field "username" unique.~~
+ - [DONE] ~~Add a failure notice if the passwords do not match, or the username is taken.~~
+ - [DONE] ~~Add warning to make sure that the last user is not deleted.~~
+ - Begin working on OSTicket integration.
 
 ......
 
@@ -17,4 +19,4 @@ Future
 ------
  
  - Change search.php to use mysqlconnect.php to connect to database.
- - Make table sortable (http://www.kryogenix.org/code/browser/sorttable/ OR http://www.codeproject.com/Articles/1604/Sorting-HTML-Tables-using-Javascript)
+ - Make reviews table sortable (http://www.kryogenix.org/code/browser/sorttable/ OR http://www.codeproject.com/Articles/1604/Sorting-HTML-Tables-using-Javascript)

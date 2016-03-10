@@ -11,6 +11,11 @@
 	<head>
 		<?php require 'php/css.php'; ?>
 		<link rel="icon" type="image/png" href="img/custard_favicon.png">
+		<script language="javascript" type="text/javascript">
+		function showDiv() {
+   			document.getElementById('hiddensubmit').style.display = "block";
+		}
+		</script>
 	</head>
 	
 	<body>
@@ -85,8 +90,14 @@
 										<div class=\"usertext\">Password: </div><input type=\"password\"name=\"password\" /><br />
 										<div class=\"usertext\">Repeat Password: </div><input type=\"password\" name=\"password_verify\" /><br />
 										<input type=\"submit\" value=\"Add\">
-									</form>
-								</div>
+									</form>";
+									$error = $_GET['error'];
+									if ($error == "1") {
+										echo "<br /><span style=\"color:red;\">Username is already taken</span>";
+									} elseif ($error == "2") {
+										echo "<br /><span style=\"color:red;\">Passwords do not match</span>";
+									}
+							echo "	</div>
 							</div><br />";
 						// User List
 						$sql = $DBH->prepare('SELECT username FROM member');
@@ -94,19 +105,40 @@
 						$userArr = $sql->fetchAll();
 						echo "	<div id=\"user_container\">
 								<div id=\"user\">
-									<h2>User List</h2>
+									<h2>Users</h2>
 									<form action=\"php/moduser.php?mode=del\" method=\"post\">
 										<select multiple name=\"username[]\">";
 										foreach ($userArr as $user) {
 											echo "<option>${user["username"]}</option>";
 										}
 									echo "	</select><br />
-										<input type=\"submit\" value=\"Remove User\" />
+										<input type=\"button\" name=\"answer\" value=\"Remove User(s)\" onclick=\"showDiv()\" /><br />";
+										if ($error == 3) {
+											echo "<br /><span style=\"color:red;\">You cannot delete the last user.</span>";
+										}
+									echo "	<div style=\"display:none;\" id=\"hiddensubmit\"><br /><span style=\"color:red;\">WARNING: You are about to delete users. This action is not reversible. Are you sure you want to do this?</span><br /><input type=\"submit\" value=\"Yes\" /><br /></div>
 									</form>
 								</div>
 							</div>";						
 					} elseif ($page == "integration") {
-						echo "Coming soon.";
+						echo "	<div id=\"integration_container\">
+								<div id=\"integration\">
+									<h2>Ticket Integration</h2>
+									<form action=\"php/moduser.php?mode=del\" method=\"post\">
+										<br />
+										<br />
+									</form>
+								</div>
+							</div><br />
+							<div id=\"integration_container\">
+								<div id=\"integration\">
+									<h2>Login Integration</h2>
+									<form action=\"php/moduser.php?mode=del\" method=\"post\">
+										<br />
+										<br />
+									</form>
+								</div>
+							</div>";
 					}
 					?>		
 			</div>
