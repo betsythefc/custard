@@ -11,7 +11,9 @@ v1.1
  - [DONE] ~~Make database field "username" unique.~~
  - [DONE] ~~Add a failure notice if the passwords do not match, or the username is taken.~~
  - [DONE] ~~Add warning to make sure that the last user is not deleted.~~
- - Begin working on OSTicket integration.
+ - Build script to for OSTicket (MySQL) integration.
+ - Add fields to settings page for integration.
+ - Create instructions on how to set up in OSTicket.
 
 ......
 

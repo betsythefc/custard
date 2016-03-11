@@ -124,19 +124,13 @@
 						echo "	<div id=\"integration_container\">
 								<div id=\"integration\">
 									<h2>Ticket Integration</h2>
-									<form action=\"php/moduser.php?mode=del\" method=\"post\">
-										<br />
-										<br />
-									</form>
+									Coming soon.
 								</div>
 							</div><br />
 							<div id=\"integration_container\">
 								<div id=\"integration\">
 									<h2>Login Integration</h2>
-									<form action=\"php/moduser.php?mode=del\" method=\"post\">
-										<br />
-										<br />
-									</form>
+									Coming soon.
 								</div>
 							</div>";
 					}
