@@ -14,11 +14,15 @@ then
 		do
 			if [ $ticket != "number" ]
 			then
-				LinkInDBTest=(`mysql -u custard_admin -papache -D custard -e "SELECT * FROM links WHERE link='$ticket'"`)
-				if [ "${LinkInDBTest[1]}" = "$ticket" ]
+				LinksTable=(`mysql -u custard_admin -papache -D custard -e "SELECT link FROM links WHERE link='$ticket'"`)
+				CSATTable=(`mysql -u custard_admin -papache -D custard -e "SELECT id FROM csat WHERE id='$ticket'"`)
+				if [ "${LinksTable[1]}" = "$ticket" ]
 				then
 					echo "Ticket number $ticket has already been imported"	
-				else 
+				elif [ "${SCATTable[1]}" = "$ticket" ]
+				then
+					echo "Ticket number $ticket has already been imported"	
+				else
 					mysql -u custard_admin -papache -D custard -e "INSERT INTO links VALUES ($ticket);"
 					echo "Imported ticket: $ticket"
 				

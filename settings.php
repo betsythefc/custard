@@ -192,8 +192,6 @@
 							</div>';
 					} elseif ($page == "about") {
 						echo '	<div align=center class="license">
-							<br />
-							<br />
 							<img src="img/custard.png" width=250px height=250px><br />
 							Custard<br />
 							v0.9<br />
