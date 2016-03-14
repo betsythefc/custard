@@ -1,3 +1,18 @@
+v1.1
+----
+
+ - Created a tabbed settings interface: General & User Management.
+ - Improved the "Dark" theme.
+ - When clicking "Export all to CSV", changed it so it will only print what is searched.
+ - Changed submit buttons to flat icons.
+ - Added a list of users in the settings page.
+ - Added a "Remove user" button.
+ - Added warning when removing users.
+ - Made database field "username" unique.
+ - Added a failure notice if the passwords do not match, or the username is taken.
+ - Added warning to make sure that the last user is not deleted.
+ - Moved "about" page to settings.
+
 v1.0
 ----
  
