@@ -398,7 +398,7 @@ table {
 /* Integration */
 	#integration_container {
 			width: 400px;
-			height: 200px;
+			height: 250px;
 			margin: 0 auto;
 			border: 1px black solid;
 			display: table-cell;
@@ -419,8 +419,7 @@ table {
 			float: left;
 			text-align: right;
 			width: 50%;
-		}	
-
+		}
 
 ";
 		
