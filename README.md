@@ -38,7 +38,7 @@ mysql -u root -p*password*
  - Set up settings in database:
  
  Modify php/mysqlconnect.php:
-  - Change the password the one set for custard_admin.
+  - Change the password to the one set for custard_admin.
   - Change the username or host if needed.
 
 In a web browser, navigate to _domain_/custard/php/install.php to setup the database as needed.
