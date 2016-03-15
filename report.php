@@ -2,7 +2,9 @@
 
 //Theme
 require "php/mysqlconnect.php";
-$sql = $DBH->prepare('SELECT parameter FROM settings WHERE setting="theme"');
+require 'php/rights.php';
+
+$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting=\"theme\" AND user='global'");
 $sql->execute();
 $themeResult = $sql->fetch();
 $theme = "${themeResult[parameter]}";
@@ -302,7 +304,7 @@ table {
 		border: 1px black solid;
 		display: table-cell;
 		border-radius: 25px;
-		background-color: #f2f2f2;
+		background-color: $WidgetBackgroundColor;
 		text-align: center;
 		vertical-align: middle;
 	}

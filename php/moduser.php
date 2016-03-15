@@ -39,6 +39,8 @@
 					$error = "&error=2";
 				}
 			}
+		$sql = $DBH->prepare("INSERT INTO settings VALUES ('theme','light','$username')");
+		$sql->execute();
 		}
 	} elseif ($mode == "del") {
 		$sql = $DBH->prepare("SELECT COUNT(*) AS 'Count' FROM member");

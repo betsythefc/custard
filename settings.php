@@ -43,7 +43,7 @@
 						// General Settings
 						if ($page == "general") {
 							// Theme
-							$sql = $DBH->prepare('SELECT parameter FROM settings WHERE setting="theme"');
+							$sql = $DBH->prepare('SELECT parameter FROM settings WHERE setting="theme" AND user="global"');
 							$sql->execute();
 							$themeResult = $sql->fetch();
 							$CurrentTheme = "${themeResult[parameter]}";
@@ -220,10 +220,44 @@
 								</div>';
 						}
 					} else {
-						echo "<script type=\"text/javascript\" language=\"JavaScript\">
-							setTimeout(function() {window.location = 'index.php'}, 2000);
-						</script>
-						Permission Denied";
+						// General Settings
+						if ($page == "personal") {
+							// Theme
+							$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting=\"theme\" AND user='${LoggedInUserName}'");
+							$sql->execute();
+							$themeResult = $sql->fetch();
+							$CurrentTheme = "${themeResult[parameter]}";
+			
+							if (strpos($CurrentTheme, 'light') !== false) {
+			
+							} elseif (strpos($CurrentTheme, 'dark') !== false) {
+				
+							}
+			
+							echo '	<div id="theme_container">
+									<div id="theme">
+
+										<h2>User Theme</h2>
+										<form action="setsettings.php" method="get"><br />
+											<div class="themetext">Theme: </div><select name="theme">
+												<option value="light" ';
+												if (strpos($CurrentTheme, 'light') !== false) {
+													echo "selected";
+												}
+												echo ">Light</option>
+												<option value=\"dark\" ";
+												if (strpos($CurrentTheme, 'dark') !== false) {
+													echo "selected";	
+												}
+												echo '>Dark</option>
+											</select>
+											<br />
+											<br /><input type="submit" value="Save"/><br />
+										</form><br />
+										<br />
+									</div>
+								</div>';
+						}
 					}
 					?>		
 			</div>

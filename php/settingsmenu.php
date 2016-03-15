@@ -7,5 +7,9 @@
 			<li><a href="settings.php?page=integration">Integration</a></li>
 			<li><a href="settings.php?page=about">About</a></li>
 		</ul>';
+	} else {
+		echo '<ul id="settingsmenu">
+			<li><a href="settings.php?page=personal">Personal</a></li>
+		</ul>';
 	}
 ?>
