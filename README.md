@@ -29,26 +29,19 @@ sudo apt-get install lamp-server^
 ```
 mysql -u root -p*password*
 > CREATE DATABASE custard;
-> USER custard;
-> CREATE TABLE csat (score INT,date VARCHAR(60),id VARCHAR(60),comment VARCHAR(140));
-> CREATE TABLE links (link INT);
-> CREATE TABLE member (mem_id int(11) NOT NULL AUTO_INCREMENT, username VARCHAR(30) NOT NULL, password VARCHAR(180) NOT NULL, salt VARCHAR(60) NOT NULL, user_type VARCHAR(10), PRIMARY KEY (mem_id));
-> CREATE TABLE settings(setting VARCHAR(60) NOT NULL,parameter VARCHAR(120) NOT NULL);
+> USE custard;
 > CREATE USER 'custard_admin'@'localhost' IDENTIFIED BY '*password*';
 > GRANT ALL PRIVILEGES ON custard . * TO 'custard_admin'@'localhost';
 > FLUSH PRIVILEGES;
 ```
 
  - Set up settings in database:
-```
-> INSERT INTO settings VALUES ('theme','light');
-> INSERT INTO settings VALUES ('integration','disabled');
-> INSERT INTO settings VALUES ('integration_db','NULL');
-> INSERT INTO settings VALUES ('integration_db_host','NULL');
-> INSERT INTO settings VALUES ('integration_db_user','NULL');
-> INSERT INTO settings VALUES ('integration_db_pw','NULL');
-> INSERT INTO settings VALUES ('integration_ticketquery','NULL');
-```
+ 
+ Modify php/mysqlconnect.php:
+  - Change the password the one set for custard_admin.
+  - Change the username or host if needed.
+
+In a web browser, navigate to _domain_/custard/php/install.php to setup the database as needed.
 
  - Get Salt for administrator password:
 ```
