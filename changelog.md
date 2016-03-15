@@ -14,6 +14,7 @@ v1.1
  - Moved "about" page to settings.
  - Add fields to settings page for integration.
  - Added two different user sets (user / admin) and made it so only admins have access to the settings.
+ - Create database setup PHP script.
 
 v1.0
 ----
