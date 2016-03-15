@@ -45,7 +45,7 @@ In a web browser, navigate to _domain_/custard/php/install.php to setup the data
 
  - Get Salt for administrator password:
 ```
-password="\[put admin pw here\]"
+password="[put admin pw here]"
 salt=`echo $RANDOM`
 echo "${password}${salt}" | sha256sum
 ```
@@ -54,7 +54,7 @@ NOTE: Copy the hash without any of the whitespace or the dash at the end.
  - Set up admin user:
 ```
 mysql -u custard_admin -p*password* -D custard
-> INSERT INTO member VALUES ('1','admin',\[The hash from above\],\[The salt from above\]);
+> INSERT INTO member VALUES ('1','admin',[The hash from above],[The salt from above]);
 > exit
 ```
 
