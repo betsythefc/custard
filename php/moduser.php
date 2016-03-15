@@ -31,7 +31,8 @@
 					$memberid = $MySQL_MemberID->fetch();
 					$memberid = "${memberid[MAXMEMID]}";
 					$memberid = $memberid + 1;
-				$sql = $DBH->prepare("INSERT INTO member VALUES(\"$memberid\",\"$username\",\"$password\",\"$salt\")");
+					$usertype = $_POST['usertype'];
+				$sql = $DBH->prepare("INSERT INTO member VALUES(\"$memberid\",\"$username\",\"$password\",\"$salt\",\"$usertype\")");
 				$sql->execute();
 			} else {
 				if ($error !== "1") {

@@ -2,7 +2,6 @@ v1.1
 ----
 
  - Build script to for OSTicket (MySQL) integration.
- - Add fields to settings page for integration.
  - Create instructions on how to set up in OSTicket.
  - Create database setup PHP script with frontend (make this the first screen that comes up for the first time. Include a row in mysql settings table the says "installed" and "y/n").
 

@@ -12,6 +12,8 @@ v1.1
  - Added a failure notice if the passwords do not match, or the username is taken.
  - Added warning to make sure that the last user is not deleted.
  - Moved "about" page to settings.
+ - Add fields to settings page for integration.
+ - Added two different user sets (user / admin) and made it so only admins have access to the settings.
 
 v1.0
 ----

@@ -18,14 +18,13 @@
 		<!-- Top Menu -->
 			<?php
 				require 'php/topmenu.php';
-			?>
 
-		<div>
+		echo '<div>
 		<br />
 		<br />
 		<br />
-		<br />
-			<?php
+		<br />';
+			
 				//Change to a more logical approach
 				$SearchScoreChecks = $_GET['happysmiley'] + $_GET['neutralsmiley'] + $_GET['sadsmiley'];
 				if ($SearchScoreChecks == 1) {
