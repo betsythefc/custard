@@ -12,7 +12,7 @@
 	</title>
 
 	<head>
-		<?php require 'php/css.php'; ?>
+		<link rel="stylesheet" type="text/css" href="login.css">
 	</head>
 
 	<body>

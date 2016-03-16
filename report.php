@@ -1,13 +1,22 @@
 <?php
 
 //Theme
+require 'auth.php';
 require "php/mysqlconnect.php";
 require 'php/rights.php';
 
-$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting=\"theme\" AND user='global'");
+$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting='theme' AND user='$LoggedInUserName'");
 $sql->execute();
 $themeResult = $sql->fetch();
 $theme = "${themeResult[parameter]}";
+if ("$theme" == "default") {
+	$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting='theme' AND user='global'");
+	$sql->execute();
+	$themeResult = $sql->fetch();
+	$theme = "${themeResult[parameter]}";
+} 
+echo "/* User: $LoggedInUserName*/ ";
+echo "/* Theme: $theme */ ";
 
 if (strpos($theme, 'light') !== false) {
 	$PageBackgroundColor = "#eee";
@@ -424,6 +433,4 @@ table {
 		}
 
 ";
-		
-
 ?>

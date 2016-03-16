@@ -15,6 +15,9 @@ v1.1
  - Add fields to settings page for integration.
  - Added two different user sets (user / admin) and made it so only admins have access to the settings.
  - Create database setup PHP script.
+ - Script for MySQL integration.
+ - Created integration frontend in settings.
+ - Rudimentary user permissions for settings.
 
 v1.0
 ----

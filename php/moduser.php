@@ -39,7 +39,7 @@
 					$error = "&error=2";
 				}
 			}
-		$sql = $DBH->prepare("INSERT INTO settings VALUES ('theme','light','$username')");
+		$sql = $DBH->prepare("INSERT INTO settings VALUES ('$username','theme','default')");
 		$sql->execute();
 		}
 	} elseif ($mode == "del") {
@@ -55,6 +55,8 @@
 			}
 			$userlist = substr($userlist, 0, -1);
 			$sql = $DBH->prepare("DELETE FROM member WHERE username REGEXP \"$userlist\"");
+			$sql->execute();
+			$sql = $DBH->prepare("DELETE FROM settings WHERE user REGEXP \"$userlist\"");
 			$sql->execute();
 		}
 	}

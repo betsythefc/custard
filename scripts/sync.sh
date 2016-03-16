@@ -1,5 +1,9 @@
 #!/bin/bash
-Integration=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting REGEXP 'integration.*'"`)
+Integration=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='integration'"`)
+IntegrationHost=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='integration_db_host'"`)
+IntegrationDB=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='integration_db'"`)
+IntegrationUser=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='integration_db_user'"`)
+IntegrationPW=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='integration_db_pw'"`)
 IntegrationQuery=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='integration_ticketquery'"`)
 QueryLength=`echo "${#IntegrationQuery[@]}-1" | bc`
 Query="${IntegrationQuery[@]:1:$QueryLength}"
@@ -8,16 +12,17 @@ if [ "${Integration[1]}" != "disabled" ]
 then
 	if [ "${Integration[1]}" = "mysql" ]
 	then
-		ARR=(`mysql -h ${Integration[2]} -u ${Integration[3]} -p${Integration[4]} -D ${Integration[5]} -e "$Query"`)
+		ARR=(`mysql -h ${IntegrationHost[1]} -u ${IntegrationUser[1]} -p${IntegrationPW[1]} -D ${IntegrationDB[1]} -e "$Query"`)
 	
 		for ticket in ${ARR[@]}
 		do
 			if [ $ticket != "number" ]
 			then
-				LinkInDBTest=(`mysql -u custard_admin -papache -D custard -e "SELECT * FROM links WHERE link='$ticket'"`)
-				if [ "${LinkInDBTest[1]}" = "$ticket" ]
+				Links=(`mysql -u custard_admin -papache -D custard -e "SELECT * FROM links WHERE link='$ticket'"`)
+				CSat=(`mysql -u custard_admin -papache -D custard -e "SELECT id FROM csat WHERE id='$ticket'"`)
+				if [ "${Links[1]}" = "$ticket" ] || [ "${CSat[1]}" = "$ticket" ]
 				then
-					echo "Ticket number $ticket has already been imported"	
+					echo "" >> /dev/null	
 				else 
 					mysql -u custard_admin -papache -D custard -e "INSERT INTO links VALUES ($ticket);"
 					echo "Imported ticket: $ticket"

@@ -1,7 +1,6 @@
 v1.1
 ----
 
- - Build script to for OSTicket (MySQL) integration.
  - Create instructions on how to set up in OSTicket inside of the integration settings.
 
 ......

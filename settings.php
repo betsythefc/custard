@@ -240,6 +240,11 @@
 										<h2>User Theme</h2>
 										<form action="setsettings.php" method="get"><br />
 											<div class="themetext">Theme: </div><select name="theme">
+												<option value="default" ';
+												if (strpos($CurrentTheme, 'default') !== false) {
+													echo "selected";
+												}
+												echo '>Default</option>
 												<option value="light" ';
 												if (strpos($CurrentTheme, 'light') !== false) {
 													echo "selected";

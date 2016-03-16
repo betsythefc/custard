@@ -9,19 +9,19 @@
 	$sql->execute();
 	$sql = $DBH->prepare('CREATE TABLE settings(setting VARCHAR(60) NOT NULL,parameter VARCHAR(120) NOT NULL)');
 	$sql->execute();
-	$sql = $DBH->prepare("INSERT INTO settings VALUES ('theme','light','global')");
+	$sql = $DBH->prepare("INSERT INTO settings VALUES ('global','theme','light')");
 	$sql->execute();
-	$sql = $DBH->prepare("INSERT INTO settings VALUES ('integration','disabled','global')");
+	$sql = $DBH->prepare("INSERT INTO settings VALUES ('global','integration','disabled')");
 	$sql->execute();
-	$sql = $DBH->prepare("INSERT INTO settings VALUES ('integration_db','NULL','global')");
+	$sql = $DBH->prepare("INSERT INTO settings VALUES ('global','integration_db','NULL')");
 	$sql->execute();
-	$sql = $DBH->prepare("INSERT INTO settings VALUES ('integration_db_host','NULL','global')");
+	$sql = $DBH->prepare("INSERT INTO settings VALUES ('global','integration_db_host','NULL')");
 	$sql->execute();
-	$sql = $DBH->prepare("INSERT INTO settings VALUES ('integration_db_user','NULL','global')");
+	$sql = $DBH->prepare("INSERT INTO settings VALUES ('global','integration_db_user','NULL')");
 	$sql->execute();
-	$sql = $DBH->prepare("INSERT INTO settings VALUES ('integration_db_pw','NULL','global')");
+	$sql = $DBH->prepare("INSERT INTO settings VALUES ('global','integration_db_pw','NULL')");
 	$sql->execute();
-	$sql = $DBH->prepare("INSERT INTO settings VALUES ('integration_ticketquery','NULL','global')");
+	$sql = $DBH->prepare("INSERT INTO settings VALUES ('global','integration_ticketquery','NULL')");
 	$sql->execute();
 	echo "Setup complete!";
 ?>
