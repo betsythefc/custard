@@ -1,11 +1,9 @@
 # Custard
 Open Source CSat
 
-Custard v1.0 (20160308)
+Custard v1.1 (20160316)
 ------------------------
-Can now export reports.
-Settings page.
-New dark theme!
+Integrates with all MySQL based ticketing systems!
 
 Software Requirements
 ---------------------

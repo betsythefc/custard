@@ -1,7 +1,7 @@
-v1.1
+v1.2
 ----
 
- - Create instructions on how to set up in OSTicket inside of the integration settings.
+ - Code Cleanup.
 
 ......
 
