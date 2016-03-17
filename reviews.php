@@ -114,27 +114,16 @@
 		
 					$sql = $DBH->prepare("SELECT * FROM csat WHERE score REGEXP '$SearchScore' AND date >= '$SearchStartDate' AND date <= '$SearchEndDate' AND id LIKE '%$SearchID%'");
 					$sql->execute();
-					$result = $sql->fetch();
-		
-					$mysql_hostname = "localhost";
-					$mysql_user     = "custard_admin";
-					$mysql_password = "apache";
-					$mysql_database = "custard";
-					$bd             = mysql_connect($mysql_hostname, $mysql_user, $mysql_password) or die("Oops some thing went wrong");
-		
-					mysql_select_db($mysql_database, $bd) or die("Oops something went wrong");// we are now connected to database
-
-					$result = mysql_query("SELECT * FROM csat WHERE score REGEXP '$SearchScore' AND date >= '$SearchStartDate' AND date <= '$SearchEndDate' AND id LIKE '%$SearchID%'"); // selecting data through mysql_query()
+					$reviews = $sql->fetchAll();
 					
 					$RowNumber = "0";
 					
-					while($data = mysql_fetch_array($result))
-					{
+					foreach ($reviews as $review) {
 						// we are running a while loop to print all the rows in a table
-						$FormattedDateMonth = substr($data['date'], 4, 2);
-						$FormattedDateDay = substr($data['date'], 6, 2);
-						$FormattedDateYear = substr($data['date'], 0, 4);
-						$FormattedDateHour = substr($data['date'], 8, 2);
+						$FormattedDateMonth = substr($review['date'], 4, 2);
+						$FormattedDateDay = substr($review['date'], 6, 2);
+						$FormattedDateYear = substr($review['date'], 0, 4);
+						$FormattedDateHour = substr($review['date'], 8, 2);
 							if ($FormattedDateHour > 12) {
 								$FormattedDateHour = $FormattedDateHour - 12;
 								$SearchResultAMorPM = "PM";
@@ -144,24 +133,20 @@
 							} else {
 								$SearchResultAMorPM = "AM";
 							}
-						$FormattedDateMinute = substr($data['date'], 10, 2);
-						$FormattedDateSecond = substr($data['date'], 12, 2);
-			
-						if ($data['score'] == 0) {
+						$FormattedDateMinute = substr($review['date'], 10, 2);
+						$FormattedDateSecond = substr($review['date'], 12, 2);
+						if ("${review[score]}" == 0) {
 							$Smiley = '<div style="display: inline-block; color: black; background-color: #c70000; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:(</div>';
-						} elseif ($data['score'] == 1) {
+						} elseif ("${review[score]}" == 1) {
 							$Smiley = '<div style="display: inline-block; color: black; background-color: #ffa500; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:|</div>';
-						} elseif ($data['score'] == 2) {
+						} elseif ("${review[score]}" == 2) {
 							$Smiley = '<div style="display: inline-block; color: black; background-color: green; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw;">:)</div>';
 						}
-						
-						
-						echo"<tr class=\"rowtype${RowNumber}\">"; // printing table row
-						echo '<td class="scorecolumn">&nbsp;&nbsp;<a href="details.php?score='.$data['score'].'&id='.$data['id'].'">'.$Smiley.'</a></td>
-						<td class="datecolumn">'.$FormattedDateMonth.' / '.$FormattedDateDay.' / '.$FormattedDateYear.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$FormattedDateHour.':'.$FormattedDateMinute.':'.$FormattedDateSecond.'&nbsp;&nbsp;'.$SearchResultAMorPM.'</td>
-						<td class="idcolumn">'.$data['id'].'</td>';
-						// we are looping all data to be printed till last row in the table
-						echo'</tr>'; // closing table row
+						echo "<tr class=\"rowtype${RowNumber}\">"; // printing table row
+						echo "<td class=\"scorecolumn\">&nbsp;&nbsp;<a href=\"details.php?score=${review['score']}&id=${review['id']}\">${Smiley}</a></td>
+						<td class=\"datecolumn\">${FormattedDateMonth} / ${FormattedDateDay} / ${FormattedDateYear}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${FormattedDateHour}:${FormattedDateMinute}:${FormattedDateSecond}&nbsp;&nbsp;${SearchResultAMorPM}</td>
+						<td class=\"idcolumn\">${review['id']}</td>
+						</tr>";
 						
 						if ($RowNumber == "0") {
 							$RowNumber = "1";

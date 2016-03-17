@@ -1,4 +1,10 @@
 #!/bin/bash
+
+date
+
+echo "Starting sync..."
+
+echo "Collecting information from Custard database..."
 Integration=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='integration'"`)
 IntegrationHost=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='integration_db_host'"`)
 IntegrationDB=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='integration_db'"`)
@@ -8,22 +14,27 @@ IntegrationQuery=(`mysql -u custard_admin -papache -D custard -e "SELECT paramet
 QueryLength=`echo "${#IntegrationQuery[@]}-1" | bc`
 Query="${IntegrationQuery[@]:1:$QueryLength}"
 
+echo "Collected information."
+
 if [ "${Integration[1]}" != "disabled" ]
 then
 	if [ "${Integration[1]}" = "mysql" ]
 	then
+		echo "Connecting to the database..."
 		ARR=(`mysql -h ${IntegrationHost[1]} -u ${IntegrationUser[1]} -p${IntegrationPW[1]} -D ${IntegrationDB[1]} -e "$Query"`)
 	
 		for ticket in ${ARR[@]}
 		do
 			if [ $ticket != "number" ]
 			then
+				echo "Checking tickets..."
 				Links=(`mysql -u custard_admin -papache -D custard -e "SELECT * FROM links WHERE link='$ticket'"`)
 				CSat=(`mysql -u custard_admin -papache -D custard -e "SELECT id FROM csat WHERE id='$ticket'"`)
 				if [ "${Links[1]}" = "$ticket" ] || [ "${CSat[1]}" = "$ticket" ]
 				then
 					echo "" >> /dev/null	
 				else 
+					echo "Copying ticket numbers to Custard database..."
 					mysql -u custard_admin -papache -D custard -e "INSERT INTO links VALUES ($ticket);"
 					echo "Imported ticket: $ticket"
 				
@@ -36,3 +47,5 @@ then
 		done
 	fi
 fi
+
+echo "Sync complete."

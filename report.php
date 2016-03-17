@@ -143,6 +143,35 @@ table {
 		background-color: #e2b816;
 		color: black;
 	}
+	
+	/* admin & user settings */
+		#settingsmenu_admin {
+			list-style: none;
+			background-color: #777;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			position: fixed;
+			top: 88px;
+			width: 100%;
+		}
+	
+		#settingsmenu_admin li {
+			float: left;
+		}
+		
+		#settingsmenu_admin li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+		
+		#settingsmenu_admin li a:hover {
+			background-color: #e2b816;
+			color: black;
+		}
 
 #widgets {
 	margin: auto;

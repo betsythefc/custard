@@ -34,6 +34,8 @@
 			<br />
 			<br />
 			<br />
+			<br />
+			<br />
 		<div>
 			<div align="center">
 				<?php
@@ -56,8 +58,8 @@
 			
 							echo '	<div id="theme_container">
 									<div id="theme">
-										<h2>Theme</h2>
-										<form action="setsettings.php" method="get"><br />
+										<h2>Global Theme</h2>
+										<form action="setglobaltheme.php" method="get"><br />
 											<div class="themetext">Theme: </div><select name="theme">
 												<option value="light" ';
 												if (strpos($CurrentTheme, 'light') !== false) {
@@ -200,7 +202,7 @@
 							echo '	<div align=center class="license">
 								<img src="img/custard.png" width=250px height=250px><br />
 								Custard<br />
-								v1.1<br />
+								v0.9<br />
 								<br />
 								Copyright 2015 - ';
 								$Year = date('Y'); echo "$Year";
@@ -218,9 +220,50 @@
 								See the License for the specific language governing permissions and<br />
 								limitations under the License.<br />
 								</div>';
+						} elseif ($page == "personal") {
+							// Theme
+							$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting=\"theme\" AND user='${LoggedInUserName}'");
+							$sql->execute();
+							$themeResult = $sql->fetch();
+							$CurrentTheme = "${themeResult[parameter]}";
+			
+							if (strpos($CurrentTheme, 'light') !== false) {
+			
+							} elseif (strpos($CurrentTheme, 'dark') !== false) {
+				
+							}
+			
+							echo '	<div id="theme_container">
+									<div id="theme">
+
+										<h2>User Theme</h2>
+										<form action="setusertheme.php" method="get"><br />
+											<div class="themetext">Theme: </div><select name="theme">
+												<option value="default" ';
+												if (strpos($CurrentTheme, 'default') !== false) {
+													echo "selected";
+												}
+												echo '>Default</option>
+												<option value="light" ';
+												if (strpos($CurrentTheme, 'light') !== false) {
+													echo "selected";
+												}
+												echo ">Light</option>
+												<option value=\"dark\" ";
+												if (strpos($CurrentTheme, 'dark') !== false) {
+													echo "selected";	
+												}
+												echo '>Dark</option>
+											</select>
+											<br />
+											<br /><input type="submit" value="Save"/><br />
+										</form><br />
+										<br />
+									</div>
+								</div>';
 						}
 					} else {
-						// General Settings
+						// Personal Settings
 						if ($page == "personal") {
 							// Theme
 							$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting=\"theme\" AND user='${LoggedInUserName}'");
@@ -238,7 +281,7 @@
 									<div id="theme">
 
 										<h2>User Theme</h2>
-										<form action="setsettings.php" method="get"><br />
+										<form action="setusertheme.php" method="get"><br />
 											<div class="themetext">Theme: </div><select name="theme">
 												<option value="default" ';
 												if (strpos($CurrentTheme, 'default') !== false) {
