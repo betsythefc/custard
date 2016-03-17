@@ -141,7 +141,7 @@ table {
 	
 	#settingsmenu li a:hover {
 		background-color: #e2b816;
-		color: black;
+		/* color: black; */
 	}
 	
 	/* admin & user settings */
@@ -170,7 +170,7 @@ table {
 		
 		#settingsmenu_admin li a:hover {
 			background-color: #e2b816;
-			color: black;
+			/* color: black; */
 		}
 
 #widgets {
