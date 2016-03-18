@@ -18,21 +18,13 @@ if ("$theme" == "default") {
 echo "/* User: $LoggedInUserName*/ ";
 echo "/* Theme: $theme */ ";
 
-if (strpos($theme, 'light') !== false) {
-	$PageBackgroundColor = "#eee";
-	$WidgetBackgroundColor = "#f2f2f2";
-	$ReviewsPageTableRowColor = "#e3e2e2";
-	$TextboxBackgroundColor = "#eee";
-	$SearchButtonBackground = "#e2b816";
-	$TextColor = "#000";
-} elseif (strpos($theme, 'dark') !== false) {
-	$PageBackgroundColor = "#383838";
-	$WidgetBackgroundColor = "#4b4b4b";
-	$ReviewsPageTableRowColor = "#4b4b4b";
-	$TextboxBackgroundColor = "#777";
-	$SearchButtonBackground = "#777";
-	$TextColor = "#bbb";
-}
+require "theme/$theme.php";
+
+//if (strpos($theme, 'light') !== false) {
+//	require 'theme/theme.light.php';
+//} elseif (strpos($theme, 'dark') !== false) {
+//	require 'theme/theme.dark.php';
+//}
 
 echo "/* CSS style reset */
 
@@ -89,7 +81,7 @@ table {
 /* Top Menu */
 	#topmenu {
 		list-style: none;
-		background-color: #333;
+		background-color: $TopMenuColor;
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -111,14 +103,14 @@ table {
 	}
 	
 	#topmenu li a:hover {
-		background-color: #e2b816;
+		background-color: $MenuHoverColor;
 		color: black;
 	}
 
 /* Settings Menu */
 	#settingsmenu {
 		list-style: none;
-		background-color: #555;
+		background-color: $SettingsMenuColor;
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -140,14 +132,14 @@ table {
 	}
 	
 	#settingsmenu li a:hover {
-		background-color: #e2b816;
+		background-color: $MenuHoverColor;
 		/* color: black; */
 	}
 	
 	/* admin & user settings */
 		#settingsmenu_admin {
 			list-style: none;
-			background-color: #777;
+			background-color: $SecondSettingsMenuColor;
 			margin: 0;
 			padding: 0;
 			overflow: hidden;
@@ -169,7 +161,7 @@ table {
 		}
 		
 		#settingsmenu_admin li a:hover {
-			background-color: #e2b816;
+			background-color: $MenuHoverColor;
 			/* color: black; */
 		}
 

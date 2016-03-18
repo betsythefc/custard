@@ -61,6 +61,6 @@
 		}
 	}
 	echo "	<script type=\"text/javascript\" language=\"JavaScript\">
-			setTimeout(function() {window.location = '../settings.php?page=users${error}'}, 0);
+			setTimeout(function() {window.location = '../settings.php?section=admin&page=users${error}'}, 0);
            	</script>";
 ?>

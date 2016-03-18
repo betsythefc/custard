@@ -18,7 +18,7 @@
 		}
 		
 		echo "	<script type=\"text/javascript\" language=\"JavaScript\">
-			setTimeout(function() {window.location = 'settings.php?page=general'}, 0);
+			setTimeout(function() {window.location = 'settings.php?section=admin&page=general'}, 0);
 		</script>";
 	}
 	

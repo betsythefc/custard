@@ -17,7 +17,7 @@
 		}
 		
 		echo "	<script type=\"text/javascript\" language=\"JavaScript\">
-			setTimeout(function() {window.location = 'settings.php?page=personal'}, 0);
+			setTimeout(function() {window.location = 'settings.php?section=user&page=personal'}, 0);
              	</script>";
 	
 ?>

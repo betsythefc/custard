@@ -2,6 +2,7 @@ v1.2
 ----
 
  - Code Cleanup.
+ - "Pageinate" the Search page.
 
 ......
 

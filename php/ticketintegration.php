@@ -32,6 +32,6 @@
 	$sql->execute();
 	
 	echo "	<script type=\"text/javascript\" language=\"JavaScript\">
-			setTimeout(function() {window.location = '../settings.php?page=integration'}, 0);
+			setTimeout(function() {window.location = '../settings.php?section=admin&page=integration'}, 0);
            	</script>"; 
 ?>

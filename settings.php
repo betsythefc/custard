@@ -60,18 +60,26 @@
 									<div id="theme">
 										<h2>Global Theme</h2>
 										<form action="setglobaltheme.php" method="get"><br />
-											<div class="themetext">Theme: </div><select name="theme">
-												<option value="light" ';
-												if (strpos($CurrentTheme, 'light') !== false) {
-													echo "selected";
+											<div class="themetext">Theme: </div><select name="theme">';
+											if ($handle = opendir('theme')) {
+												
+
+												/* This is the correct way to loop over the directory. */
+												while (false !== ($entry = readdir($handle))) {
+													if ("$entry" !== "." and  "$entry" !== "..") {
+														preg_match("/^(.*)\.php$/", $entry, $output_array);
+														require "theme/${entry}";
+														echo "<option value=\"${output_array[1]}\" ";
+														if (strpos($CurrentTheme, "${output_array[1]}") !== false) {
+															echo "selected";
+														}
+														echo ">$ThemeName</option>";
+													}
 												}
-												echo ">Light</option>
-												<option value=\"dark\" ";
-												if (strpos($CurrentTheme, 'dark') !== false) {
-													echo "selected";	
+
+												closedir($handle);
 												}
-												echo '>Dark</option>
-											</select>
+											echo '</select>
 											<br />
 											<br /><input type="submit" value="Save"/><br />
 										</form><br />
@@ -206,7 +214,7 @@
 								<br />
 								Copyright 2015 - ';
 								$Year = date('Y'); echo "$Year";
-								echo 'Bryce McNab<br />
+								echo ' Bryce McNab<br />
 								<br />
 								Licensed under the Apache License, Version 2.0 (the "License");<br />
 								you may not use this file except in compliance with the License.<br />
@@ -239,22 +247,26 @@
 										<h2>User Theme</h2>
 										<form action="setusertheme.php" method="get"><br />
 											<div class="themetext">Theme: </div><select name="theme">
-												<option value="default" ';
-												if (strpos($CurrentTheme, 'default') !== false) {
-													echo "selected";
+												<option value="default">Default</option>';
+												if ($handle = opendir('theme')) {
+												
+
+												/* This is the correct way to loop over the directory. */
+												while (false !== ($entry = readdir($handle))) {
+													if ("$entry" !== "." and  "$entry" !== "..") {
+														preg_match("/^(.*)\.php$/", $entry, $output_array);
+														require "theme/${entry}";
+														echo "<option value=\"${output_array[1]}\" ";
+														if (strpos($CurrentTheme, "${output_array[1]}") !== false) {
+															echo "selected";
+														}
+														echo ">$ThemeName</option>";
+													}
 												}
-												echo '>Default</option>
-												<option value="light" ';
-												if (strpos($CurrentTheme, 'light') !== false) {
-													echo "selected";
+
+												closedir($handle);
 												}
-												echo ">Light</option>
-												<option value=\"dark\" ";
-												if (strpos($CurrentTheme, 'dark') !== false) {
-													echo "selected";	
-												}
-												echo '>Dark</option>
-											</select>
+											echo '</select>
 											<br />
 											<br /><input type="submit" value="Save"/><br />
 										</form><br />
@@ -283,22 +295,26 @@
 										<h2>User Theme</h2>
 										<form action="setusertheme.php" method="get"><br />
 											<div class="themetext">Theme: </div><select name="theme">
-												<option value="default" ';
-												if (strpos($CurrentTheme, 'default') !== false) {
-													echo "selected";
+												<option value="default">Default</option>';
+												if ($handle = opendir('theme')) {
+												
+
+												/* This is the correct way to loop over the directory. */
+												while (false !== ($entry = readdir($handle))) {
+													if ("$entry" !== "." and  "$entry" !== "..") {
+														preg_match("/^(.*)\.php$/", $entry, $output_array);
+														require "theme/${entry}";
+														echo "<option value=\"${output_array[1]}\" ";
+														if (strpos($CurrentTheme, "${output_array[1]}") !== false) {
+															echo "selected";
+														}
+														echo ">$ThemeName</option>";
+													}
 												}
-												echo '>Default</option>
-												<option value="light" ';
-												if (strpos($CurrentTheme, 'light') !== false) {
-													echo "selected";
+
+												closedir($handle);
 												}
-												echo ">Light</option>
-												<option value=\"dark\" ";
-												if (strpos($CurrentTheme, 'dark') !== false) {
-													echo "selected";	
-												}
-												echo '>Dark</option>
-											</select>
+											echo '</select>
 											<br />
 											<br /><input type="submit" value="Save"/><br />
 										</form><br />
