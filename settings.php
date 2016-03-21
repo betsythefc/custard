@@ -16,6 +16,19 @@
    			document.getElementById('hiddensubmit').style.display = "block";
 		}
 		</script>
+		
+		<script type="text/javascript">
+			checked=false;
+			function checkedAll (userlist) {var aa= document.getElementById('userlist'); if (checked == false)
+			{
+				checked = true
+			}
+			else
+			{
+				checked = false
+			}for (var i =0; i < aa.elements.length; i++){ aa.elements[i].checked = checked;}
+			}
+		</script>
 	</head>
 	
 	<body>
@@ -62,9 +75,6 @@
 										<form action="setglobaltheme.php" method="get"><br />
 											<div class="themetext">Theme: </div><select name="theme">';
 											if ($handle = opendir('theme')) {
-												
-
-												/* This is the correct way to loop over the directory. */
 												while (false !== ($entry = readdir($handle))) {
 													if ("$entry" !== "." and  "$entry" !== "..") {
 														preg_match("/^(.*)\.php$/", $entry, $output_array);
@@ -88,50 +98,49 @@
 								</div>';
 						} elseif ($page == "users") {
 						// User Management
-							// New User
-							echo '	<div id="user_container">
-									<div id="user">
-										<h2>Add User</h2>
-										<form action="php/moduser.php?mode=add" method="post">
-											<div class="usertext">Username: </div><input type="text" name="username" /><br />
-											<div class="usertext">Password: </div><input type="password" name="password" /><br />
-											<div class="usertext">Repeat Password: </div><input type="password" name="password_verify" /><br />
-											<div class="usertext">User Type: </div>
-												<select name="usertype">
-													<option value="admin">Administrator</option>
-													<option value="user">User</option>
-												</select><br />
-											<input type="submit" value="Add">
-										</form>';
-										$error = $_GET['error'];
-										if ($error == "1") {
-											echo "<br /><span style=\"color:red;\">Username is already taken</span>";
-										} elseif ($error == "2") {
-											echo "<br /><span style=\"color:red;\">Passwords do not match</span>";
-										}
-								echo "	</div>
-								</div><br />";
-							// User List
-							$sql = $DBH->prepare('SELECT username FROM member');
+							// User List 2.0
+							$sql = $DBH->prepare('SELECT username,user_type FROM member');
 							$sql->execute();
 							$userArr = $sql->fetchAll();
-							echo "	<div id=\"user_container\">
-									<div id=\"user\">
-										<h2>Users</h2>
-										<form action=\"php/moduser.php?mode=del\" method=\"post\">
-											<select multiple name=\"username[]\">";
+							echo "	<form action=\"php/usermod.php\" method=\"post\" id=\"userlist\">
+											<table width=\"80%\" class=\"usertable\">
+												<tr class=\"rowtype1\">
+													<td width=\"25%\" style=\"font-weight:bold;\"><input type=\"checkbox\" name='checkall' onclick='checkedAll(userlist);'>Select / Clear All</td>
+													<td width=\"50%\" style=\"font-weight:bold;\">User</td>
+													<td width=\"25%\" style=\"font-weight:bold;\">User Type</td>
+												</tr>";
+											$RowType = 0;
+											$iterate = 0;	
 											foreach ($userArr as $user) {
-												echo "<option>${user["username"]}</option>";
+												echo "	<tr class=\"rowtype$RowType\">
+														<td><input type=\"checkbox\" name=\"user[${iterate}]\" value=\"${user["username"]}\"></td>
+														<td>${user["username"]}</td>
+														<td>${user["user_type"]}</td>
+													</tr>";
+												$iterate = $iterate + 1;
+												if ("$RowType" == "0") {
+													$RowType = 1;
+												} elseif ("$RowType" == "1") {
+													$RowType = 0;
+												}
 											}
-										echo "	</select><br />
-											<input type=\"button\" name=\"answer\" value=\"Remove User(s)\" onclick=\"showDiv()\" /><br />";
+										echo "	<tr class=\"rowtype$RowType\">
+												<td>New User</td>
+												<td><input type=\"textbox\" name=\"username\" placeholder=\"Username\"/>&nbsp<input type=\"password\" name=\"password\" placeholder=\"password\"/>&nbsp<input type=\"password\" name=\"password_verify\" placeholder=\"password\"/></td>
+												<td><select name=\"usertype\">
+													<option value=\"user\">User</option>
+													<option value=\"admin\">Administrator</option>
+												</select>&nbsp<input type=\"submit\" value=\"Add\" name=\"add\"></td>
+											
+											</table><br />
+											
+											<input type=\"button\" name=\"answer\" value=\"Remove User(s)\" onclick=\"showDiv()\" /><!-- &nbsp<input type=\"submit\" value=\"Change Password\" name=\"chngpw\" /> -->";
 											if ($error == 3) {
 												echo "<br /><span style=\"color:red;\">You cannot delete the last user.</span>";
 											}
-										echo "	<div style=\"display:none;\" id=\"hiddensubmit\"><br /><span style=\"color:red;\">WARNING: You are about to delete users. This action is not reversible. Are you sure you want to do this?</span><br /><input type=\"submit\" value=\"Yes\" /><br /></div>
-										</form>
-									</div>
-								</div>";						
+										echo "	<div style=\"display:none;\" id=\"hiddensubmit\"><br /><span style=\"color:red;\">WARNING: You are about to delete users. This action is not reversible. Are you sure you want to do this?</span><br /><input type=\"submit\" value=\"Yes\" name=\"delete\" /><br /></div>
+										<br /></div>
+										</form>";					
 						} elseif ($page == "integration") {
 							echo '	<div id="integration_container">
 									<div id="integration">
@@ -210,7 +219,7 @@
 							echo '	<div align=center class="license">
 								<img src="img/custard.png" width=250px height=250px><br />
 								Custard<br />
-								v0.9<br />
+								v1.2<br />
 								<br />
 								Copyright 2015 - ';
 								$Year = date('Y'); echo "$Year";

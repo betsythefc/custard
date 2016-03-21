@@ -1,13 +1,12 @@
 <?php
-	$mode = $_GET['mode'];
 	require "mysqlconnect.php";
 	
-	if ($mode == "add") {
-		$username = $_POST['username'];
-		$sql = $DBH->prepare("SELECT username FROM member WHERE username=\"$username\"");
+	if ($_POST['add']) {
+		$NewUsername = $_POST['username'];
+		$sql = $DBH->prepare("SELECT username FROM member WHERE username=\"$NewUsername\"");
 		$sql->execute();
 		$currentusername = $sql->fetch();
-		if ($username == "${currentusername[username]}") {
+		if ($NewUsername == "${currentusername[username]}") {
 			$error = "&error=1";	
 		} else {
 			$password = $_POST['password'];
@@ -32,39 +31,30 @@
 					$memberid = "${memberid[MAXMEMID]}";
 					$memberid = $memberid + 1;
 					$usertype = $_POST['usertype'];
-				$sql = $DBH->prepare("INSERT INTO member VALUES(\"$memberid\",\"$username\",\"$password\",\"$salt\",\"$usertype\")");
+				$sql = $DBH->prepare("INSERT INTO member VALUES(\"$memberid\",\"$NewUsername\",\"$password\",\"$salt\",\"$usertype\")");
 				$sql->execute();
 			} else {
 				if ($error !== "1") {
 					$error = "&error=2";
 				}
 			}
-		$sql = $DBH->prepare("INSERT INTO settings VALUES ('$username','theme','default')");
+		$sql = $DBH->prepare("INSERT INTO settings VALUES ('$NewUsername','theme','default')");
 		$sql->execute();
 		}
-	} elseif ($mode == "del") {
-		$sql = $DBH->prepare("SELECT COUNT(*) AS 'Count' FROM member");
-		$sql->execute();
-		$numberofusers = $sql->fetch();
-		if ("${numberofusers[Count]}" == 1) {
-			$error = "&error=3";
-		} else {
-			$username = $_POST['username'];
-			foreach ($username as $user) {
-				$userlist .= "^$user$|";
-			}
-			//foreach (foreach ($_POST['user'] as $user) {
-			//	$userlist .= "^$user$|";
-			//}
-			$userlist = substr($userlist, 0, -1);
-			
-			$sql = $DBH->prepare("DELETE FROM member WHERE username REGEXP \"$userlist\"");
-			$sql->execute();
-			$sql = $DBH->prepare("DELETE FROM settings WHERE user REGEXP \"$userlist\"");
-			$sql->execute();
+	} elseif ($_POST['delete']) {
+		foreach ($_POST['user'] as $user) {
+			$userlist .= "^$user$|";
 		}
+		$userlist = substr($userlist, 0, -1);
+		$sql = $DBH->prepare("DELETE FROM member WHERE username REGEXP \"$userlist\"");
+		$sql->execute();
+		$sql = $DBH->prepare("DELETE FROM settings WHERE user REGEXP \"$userlist\"");
+		$sql->execute();
+	} elseif ($_POST['chngpw']) {
+		echo "Changing password for {$_POST['ChangePasswordForUsername']}.";
 	}
+	
 	echo "	<script type=\"text/javascript\" language=\"JavaScript\">
 			setTimeout(function() {window.location = '../settings.php?section=admin&page=users${error}'}, 0);
-           	</script>";
+		</script>";
 ?>

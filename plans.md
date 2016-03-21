@@ -1,7 +1,7 @@
-v1.2
+v1.3
 ----
 
- - Code Cleanup.
+ - Create user intergration with MySQL databases.
  - "Pageinate" the Search page.
 
 ......

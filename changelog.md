@@ -1,3 +1,11 @@
+v1.2
+----
+
+ - Created a more extensible theme engine (Put a PHP file in the /theme directory with a single word name (e.g. light.php) and a set of variables with hex colors. Custard will automatically pick this up and add it to the themes list).
+ - Review Seach page now uses PDO.
+ - Overhauled the users setting page for easier use.
+ - Massive code cleanup.
+
 v1.1
 ----
 
@@ -18,8 +26,6 @@ v1.1
  - Script for MySQL integration.
  - Created integration frontend in settings.
  - Rudimentary user permissions for settings.
- - Created a more extensible theme engine (Put a PHP file in the /theme directory with a single word name (e.g. light.php) and a set of variables with hex colors. Custard will automatically pick this up and add it to the themes list).
- - Review Seach page now uses PDO.
 
 v1.0
 ----

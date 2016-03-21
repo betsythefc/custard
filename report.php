@@ -18,13 +18,16 @@ if ("$theme" == "default") {
 echo "/* User: $LoggedInUserName*/ ";
 echo "/* Theme: $theme */ ";
 
-require "theme/$theme.php";
+require "theme/${theme}.php";
 
-//if (strpos($theme, 'light') !== false) {
-//	require 'theme/theme.light.php';
-//} elseif (strpos($theme, 'dark') !== false) {
-//	require 'theme/theme.dark.php';
-//}
+$ThemeArr = file("theme/$theme.theme");
+foreach ($ThemeArr as $ThemeVar) {
+	preg_match("/^(.*)=/", $ThemeVar, $output_array);
+	$ThemeVarSetting = "${output_array[1]}";
+	preg_match("/=(.*)$/", $ThemeVar, $output_array);
+	$ThemeVarParam = "${output_array[1]}";
+	echo "${ThemeVarSetting}: ${ThemeVarParam}";
+}
 
 echo "/* CSS style reset */
 
@@ -398,6 +401,28 @@ table {
 			float: left;
 			text-align: right;
 			width: 50%;
+		}
+		
+		.usertable {
+			margin: 0 auto;
+			border-top: 1px solid gray;
+			border-bottom: 1px solid gray;
+		}
+		
+		.usertable td {
+			border-top: 1px solid gray;
+		}
+		
+		/* .usertable td {
+			text-align: center;
+		} */
+		
+		.userrow0 {
+			backgroundcolor: $ReviewsPageTableRowColor;
+		}
+		
+		.userrow1 {
+			backgroundcolor: $WidgetBackgroundColor;
 		}
 		
 /* General Settings */
