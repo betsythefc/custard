@@ -1,5 +1,7 @@
 <?php
 	require "mysqlconnect.php";
+	//require 'rights.php';
+	//$CurrentUsername = $_SESSION['SESS_FIRST_NAME'];
 	
 	if ($_POST['add']) {
 		$NewUsername = $_POST['username'];
@@ -51,7 +53,7 @@
 		$sql = $DBH->prepare("DELETE FROM settings WHERE user REGEXP \"$userlist\"");
 		$sql->execute();
 	} elseif ($_POST['chngpw']) {
-		echo "Changing password for {$_POST['ChangePasswordForUsername']}.";
+		echo "Changing the user password is not yet supported.";
 	}
 	
 	echo "	<script type=\"text/javascript\" language=\"JavaScript\">

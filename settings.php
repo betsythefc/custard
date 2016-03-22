@@ -106,7 +106,8 @@
 											<table width=\"80%\" class=\"usertable\">
 												<tr class=\"rowtype1\">
 													<td width=\"25%\" style=\"font-weight:bold;\"><input type=\"checkbox\" name='checkall' onclick='checkedAll(userlist);'>Select / Clear All</td>
-													<td width=\"50%\" style=\"font-weight:bold;\">User</td>
+													<td width=\"15%\" style=\"font-weight:bold;\">User</td>
+													<td width=\"35%\"></td>
 													<td width=\"25%\" style=\"font-weight:bold;\">User Type</td>
 												</tr>";
 											$RowType = 0;
@@ -115,6 +116,7 @@
 												echo "	<tr class=\"rowtype$RowType\">
 														<td><input type=\"checkbox\" name=\"user[${iterate}]\" value=\"${user["username"]}\"></td>
 														<td>${user["username"]}</td>
+														<td></td>
 														<td>${user["user_type"]}</td>
 													</tr>";
 												$iterate = $iterate + 1;
@@ -126,7 +128,8 @@
 											}
 										echo "	<tr class=\"rowtype$RowType\">
 												<td>New User</td>
-												<td><input type=\"textbox\" name=\"username\" placeholder=\"Username\"/>&nbsp<input type=\"password\" name=\"password\" placeholder=\"password\"/>&nbsp<input type=\"password\" name=\"password_verify\" placeholder=\"password\"/></td>
+												<td><input type=\"textbox\" name=\"username\" placeholder=\"Username\"/></td>
+												<td>&nbsp<input type=\"password\" name=\"password\" placeholder=\"password\" />&nbsp<input type=\"password\" name=\"password_verify\" placeholder=\"password\"/></td>
 												<td><select name=\"usertype\">
 													<option value=\"user\">User</option>
 													<option value=\"admin\">Administrator</option>
@@ -208,13 +211,13 @@
 											<input type="submit" value="Save">
 										</form>
 									</div>
-								</div><br />
-								<div id="integration_container">
-									<div id="integration">
-										<h2>Login Integration</h2>
-										Coming soon.
-									</div>
-								</div>';
+								</div>';//<br />
+								//<div id="integration_container">
+								//	<div id="integration">
+								//		<h2>Login Integration</h2>
+								//		Coming soon.
+								//	</div>
+								//</div>';
 						} elseif ($page == "about") {
 							echo '	<div align=center class="license">
 								<img src="img/custard.png" width=250px height=250px><br />
