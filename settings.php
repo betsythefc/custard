@@ -55,8 +55,8 @@
 					require "php/mysqlconnect.php";
 					require 'php/rights.php';
 					if ("${UserType[UserType]}" == "admin") {
-						// General Settings
 						if ($page == "general") {
+						// General Settings
 							// Theme
 							$sql = $DBH->prepare('SELECT parameter FROM settings WHERE setting="theme" AND user="global"');
 							$sql->execute();
@@ -285,6 +285,19 @@
 										<br />
 									</div>
 								</div>';
+						} elseif ($page == "status") {
+							// Checking internet connection
+								$host = 'www.google.com'; 
+								$port = 80; 
+								$waitTimeoutInSeconds = 1; 
+								if($fp = fsockopen($host,$port,$errCode,$errStr,$waitTimeoutInSeconds)){   
+									echo "Internet: <span style=\"color:green;\">Up</span><br />";
+								} else {
+									echo "Internet: <span style=\"color:red;\">Down</span><br />";
+								} 
+								fclose($fp);
+							// Checking integration servers
+								// http://stackoverflow.com/questions/6263443/pdo-connection-test
 						}
 					} else {
 						// Personal Settings
