@@ -1,4 +1,14 @@
-/* CSS style reset */
+<?php
+require "php/mysqlconnect.php";
+
+$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting='theme' AND user='global'");
+$sql->execute();
+$themeResult = $sql->fetch();
+$theme = "${themeResult[parameter]}";
+
+require "theme/${theme}.php";
+
+echo "/* CSS style reset */
 
 html, body, div, span, applet, object, iframe,
 h1, h3, h4, h5, h6, p, blockquote, pre,
@@ -98,7 +108,7 @@ table {
 /* Top Menu */
 	#topmenu {
 		list-style: none;
-		background-color: #333;
+		background-color: $TopMenuColor;
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -120,8 +130,9 @@ table {
 	}
 	
 	#topmenu li a:hover {
-		background-color: #e2b816;
+		background-color: $MenuHoverColor;
 		color: black;
-	}
+	}";
+?>
 	
 

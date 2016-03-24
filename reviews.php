@@ -1,30 +1,22 @@
 <?php
 	require_once('auth.php');
-?>
-<html>
 
-	<title>
-		Custard
-	</title>
+	echo '	<html>
+			<title>
+				Custard
+			</title>
 	
-	<head>
-		<?php require 'php/css.php'; ?>
-		<link rel="shortcut icon" type="image/png" href="img/custard_favicon.png">
-		<link rel="icon" type="image/png" href="img/custard_favicon.png">
-	</head>
+			<head>';
+				require 'php/header.php';
+		echo '	</head>
 	
-	<body>
-	
-		<!-- Top Menu -->
-			<?php
+			<body>';
 				require 'php/topmenu.php';
-
-		echo '<div>
-		<br />
-		<br />
-		<br />
-		<br />';
-			
+		echo '	<div>
+			<br />
+			<br />
+			<br />
+			<br />';
 				//Change to a more logical approach
 				$SearchScoreChecks = $_GET['happysmiley'] + $_GET['neutralsmiley'] + $_GET['sadsmiley'];
 				if ($SearchScoreChecks == 1) {
@@ -155,12 +147,10 @@
 						}
 					}
 
-					echo '</table>';  //closing table tag
-			?>
-		</div>
-		<?php 
-			require 'php/footer.php';
-		?>
-	</body>	
-</html>
+				echo '	</table>
+				</div>';  //closing table tag
+		require 'php/footer.php';
+	echo '	</body>
+	</html>';
+?>
 

@@ -1,44 +1,38 @@
 <?php
 	require_once('auth.php');
 	$page = $_GET['page'];
-?>
-<html>
 
-	<title>
-		Custard
-	</title>
+	echo '	<html>
+			<title>
+				Custard
+			</title>
 	
-	<head>
-		<?php require 'php/css.php'; ?>
-		<link rel="icon" type="image/png" href="img/custard_favicon.png">
-		<script language="javascript" type="text/javascript">
-		function showDiv() {
-   			document.getElementById('hiddensubmit').style.display = "block";
-		}
-		</script>
+			<head>';
+				require 'php/header.php';
+		echo '		<script type="text/javascript">
+					function showDiv() {
+   						document.getElementById(\'hiddensubmit\').style.display = "block";
+					}
+				</script>
 		
-		<script type="text/javascript">
-			checked=false;
-			function checkedAll (userlist) {var aa= document.getElementById('userlist'); if (checked == false)
-			{
-				checked = true
-			}
-			else
-			{
-				checked = false
-			}for (var i =0; i < aa.elements.length; i++){ aa.elements[i].checked = checked;}
-			}
-		</script>
-	</head>
+				<script type="text/javascript">
+					checked=false;
+					function checkedAll (userlist) {var aa= document.getElementById(\'userlist\'); if (checked == false)
+					{
+						checked = true
+					}
+					else
+					{
+						checked = false
+					}for (var i =0; i < aa.elements.length; i++){ aa.elements[i].checked = checked;}
+					}
+				</script>
+			</head>
 	
-	<body>
-	
-		<!-- Top Menu -->
-			<?php
+			<body>';
 				require 'php/topmenu.php';
 				require 'php/settingsmenu.php';
-			?>
-			<br />
+		echo '	<br />
 			<br />
 			<br />
 			<br />
@@ -50,10 +44,9 @@
 			<br />
 			<br />
 		<div>
-			<div align="center">
-				<?php
-					require "php/mysqlconnect.php";
-					require 'php/rights.php';
+			<div align="center">';
+				require "php/mysqlconnect.php";
+				require 'php/rights.php';
 					if ("${UserType[UserType]}" == "admin") {
 						if ($page == "general") {
 						// General Settings
@@ -348,9 +341,8 @@
 								</div>';
 						}
 					}
-					?>		
-			</div>
-
+		echo '	</div>
 		</div>
-	</body>	
-</html>
+	</body>
+</html>';
+?>
