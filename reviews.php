@@ -7,7 +7,7 @@
 			</title>
 	
 			<head>';
-				require 'php/header.php';
+				require 'php/header_li.php';
 		echo '	</head>
 	
 			<body>';

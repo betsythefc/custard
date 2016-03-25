@@ -1,24 +1,25 @@
-<html>
-	<title>
-		Custard
-	</title>
+<?php 
+	echo '	<html>
+			<title>
+				Custard
+			</title>
 
-	<head>
-		<link rel=stylesheet type=text/css href="login.css">
-	</head>
+			<head>';
+				require 'php/header_lo.php';
+		echo '	</head>
 
-	<body>
-		<ul id="topmenu">
-			<li>&nbsp&nbsp&nbsp<img src="img/custard.png" width=40px height=40px>&nbsp&nbsp&nbsp</li>
-		</ul>
+			<body>
+				<ul id="topmenu">
+					<li>&nbsp&nbsp&nbsp<img src="img/custard.png" width=40px height=40px>&nbsp&nbsp&nbsp</li>
+				</ul>
 
-		<div align=center>
+				<div align=center>
 
-<br />
-<br />
-<br />
-<br />
-			<?php
+				<br />
+				<br />
+				<br />
+				<br />';
+				
 				$ReviewString = $_GET['review'];
 				$Review = (int)$ReviewString;
 				$Ticket = $_GET['ticket'];
@@ -50,7 +51,7 @@
 				} else {
 					echo "A review for this ticket has already been submitted.";
 				}
-			?>
-		</div>
-	</body>
-</html>
+			echo '	</div>
+			</body>
+		</html>';
+?>

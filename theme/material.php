@@ -10,4 +10,6 @@
 	$SettingsMenuColor = "#5C6BC0";
 	$SecondSettingsMenuColor = "#7986CB";
 	$MenuHoverColor = "#5C6BC0";
+	$MenuTextColor = "#fff";
+	$PageTextColor = "#000";
 ?>

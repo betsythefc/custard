@@ -1,33 +1,25 @@
 <?php
 	require 'php/mysqlconnect.php';
 	require_once('auth.php');
-?>
 
-<html>
+	echo '	<html>
 
-	<title>
-		Custard
-	</title>
+			<title>
+				Custard
+			</title>
+			
+			<head>';
+				require 'php/header_li.php';
+		echo '	</head>
 	
-	<head>
-		<?php require 'php/css.php'; ?>
-		<link rel="shortcut icon" type="image/png" href="img/custard_favicon.png">
-		<link rel="icon" type="image/png" href="img/custard_favicon.png">
-	</head>
-	
-	<body>
-	
-		<!-- Top Menu -->
-			<?php
+			<body>';
 				require 'php/topmenu.php';
-			?>
-		
-		<!-- Content -->
-		<br />
-		<br />
-		<br />
-		<br />
-		<?php 
+
+		echo '	<br />
+			<br />
+			<br />
+			<br />';
+			
 			//Set Score and smileys
 			$Score = $_GET['score'];
 			$HappySmiley = '<div style="width: 100px; height: 100px; border-radius: 10px; background-color: #c5c5c5; float: left; margin: 5px; font-size: 4em; line-height: 90px; text-align: center; font-weight: bold; color: #b6b6b6;">:)</div>';
@@ -55,6 +47,7 @@
 				</div><br />";
 
 			require 'php/footer.php';
-		?>
-	</body>
-</html>
+		echo '	</body>
+		</html>';
+?>
+

@@ -1,6 +1,18 @@
 <?php
 	require_once('auth.php');
 	$page = $_GET['page'];
+	// Get Theme list //
+	$ThemeArr = array();
+	if ($handle = opendir('theme')) {
+		while (false !== ($entry = readdir($handle))) {
+			if ("$entry" !== "." and  "$entry" !== "..") {
+				preg_match("/^(.*)\.php$/", $entry, $output_array);
+				require "theme/${entry}";
+				$ThemeArr[] = array("$ThemeName","{$output_array[1]}");
+			}
+		}
+		closedir($handle);
+	}
 
 	echo '	<html>
 			<title>
@@ -8,7 +20,7 @@
 			</title>
 	
 			<head>';
-				require 'php/header.php';
+				require 'php/header_li.php';
 		echo '		<script type="text/javascript">
 					function showDiv() {
    						document.getElementById(\'hiddensubmit\').style.display = "block";
@@ -65,25 +77,17 @@
 							echo '	<div id="theme_container">
 									<div id="theme">
 										<h2>Global Theme</h2>
-										<form action="setglobaltheme.php" method="get"><br />
+										<form action="settheme.php" method="get"><br />
 											<div class="themetext">Theme: </div><select name="theme">';
-											if ($handle = opendir('theme')) {
-												while (false !== ($entry = readdir($handle))) {
-													if ("$entry" !== "." and  "$entry" !== "..") {
-														preg_match("/^(.*)\.php$/", $entry, $output_array);
-														require "theme/${entry}";
-														echo "<option value=\"${output_array[1]}\" ";
-														if (strpos($CurrentTheme, "${output_array[1]}") !== false) {
-															echo "selected";
-														}
-														echo ">$ThemeName</option>";
+											foreach ($ThemeArr as $Themes) {
+												echo "<option value=\"{$Themes[1]}\" ";
+													if (strpos($CurrentTheme, "${output_array[1]}") !== false) {
+														echo "selected";
 													}
-												}
-
-												closedir($handle);
-												}
+												echo ">{$Themes[0]}</option>";
+											}
 											echo '</select>
-											<br />
+											<br /><input type="hidden" name="setfor" value="global">
 											<br /><input type="submit" value="Save"/><br />
 										</form><br />
 										<br />
@@ -138,6 +142,10 @@
 										<br /></div>
 										</form>";					
 						} elseif ($page == "integration") {
+							// Get a the list of integration settings into an array //
+							$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting LIKE \"%integration%\"");
+							$sql->execute();
+							$IntegrationSettings = $sql->fetchAll();
 							echo '	<div id="integration_container">
 									<div id="integration">
 										<h2>Ticket Integration</h2>
@@ -145,60 +153,39 @@
 											<div class="integrationtext">Database Type: </div><select name="dbtype">
 												<option value="disabled">Disabled</option>
 												<option value="mysql" ';
-													$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting='integration'");
-													$sql->execute();
-													$result = $sql->fetch();
-													if ("${result[parameter]}" == "mysql") {
+													if ("{$IntegrationSettings[0][parameter]}" == "mysql") {
 														echo "selected";
 													}
 												echo '>MySQL</option>
 											</select><br />
 											<div class="integrationtext">Database Host: </div><input name="dbhost" type="text" ';
-													$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting='integration_db_host'");
-													$sql->execute();
-													$result = $sql->fetch();
-													if ("${result[parameter]}" !== "NULL" ) {
-														echo "value=\"${result[parameter]}\"";
+													if ("{$IntegrationSettings[2][parameter]}" !== "NULL" ) {
+														echo "value=\"{$IntegrationSettings[2][parameter]}\"";
 													}
 											echo '><br />
 											<div class="integrationtext">Database: </div><input name="dbname" type="text" ';
-													$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting='integration_db'");
-													$sql->execute();
-													$result = $sql->fetch();
-													if ("${result[parameter]}" !== "NULL" ) {
-														echo "value=\"${result[parameter]}\"";
+													if ("{$IntegrationSettings[1][parameter]}" !== "NULL" ) {
+														echo "value=\"{$IntegrationSettings[1][parameter]}\"";
 													}
 											echo '><br />
 											<div class="integrationtext">Username: </div><input name="dbusername" type="text" ';
-													$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting='integration_db_user'");
-												$sql->execute();
-													$result = $sql->fetch();
-													if ("${result[parameter]}" !== "NULL" ) {
-														echo "value=\"${result[parameter]}\"";
+													if ("{$IntegrationSettings[3][parameter]}" !== "NULL" ) {
+														echo "value=\"{$IntegrationSettings[3][parameter]}\"";
 													}
 											echo '><br />
-											<div class="integrationtext">Password: </div><input name="dbpw" type="password" ';	
-													$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting='integration_db_pw'");	
-													$sql->execute();
-													$result = $sql->fetch();
-													if ("${result[parameter]}" !== "NULL" ) {
+											<div class="integrationtext">Password: </div><input name="dbpw" type="password" ';
+													if ("{$IntegrationSettings[4][parameter]}" !== "NULL" ) {
 														echo "value=\"123456\"";
 													}
 											echo '><br />
-											<div class="integrationtext">Verify Password: </div><input name="dbpw_verify" type="password" ';	
-													$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting='integration_db_pw'");	
-													$sql->execute();
-													$result = $sql->fetch();
-													if ("${result[parameter]}" !== "NULL" ) {
+											<div class="integrationtext">Verify Password: </div><input name="dbpw_verify" type="password" ';
+													if ("{$IntegrationSettings[4][parameter]}" !== "NULL" ) {
 														echo "value=\"123456\"";
 													}
 											echo '><br />
 											<div class="integrationtext">Query: </div><input name="dbquery" type="text" ';	
-													$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting='integration_ticketquery'");	
-													$sql->execute();
-													$result = $sql->fetch();
-													if ("${result[parameter]}" !== "NULL" ) {
-														echo "value=\"${result[parameter]}\"";
+													if ("{$IntegrationSettings[5][parameter]}" !== "NULL" ) {
+														echo "value=\"{$IntegrationSettings[5][parameter]}\"";
 													}
 											echo '><br />
 											<input type="submit" value="Save">
@@ -250,35 +237,25 @@
 									<div id="theme">
 
 										<h2>User Theme</h2>
-										<form action="setusertheme.php" method="get"><br />
+										<form action="settheme.php" method="get"><br />
 											<div class="themetext">Theme: </div><select name="theme">
 												<option value="default">Default</option>';
-												if ($handle = opendir('theme')) {
-												
-
-												/* This is the correct way to loop over the directory. */
-												while (false !== ($entry = readdir($handle))) {
-													if ("$entry" !== "." and  "$entry" !== "..") {
-														preg_match("/^(.*)\.php$/", $entry, $output_array);
-														require "theme/${entry}";
-														echo "<option value=\"${output_array[1]}\" ";
-														if (strpos($CurrentTheme, "${output_array[1]}") !== false) {
-															echo "selected";
-														}
-														echo ">$ThemeName</option>";
+												foreach ($ThemeArr as $Themes) {
+													echo "<option value=\"{$Themes[1]}\" ";
+													if (strpos($CurrentTheme, "${output_array[1]}") !== false) {
+														echo "selected";
 													}
-												}
-
-												closedir($handle);
+													echo ">{$Themes[0]}</option>";
 												}
 											echo '</select>
-											<br />
+											<br /><input type="hidden" name="setfor" value="user">
 											<br /><input type="submit" value="Save"/><br />
 										</form><br />
 										<br />
 									</div>
 								</div>';
 						} elseif ($page == "status") {
+						// This page is way under construction //
 							// Checking internet connection
 								$host = 'www.google.com'; 
 								$port = 80; 
@@ -311,27 +288,16 @@
 									<div id="theme">
 
 										<h2>User Theme</h2>
-										<form action="setusertheme.php" method="get"><br />
+										<form action="settheme.php?setfor=user" method="get"><br />
 											<div class="themetext">Theme: </div><select name="theme">
 												<option value="default">Default</option>';
-												if ($handle = opendir('theme')) {
-												
-
-												/* This is the correct way to loop over the directory. */
-												while (false !== ($entry = readdir($handle))) {
-													if ("$entry" !== "." and  "$entry" !== "..") {
-														preg_match("/^(.*)\.php$/", $entry, $output_array);
-														require "theme/${entry}";
-														echo "<option value=\"${output_array[1]}\" ";
-														if (strpos($CurrentTheme, "${output_array[1]}") !== false) {
-															echo "selected";
-														}
-														echo ">$ThemeName</option>";
+												foreach ($ThemeArr as $Themes) {
+													echo "<option value=\"{$Themes[1]}\" ";
+													if (strpos($CurrentTheme, "${output_array[1]}") !== false) {
+														echo "selected";
 													}
-												}
-
-												closedir($handle);
-												}
+													echo ">{$Themes[0]}</option>";
+												}	
 											echo '</select>
 											<br />
 											<br /><input type="submit" value="Save"/><br />

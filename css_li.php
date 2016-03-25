@@ -18,6 +18,9 @@ if ("$theme" == "default") {
 echo "/* User: $LoggedInUserName*/ ";
 echo "/* Theme: $theme */ ";
 
+// Require the default theme //
+require "theme/light.php";
+//Any missing elements from the custom theme will be taken from the default theme //
 require "theme/${theme}.php";
 
 $ThemeArr = file("theme/$theme.theme");
@@ -60,7 +63,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	background-color: $PageBackgroundColor;
-	color: $TextColor;
+	color: $PageTextColor;
 }
 ol, ul {
 	list-style: none;
@@ -99,7 +102,7 @@ table {
 	
 	#topmenu li a {
 		display: block;
-		color: white;
+		color: $MenuTextColor;
 		text-align: center;
 		padding: 14px 16px;
 		text-decoration: none;
@@ -128,7 +131,7 @@ table {
 	
 	#settingsmenu li a {
 		display: block;
-		color: white;
+		color: $MenuTextColor;
 		text-align: center;
 		padding: 14px 16px;
 		text-decoration: none;
@@ -157,7 +160,7 @@ table {
 		
 		#settingsmenu_admin li a {
 			display: block;
-			color: white;
+			color: $MenuTextColor;
 			text-align: center;
 			padding: 14px 16px;
 			text-decoration: none;
