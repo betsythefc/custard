@@ -9,7 +9,7 @@
 		$sql->execute();
 		$currentusername = $sql->fetch();
 		if ($NewUsername == "${currentusername[username]}") {
-			$error = "&error=1";	
+			$msg = "&msg=2";	
 		} else {
 			$password = $_POST['password'];
 			$password_verify = $_POST['password_verify'];
@@ -36,27 +36,32 @@
 				$sql = $DBH->prepare("INSERT INTO member VALUES(\"$memberid\",\"$NewUsername\",\"$password\",\"$salt\",\"$usertype\")");
 				$sql->execute();
 			} else {
-				if ($error !== "1") {
-					$error = "&error=2";
+				if ($msg !== "2") {
+					$msg = "&msg=3";
 				}
 			}
 		$sql = $DBH->prepare("INSERT INTO settings VALUES ('$NewUsername','theme','default')");
 		$sql->execute();
 		}
 	} elseif ($_POST['delete']) {
-		foreach ($_POST['user'] as $user) {
-			$userlist .= "^$user$|";
+		$sql = $DBH->prepare("SELECT COUNT(*) as TotalMembers FROM member");
+		$sql->execute();
+		$result = $sql->fetch();
+		if ("{$result[TotalMembers]}" > "1") {
+			foreach ($_POST['user'] as $user) {
+				$userlist .= "^$user$|";
+			}
+			$userlist = substr($userlist, 0, -1);
+			$sql = $DBH->prepare("DELETE FROM member WHERE username REGEXP \"$userlist\"");
+			$sql->execute();
+			$sql = $DBH->prepare("DELETE FROM settings WHERE user REGEXP \"$userlist\"");
+			$sql->execute();
+		} else {
+			$msg = "&msg=4";
 		}
-		$userlist = substr($userlist, 0, -1);
-		$sql = $DBH->prepare("DELETE FROM member WHERE username REGEXP \"$userlist\"");
-		$sql->execute();
-		$sql = $DBH->prepare("DELETE FROM settings WHERE user REGEXP \"$userlist\"");
-		$sql->execute();
 	} elseif ($_POST['chngpw']) {
 		echo "Changing the user password is not yet supported.";
 	}
 	
-	echo "	<script type=\"text/javascript\" language=\"JavaScript\">
-			setTimeout(function() {window.location = '../settings.php?section=admin&page=users${error}'}, 0);
-		</script>";
+	header("location: ../settings.php?section=admin&page=users${msg}");
 ?>

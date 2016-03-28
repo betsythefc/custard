@@ -1,7 +1,10 @@
 <?php
 	require_once('auth.php');
+	require "php/mysqlconnect.php";
+	require 'php/rights.php';
 	$page = $_GET['page'];
-	// Get Theme list //
+	
+	// List of themes //
 	$ThemeArr = array();
 	if ($handle = opendir('theme')) {
 		while (false !== ($entry = readdir($handle))) {
@@ -13,7 +16,8 @@
 		}
 		closedir($handle);
 	}
-
+	
+	// Begin Page //
 	echo '	<html>
 			<title>
 				Custard
@@ -57,22 +61,15 @@
 			<br />
 		<div>
 			<div align="center">';
-				require "php/mysqlconnect.php";
-				require 'php/rights.php';
+				require 'php/msg.php';
 					if ("${UserType[UserType]}" == "admin") {
 						if ($page == "general") {
-						// General Settings
-							// Theme
+						// General Settings //
+							// Theme //
 							$sql = $DBH->prepare('SELECT parameter FROM settings WHERE setting="theme" AND user="global"');
 							$sql->execute();
 							$themeResult = $sql->fetch();
 							$CurrentTheme = "${themeResult[parameter]}";
-			
-							if (strpos($CurrentTheme, 'light') !== false) {
-			
-							} elseif (strpos($CurrentTheme, 'dark') !== false) {
-				
-							}
 			
 							echo '	<div id="theme_container">
 									<div id="theme">
@@ -81,7 +78,7 @@
 											<div class="themetext">Theme: </div><select name="theme">';
 											foreach ($ThemeArr as $Themes) {
 												echo "<option value=\"{$Themes[1]}\" ";
-													if (strpos($CurrentTheme, "${output_array[1]}") !== false) {
+													if (strpos($CurrentTheme, "{$Themes[1]}") !== false) {
 														echo "selected";
 													}
 												echo ">{$Themes[0]}</option>";
@@ -94,8 +91,8 @@
 									</div>
 								</div>';
 						} elseif ($page == "users") {
-						// User Management
-							// User List 2.0
+						// User Management //
+							// User List //
 							$sql = $DBH->prepare('SELECT username,user_type FROM member');
 							$sql->execute();
 							$userArr = $sql->fetchAll();
@@ -135,9 +132,6 @@
 											</table><br />
 											
 											<input type=\"button\" name=\"answer\" value=\"Remove User(s)\" onclick=\"showDiv()\" /><!-- &nbsp<input type=\"submit\" value=\"Change Password\" name=\"chngpw\" /> -->";
-											if ($error == 3) {
-												echo "<br /><span style=\"color:red;\">You cannot delete the last user.</span>";
-											}
 										echo "	<div style=\"display:none;\" id=\"hiddensubmit\"><br /><span style=\"color:red;\">WARNING: You are about to delete users. This action is not reversible. Are you sure you want to do this?</span><br /><input type=\"submit\" value=\"Yes\" name=\"delete\" /><br /></div>
 										<br /></div>
 										</form>";					

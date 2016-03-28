@@ -31,7 +31,5 @@
 	$sql = $DBH->prepare("UPDATE settings SET parameter='$DBQuery' WHERE setting='integration_ticketquery'");
 	$sql->execute();
 	
-	echo "	<script type=\"text/javascript\" language=\"JavaScript\">
-			setTimeout(function() {window.location = '../settings.php?section=admin&page=integration'}, 0);
-           	</script>"; 
+	header("location: ../settings.php?section=admin&page=integration");
 ?>

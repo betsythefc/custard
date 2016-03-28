@@ -1,11 +1,8 @@
 <?php
 	require_once('auth.php');
-	require "php/mysqlconnect.php";
+	require 'php/mysqlconnect.php';
 	require 'php/rights.php';
 	$setfor = $_GET['setfor'];
-	
-	echo '	<html>
-			<head>';
 	
 	if ("$setfor" == "user") {
 	//User Theme
@@ -21,9 +18,10 @@
 			$sql->execute();
 		}
 		
-		echo '	<script type="text/javascript" language="JavaScript">
-			setTimeout(function() {window.location = \'settings.php?section=user&page=personal\'}, 0);
-		</script>';
+		//echo '	<script type="text/javascript" language="JavaScript">
+		//	setTimeout(function() {window.location = \'settings.php?section=user&page=personal\'}, 0);
+		//</script>';
+		header("location: settings.php?section=user&page=personal");
 	} elseif ("$setfor" == "global") {
 		if ("${UserType[UserType]}" == "admin") {
 		//Global Theme
@@ -39,12 +37,10 @@
 				$sql->execute();
 			}
 			
-			echo '	<script type="text/javascript" language="JavaScript">
-				setTimeout(function() {window.location = \'settings.php?section=admin&page=general\'}, 0);
-			</script>';
+			//echo '	<script type="text/javascript" language="JavaScript">
+			//	setTimeout(function() {window.location = \'settings.php?section=admin&page=general\'}, 0);
+			//</script>';
+			header("location: settings.php?section=admin&page=general");
 		}
 	}
-	
-	echo '		</head>
-		</html>';
 ?>
