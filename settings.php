@@ -1,7 +1,8 @@
 <?php
 	require_once('auth.php');
-	require "php/mysqlconnect.php";
-	require 'php/rights.php';
+	require "mysqlconnect.php";
+	require 'rights.php';
+	$section = $_GET['section'];
 	$page = $_GET['page'];
 	
 	// List of themes //
@@ -24,7 +25,7 @@
 			</title>
 	
 			<head>';
-				require 'php/header_li.php';
+				require 'header_li.php';
 		echo '		<script type="text/javascript">
 					function showDiv() {
    						document.getElementById(\'hiddensubmit\').style.display = "block";
@@ -46,8 +47,7 @@
 			</head>
 	
 			<body>';
-				require 'php/topmenu.php';
-				require 'php/settingsmenu.php';
+				require 'menu.php';
 		echo '	<br />
 			<br />
 			<br />
@@ -61,8 +61,8 @@
 			<br />
 		<div>
 			<div align="center">';
-				require 'php/msg.php';
-					if ("${UserType[UserType]}" == "admin") {
+				require 'msg.php';
+					if ("${UserType[UserType]}" == "admin" && $section == "admin") {
 						if ($page == "general") {
 						// General Settings //
 							// Theme //
@@ -96,7 +96,7 @@
 							$sql = $DBH->prepare('SELECT username,user_type FROM member');
 							$sql->execute();
 							$userArr = $sql->fetchAll();
-							echo "	<form action=\"php/usermod.php\" method=\"post\" id=\"userlist\">
+							echo "	<form action=\"usermod.php\" method=\"post\" id=\"userlist\">
 											<table width=\"80%\" class=\"usertable\">
 												<tr class=\"rowtype1\">
 													<td width=\"25%\" style=\"font-weight:bold;\"><input type=\"checkbox\" name='checkall' onclick='checkedAll(userlist);'>Select / Clear All</td>
@@ -143,7 +143,7 @@
 							echo '	<div id="integration_container">
 									<div id="integration">
 										<h2>Ticket Integration</h2>
-										<form action="php/ticketintegration.php" method="post">
+										<form action="ticketintegration.php" method="post">
 											<div class="integrationtext">Database Type: </div><select name="dbtype">
 												<option value="disabled">Disabled</option>
 												<option value="mysql" ';
@@ -214,7 +214,7 @@
 								See the License for the specific language governing permissions and<br />
 								limitations under the License.<br />
 								</div>';
-						} elseif ($page == "personal") {
+						} elseif ($section == "user" && $page == "general") {
 							// Theme
 							$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting=\"theme\" AND user='${LoggedInUserName}'");
 							$sql->execute();
@@ -265,7 +265,7 @@
 						}
 					} else {
 						// Personal Settings
-						if ($page == "personal") {
+						if ($page == "general") {
 							// Theme
 							$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting=\"theme\" AND user='${LoggedInUserName}'");
 							$sql->execute();

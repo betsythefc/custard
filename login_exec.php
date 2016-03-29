@@ -4,7 +4,7 @@
  
 	//Include database connection details
 	require_once('connection.php');
-	require_once('php/mysqlconnect.php');
+	require_once('mysqlconnect.php');
  
 	//Array to store validation errors
 	$errmsg_arr = array();
@@ -54,6 +54,9 @@
  	$password = hash('sha256', "$password");
 
 	//Create query
+	$sql = $DBH->prepare("SELECT * FROM member WHERE username='$username' AND password='$password'");
+	$sql->execute;
+	$result = $sql->fetch();
 	$qry="SELECT * FROM member WHERE username='$username' AND password='$password'";
 	$result=mysql_query($qry);
  

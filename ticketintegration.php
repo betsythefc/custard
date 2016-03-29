@@ -31,5 +31,5 @@
 	$sql = $DBH->prepare("UPDATE settings SET parameter='$DBQuery' WHERE setting='integration_ticketquery'");
 	$sql->execute();
 	
-	header("location: ../settings.php?section=admin&page=integration");
+	header("location: settings.php?section=admin&page=integration&msg=5");
 ?>

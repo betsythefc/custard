@@ -5,7 +5,6 @@ v1.2
  - Review Seach page now uses PDO.
  - Overhauled the users setting page for easier use.
  - Massive code cleanup.
- - Added a standardized array of error messages that can be called from any page. It depends on the GET method to retrieve a number from the previous page for the error message.
 
 v1.1
 ----

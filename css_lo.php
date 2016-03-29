@@ -1,5 +1,5 @@
 <?php
-require "php/mysqlconnect.php";
+require "mysqlconnect.php";
 
 $sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting='theme' AND user='global'");
 $sql->execute();

@@ -12,7 +12,7 @@
 			</title>
 
 			<head>';
-				require 'php/header_lo.php';
+				require 'header_lo.php';
 		echo '	</head>
 
 			<body>
@@ -28,11 +28,8 @@
 			<br />
 				<form name="loginform" action="login_exec.php" method="post">
 					<div class="loginform">
-						Custard Login';
-						$ErrArr = array(
-							array(1,"You have been logged out"),
-						);
-						require 'php/msg.php';
+						Custard Login<br /><br />';
+						require 'msg.php';
 						
 					echo '	<div class="loginform_container">
 							<div class="loginform_text">Username</div>

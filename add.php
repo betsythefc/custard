@@ -1,4 +1,12 @@
 <?php 
+	// Dependencies //
+	require 'mysqlconnect.php';
+	$ReviewString = $_GET['review'];
+	$Review = (int)$ReviewString;
+	$Ticket = $_GET['ticket'];
+	$Date = date('YmdHis');
+	$Comment = "NULL";
+	
 	echo '	<html>
 			<title>
 				Custard
@@ -19,14 +27,6 @@
 				<br />
 				<br />
 				<br />';
-				
-				$ReviewString = $_GET['review'];
-				$Review = (int)$ReviewString;
-				$Ticket = $_GET['ticket'];
-				$Date = date('YmdHis');
-				$Comment = "NULL";
-				
-				require 'php/mysqlconnect.php';
 
 				$sql = $DBH->prepare("SELECT link FROM links WHERE link = $Ticket");
 				$sql->execute();
@@ -41,7 +41,7 @@
 						echo "Your review has been submitted.<br />
 						<br />
 						<br />
-						<form action=\"php/addcomment.php?id=$Ticket\" method=\"post\">
+						<form action=\"addcomment.php?id=$Ticket\" method=\"post\">
 							<textarea name=\"comment\" maxlength=\"140\" placeholder=\"Enter your comment here\"></textarea>
 							<input type=\"submit\" />
 						</form>";

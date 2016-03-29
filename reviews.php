@@ -1,6 +1,6 @@
 <?php
 	require_once('auth.php');
-	require 'php/mysqlconnect.php';
+	require 'mysqlconnect.php';
 
 	echo '	<html>
 			<title>
@@ -8,11 +8,11 @@
 			</title>
 	
 			<head>';
-				require 'php/header_li.php';
+				require 'header_li.php';
 		echo '	</head>
 	
 			<body>';
-				require 'php/topmenu.php';
+				require 'menu.php';
 		echo '	<div>
 			<br />
 			<br />
@@ -92,7 +92,7 @@
 											</div>
 										</label><br />
 										<div id="export_container"><div class="exporttocsv">
-										<a href="php/downloadcsv.php?score='.$SearchScore.'&startdate='.$SearchStartDate.'&enddate='.$SearchEndDate.'&id='.$SearchID.'">
+										<a href="downloadcsv.php?score='.$SearchScore.'&startdate='.$SearchStartDate.'&enddate='.$SearchEndDate.'&id='.$SearchID.'">
 											Export
 										</a>
 										</div>
@@ -166,7 +166,7 @@
 
 				echo '	</table>
 				</div>';
-		require 'php/footer.php';
+		require 'footer.php';
 	echo '	</body>
 	</html>';
 ?>

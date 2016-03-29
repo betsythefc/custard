@@ -1,6 +1,6 @@
 <?php
 	require "mysqlconnect.php";
-	//require 'rights.php';
+	require 'rights.php';
 	//$CurrentUsername = $_SESSION['SESS_FIRST_NAME'];
 	
 	if ($_POST['add']) {
@@ -63,5 +63,5 @@
 		echo "Changing the user password is not yet supported.";
 	}
 	
-	header("location: ../settings.php?section=admin&page=users${msg}");
+	header("location: settings.php?section=admin&page=users${msg}");
 ?>

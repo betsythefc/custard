@@ -2,8 +2,8 @@
 
 //Theme
 require 'auth.php';
-require "php/mysqlconnect.php";
-require 'php/rights.php';
+require "mysqlconnect.php";
+require 'rights.php';
 
 $sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting='theme' AND user='$LoggedInUserName'");
 $sql->execute();

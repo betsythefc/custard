@@ -1,6 +1,6 @@
 <?php
 	require_once('auth.php');
-	require "php/mysqlconnect.php";
+	require 'mysqlconnect.php';
 
 	echo '	<html>
 			<title>
@@ -8,11 +8,11 @@
 			</title>
 		
 			<head>';
-			require 'php/header_li.php';
+			require 'header_li.php';
 		echo '	</head>
 		
 			<body>';
-			require 'php/topmenu.php';
+			require 'menu.php';
 			echo '	<div id="widgets">
 					<div id="widgetcontainer">
 						<div id="widget">
@@ -49,7 +49,7 @@
 						</div>
 					</div>
 				</div>';
-			require 'php/footer.php';
+			require 'footer.php';
 		echo '	</body>
 		</html>';
 ?>

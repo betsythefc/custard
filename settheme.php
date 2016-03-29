@@ -1,13 +1,12 @@
 <?php
 	require_once('auth.php');
-	require 'php/mysqlconnect.php';
-	require 'php/rights.php';
+	require 'mysqlconnect.php';
+	require 'rights.php';
 	$setfor = $_GET['setfor'];
+	$NewTheme = $_GET['theme'];
 	
 	if ("$setfor" == "user") {
 	//User Theme
-		$NewTheme = $_GET['theme'];
-	
 		$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting='theme' AND user='$LoggedInUserName'");
 		$sql->execute();
 		$themeResult = $sql->fetch();
@@ -25,8 +24,6 @@
 	} elseif ("$setfor" == "global") {
 		if ("${UserType[UserType]}" == "admin") {
 		//Global Theme
-			$NewTheme = $_GET['theme'];
-	
 			$sql = $DBH->prepare('SELECT parameter FROM settings WHERE setting="theme" AND user="global"');
 			$sql->execute();
 			$themeResult = $sql->fetch();
@@ -37,9 +34,6 @@
 				$sql->execute();
 			}
 			
-			//echo '	<script type="text/javascript" language="JavaScript">
-			//	setTimeout(function() {window.location = \'settings.php?section=admin&page=general\'}, 0);
-			//</script>';
 			header("location: settings.php?section=admin&page=general");
 		}
 	}

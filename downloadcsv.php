@@ -1,4 +1,6 @@
 <?php
+	// Dependencies //
+	require 'mysqlconnect.php';
 	$SearchScore = $_GET['score'];
 	$SearchStartDate = $_GET['startdate'];
 	$SearchEndDate = $_GET['enddate'];
@@ -13,8 +15,6 @@
 	
 	// output the column headings
 	fputcsv($output, array('Score', 'Smiley', 'Date','ID','Comment'));
-	
-	require 'mysqlconnect.php';
 		
 					$sql = $DBH->prepare("SELECT * FROM csat WHERE score REGEXP '$SearchScore' AND date >= '$SearchStartDate' AND date <= '$SearchEndDate' AND id LIKE '%$SearchID%'");
 					$sql->execute();
