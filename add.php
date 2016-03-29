@@ -13,7 +13,7 @@
 			</title>
 
 			<head>';
-				require 'php/header_lo.php';
+				require 'header_lo.php';
 		echo '	</head>
 
 			<body>

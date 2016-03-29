@@ -9,11 +9,11 @@
 			</title>
 			
 			<head>';
-				require 'php/header_li.php';
+				require 'header_li.php';
 		echo '	</head>
 	
 			<body>';
-				require 'php/topmenu.php';
+				require 'menu.php';
 
 		echo '	<br />
 			<br />
@@ -46,7 +46,7 @@
 				<div style=\"width:500px;margin:auto;text-align:center;font-size:1em;font-weight:bold;\">Comment: <span style=\"font-size:1em;font-weight:normal;\">${Comment[comment]}</span></div>
 				</div><br />";
 
-			require 'php/footer.php';
+			require 'footer.php';
 		echo '	</body>
 		</html>';
 ?>

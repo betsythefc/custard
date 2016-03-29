@@ -46,9 +46,7 @@
 				// Format start search date //
 				$SearchStartDateOriginal = $_GET['startdate'];
 				if (!(empty($SearchStartDateOriginal))) {
-					$SearchStartDateString = str_replace("-","",$SearchStartDateOriginal);
-					$SearchStartDateString = str_replace("T","",$SearchStartDateString);
-					$SearchStartDate = str_replace(":","",$SearchStartDateString);
+					$SearchStartDate = preg_replace("/[^0-9]/", "", $SearchStartDateOriginal);
 				} else {
 					$SearchStartDate = "19700101000000";
 				}
@@ -56,9 +54,7 @@
 				// Format end search date //
 				$SearchEndDateOriginal = $_GET['enddate'];
 				if (!(empty($SearchEndDateOriginal))) {
-					$SearchEndDateString = str_replace("-","",$SearchEndDateOriginal);
-					$SearchEndDateString = str_replace("T","",$SearchEndDateString);
-					$SearchEndDate = str_replace(":","",$SearchEndDateString);
+					$SearchEndDate = preg_replace("/[^0-9]/", "", $SearchEndDateOriginal);
 				} else {
 					$Date = date('YmdHis');
 					$SearchEndDate = $Date + 10000000000;
@@ -115,51 +111,52 @@
 					$RowNumber = "0";
 					
 					foreach ($reviews as $review) {
-						$FormattedDateMonth = substr($review['date'], 4, 2);
-						$FormattedDateDay = substr($review['date'], 6, 2);
-						$FormattedDateYear = substr($review['date'], 0, 4);
-						$FormattedDateHour = substr($review['date'], 8, 2);
-							if ($FormattedDateHour > 12) {
-								$FormattedDateHour = $FormattedDateHour - 12;
-								$SearchResultAMorPM = "PM";
-								if ($FormattedDateHour < 10) {
-									$FormattedDateHour = "0$FormattedDateHour";
-								}
-							} else {
-								$SearchResultAMorPM = "AM";
+						$FormattedDateArr = array();
+						$FormattedDateArr[year] = substr($review['date'], 0, 4);
+						$FormattedDateArr[month] = substr($review['date'], 4, 2);
+						$FormattedDateArr[day] = substr($review['date'], 6, 2);
+						$FormattedDateArr[hour] = substr($review['date'], 8, 2);
+						if ("{$FormattedDateArr[hour]}" > 12) {
+							$FormattedDateArr[hour] = "{$FormattedDateArr[hour]}" - 12;
+							$FormattedDateArr[meridiem] = "PM";
+							if ("{$FormattedDateArr[hour]}" < 10) {
+								$FormattedDateArr[hour] = "0{$FormattedDateArr[hour]}";
 							}
-						$FormattedDateMinute = substr($review['date'], 10, 2);
-						$FormattedDateSecond = substr($review['date'], 12, 2);
+						} else {
+							$FormattedDateArr[meridiem] = "AM";
+						}
+						$FormattedDateArr[minute] = substr($review['date'], 10, 2);
+						$FormattedDateArr[second] = substr($review['date'], 12, 2);
 						
 						// Select Smiley //
 							$Smiley = '<div style="display: inline-block; color: black; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw; background-color: ';
-							if ("${review[score]}" == 0) {
+							if ("{$review[score]}" == 0) {
 								$Smiley .= '#c70000;">:(';
-							} elseif ("${review[score]}" == 1) {
+							} elseif ("{$review[score]}" == 1) {
 								$Smiley .= '#ffa500">:|';
-							} elseif ("${review[score]}" == 2) {
+							} elseif ("{$review[score]}" == 2) {
 								$Smiley .= 'green;">:)';
 							}
 							$Smiley .= '</div>';
 							
-					echo "	<tr class=\"rowtype${RowNumber}\">
+					echo "	<tr class=\"rowtype{$RowNumber}\">
 							<td class=\"scorecolumn\">
 								&nbsp;&nbsp;
-								<a href=\"details.php?score=${review['score']}&id=${review['id']}\">
-									${Smiley}
+								<a href=\"details.php?score={$review['score']}&id={$review['id']}\">
+									{$Smiley}
 								</a>
 							</td>
 							<td class=\"datecolumn\">
-								${FormattedDateMonth}&nbsp;/&nbsp;${FormattedDateDay}&nbsp;/&nbsp;${FormattedDateYear}".str_repeat("&nbsp;",7)."${FormattedDateHour}:${FormattedDateMinute}:${FormattedDateSecond}&nbsp;&nbsp;${SearchResultAMorPM}
+								{$FormattedDateArr[month]}&nbsp;/&nbsp;{$FormattedDateArr[day]}&nbsp;/&nbsp;{$FormattedDateArr[year]}".str_repeat("&nbsp;",7)."{$FormattedDateArr[hour]}:{$FormattedDateArr[minute]}:{$FormattedDateArr[second]}&nbsp;&nbsp;{$FormattedDateArr[meridiem]}
 							</td>
 							<td class=\"idcolumn\">
-								${review['id']}
+								{$review['id']}
 							</td>
 						</tr>";
 						
 						if ($RowNumber == "0") {
 							$RowNumber = "1";
-						} elseif ($RowNumber == "1") {
+						} else {
 							$RowNumber = "0";
 						}
 					}
