@@ -25,7 +25,7 @@
 			</title>
 	
 			<head>';
-				require 'header_li.php';
+				require 'header.php';
 		echo '		<script type="text/javascript">
 					function showDiv() {
    						document.getElementById(\'hiddensubmit\').style.display = "block";
@@ -214,40 +214,6 @@
 								See the License for the specific language governing permissions and<br />
 								limitations under the License.<br />
 								</div>';
-						} elseif ($section == "user" && $page == "general") {
-							// Theme
-							$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting=\"theme\" AND user='${LoggedInUserName}'");
-							$sql->execute();
-							$themeResult = $sql->fetch();
-							$CurrentTheme = "${themeResult[parameter]}";
-			
-							if (strpos($CurrentTheme, 'light') !== false) {
-			
-							} elseif (strpos($CurrentTheme, 'dark') !== false) {
-				
-							}
-			
-							echo '	<div id="theme_container">
-									<div id="theme">
-
-										<h2>User Theme</h2>
-										<form action="settheme.php" method="get"><br />
-											<div class="themetext">Theme: </div><select name="theme">
-												<option value="default">Default</option>';
-												foreach ($ThemeArr as $Themes) {
-													echo "<option value=\"{$Themes[1]}\" ";
-													if (strpos($CurrentTheme, "${output_array[1]}") !== false) {
-														echo "selected";
-													}
-													echo ">{$Themes[0]}</option>";
-												}
-											echo '</select>
-											<br /><input type="hidden" name="setfor" value="user">
-											<br /><input type="submit" value="Save"/><br />
-										</form><br />
-										<br />
-									</div>
-								</div>';
 						} elseif ($page == "status") {
 						// This page is way under construction //
 							// Checking internet connection
@@ -293,7 +259,7 @@
 													echo ">{$Themes[0]}</option>";
 												}	
 											echo '</select>
-											<br />
+											<br /><input type="hidden" name="setfor" value="user">
 											<br /><input type="submit" value="Save"/><br />
 										</form><br />
 										<br />

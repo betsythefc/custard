@@ -1,37 +1,37 @@
 <?php
 	require "mysqlconnect.php";
 	require 'rights.php';
-	//$CurrentUsername = $_SESSION['SESS_FIRST_NAME'];
+	
+	function rand_string( $length ) {
+		$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		$size = strlen( $chars );
+		for( $i = 0; $i < $length; $i++ ) {
+			$str .= $chars[ rand( 0, $size - 1 ) ];
+		}
+		return $str;
+	}
 	
 	if ($_POST['add']) {
 		$NewUsername = $_POST['username'];
 		$sql = $DBH->prepare("SELECT username FROM member WHERE username=\"$NewUsername\"");
 		$sql->execute();
-		$currentusername = $sql->fetch();
-		if ($NewUsername == "${currentusername[username]}") {
+		$current = $sql->fetch();
+		if ($NewUsername == "${current[username]}") {
 			$msg = "&msg=2";	
 		} else {
 			$password = $_POST['password'];
 			$password_verify = $_POST['password_verify'];
-			function rand_string( $length ) {
-				$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-				$size = strlen( $chars );
-				for( $i = 0; $i < $length; $i++ ) {
-					$str .= $chars[ rand( 0, $size - 1 ) ];
-				}
-				return $str;
-			}
 			if ($password == $password_verify) {
 				//Salt and Hash password
-					$salt = rand_string( 60 );
+					$SaltSeed = rand_string( 60 );
+					$salt = hash('sha256', "$SaltSeed");
 					$password = "${password}${salt}";
 					$password = hash('sha256', "$password");
 				//Get Member ID
 					$MySQL_MemberID = $DBH->prepare('SELECT MAX(mem_id) AS MAXMEMID FROM member');
 					$MySQL_MemberID->execute();
 					$memberid = $MySQL_MemberID->fetch();
-					$memberid = "${memberid[MAXMEMID]}";
-					$memberid = $memberid + 1;
+					$memberid = "${memberid[MAXMEMID]}" + 1;
 					$usertype = $_POST['usertype'];
 				$sql = $DBH->prepare("INSERT INTO member VALUES(\"$memberid\",\"$NewUsername\",\"$password\",\"$salt\",\"$usertype\")");
 				$sql->execute();

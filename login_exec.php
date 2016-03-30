@@ -3,8 +3,8 @@
 	session_start();
  
 	//Include database connection details
-	require_once('connection.php');
-	require_once('mysqlconnect.php');
+	require 'connection.php';
+	require 'mysqlconnect.php';
  
 	//Array to store validation errors
 	$errmsg_arr = array();
@@ -26,12 +26,8 @@
 	$password = clean($_POST['password']);
  
 	//Input Validations
-	if($username == '') {
-		$errmsg_arr[] = 'Username missing';
-		$errflag = true;
-	}
-	if($password == '') {
-		$errmsg_arr[] = 'Password missing';
+	if($username == '' || $password == '') {
+		$errmsg_arr[] = 'Username or password is missing';
 		$errflag = true;
 	}
  
@@ -54,9 +50,11 @@
  	$password = hash('sha256', "$password");
 
 	//Create query
-	$sql = $DBH->prepare("SELECT * FROM member WHERE username='$username' AND password='$password'");
-	$sql->execute;
-	$result = $sql->fetch();
+// Not working yet
+//	$sql = $DBH->prepare("SELECT * FROM member WHERE username='$username' AND password='$password'");
+//	$sql->execute;
+//	$result = $sql->fetch();
+	
 	$qry="SELECT * FROM member WHERE username='$username' AND password='$password'";
 	$result=mysql_query($qry);
  
@@ -74,7 +72,7 @@
 			exit();
 		} else {
 			//Login failed
-			$errmsg_arr[] = 'user name and password not found';
+			$errmsg_arr[] = "user name and password not found";
 			$errflag = true;
 			if($errflag) {
 				$_SESSION['ERRMSG_ARR'] = $errmsg_arr;

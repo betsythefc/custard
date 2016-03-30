@@ -12,7 +12,7 @@
 			</title>
 
 			<head>';
-				require 'header_lo.php';
+				require 'header.php';
 		echo '	</head>
 
 			<body>

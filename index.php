@@ -8,7 +8,7 @@
 			</title>
 		
 			<head>';
-			require 'header_li.php';
+			require 'header.php';
 		echo '	</head>
 		
 			<body>';
