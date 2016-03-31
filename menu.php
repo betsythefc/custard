@@ -4,23 +4,18 @@
 	require 'mysqlconnect.php';
 	
 	// Top Menu //
+	echo '	<ul id="topmenu">
+			<li>&nbsp&nbsp&nbsp<img src="img/custard.png" width=40px height=40px>&nbsp&nbsp&nbsp</li>
+			<li><a href="index.php">CSat</a></li>
+			<li><a href="reviews.php">Reviews</a></li>';
 	if ("${UserType[UserType]}" == "admin") {
-		echo '	<ul id="topmenu">
-				<li>&nbsp&nbsp&nbsp<img src="img/custard.png" width=40px height=40px>&nbsp&nbsp&nbsp</li>
-				<li><a href="index.php">CSat</a></li>
-				<li><a href="reviews.php">Reviews</a></li>
-				<li><a href="settings.php?section=admin&page=general">Settings</a></li>
-				<li><a href="login.php?msg=1">Logout</a></li>
-			</ul>';
+		echo '	<li><a href="settings.php?section=admin&page=general">Settings</a></li>';
 	} else {
-		echo '	<ul id="topmenu">
-				<li>&nbsp&nbsp&nbsp<img src="img/custard.png" width=40px height=40px>&nbsp&nbsp&nbsp</li>
-				<li><a href="index.php">CSat</a></li>
-				<li><a href="reviews.php">Reviews</a></li>
-				<li><a href="settings.php?section=user&page=general">Settings</a></li>
-				<li><a href="login.php?msg=1">Logout</a></li>
-			</ul>';
+		echo '	<li><a href="settings.php?section=user&page=general">Settings</a></li>';
 	}
+	
+	echo '		<li><a href="login.php?msg=1">Logout</a></li>
+		</ul>';
 	
 	// Secondary Menu //
 	if (!(empty($page))) {

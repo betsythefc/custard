@@ -1,7 +1,7 @@
 # Custard
 Open Source CSat
 
-Custard v1.2 (20160316)
+Custard v1.3 (20160331)
 ------------------------
 Integrates with all MySQL based ticketing systems!
 
@@ -80,12 +80,6 @@ Congratulations! Custard is now installed.
 
 Roadmap
 -------
-
- - v1.3
-
-  - More code cleanup.
-
-......
 
  - v1.4
 

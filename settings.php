@@ -196,7 +196,7 @@
 							echo '	<div align=center class="license">
 								<img src="img/custard.png" width=250px height=250px><br />
 								Custard<br />
-								v1.2<br />
+								v1.3<br />
 								<br />
 								Copyright 2015 - ';
 								$Year = date('Y'); echo "$Year";
