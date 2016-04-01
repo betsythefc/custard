@@ -2,18 +2,18 @@
 Open Source CSat
 
 Custard v1.3 (20160331)
-------------------------
+=======================
 Integrates with all MySQL based ticketing systems!
 
 Software Requirements
----------------------
+=====================
  - Linux (Technically can work in windows, some of the scripts would need to be re-written in PowerShell or CMD.)
  - Apache (Any webserver should work (e.g. Nginx).)
  - MySQL
  - PHP
 
 Install
--------
+=======
 
  - Install LAMP stack:
 
@@ -79,7 +79,7 @@ sudo rm master.zip custard-master
 Congratulations! Custard is now installed.
 
 Roadmap
--------
+=======
 
  - v1.4
 
