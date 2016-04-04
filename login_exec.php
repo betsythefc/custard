@@ -69,6 +69,8 @@
 			$_SESSION['SESS_LAST_NAME'] = $member['password'];
 			session_write_close();
 			header("location: index.php");
+			//Log file
+				//http://php.net/manual/en/function.fwrite.php
 			exit();
 		} else {
 			//Login failed

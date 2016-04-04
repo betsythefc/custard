@@ -56,6 +56,11 @@
 						echo "$SecondMenuSelectedStyle";
 					}
 					echo '>General</a></li>
+					<li><a href="settings.php?section=admin&page=status" ';
+					if ("$page" == "status") {
+						echo "$SecondMenuSelectedStyle";
+					}
+					echo '>Status</a></li>
 					<li><a href="settings.php?section=admin&page=users" ';
 					if ("$page" == "users") {
 						echo "$SecondMenuSelectedStyle";

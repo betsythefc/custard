@@ -1,3 +1,7 @@
+v1.3
+
+ - Began a status page.
+
 v1.2
 ----
 

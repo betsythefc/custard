@@ -26,25 +26,27 @@
 	
 			<head>';
 				require 'header.php';
-		echo '		<script type="text/javascript">
-					function showDiv() {
-   						document.getElementById(\'hiddensubmit\').style.display = "block";
-					}
-				</script>
-		
-				<script type="text/javascript">
-					checked=false;
-					function checkedAll (userlist) {var aa= document.getElementById(\'userlist\'); if (checked == false)
-					{
-						checked = true
-					}
-					else
-					{
-						checked = false
-					}for (var i =0; i < aa.elements.length; i++){ aa.elements[i].checked = checked;}
-					}
-				</script>
-			</head>
+				if ($page == "users") {
+					echo '	<script type="text/javascript">
+							function showDiv() {
+   								document.getElementById(\'hiddensubmit\').style.display = "block";
+							}
+						</script>
+				
+						<script type="text/javascript">
+							checked=false;
+							function checkedAll (userlist) {var aa= document.getElementById(\'userlist\'); if (checked == false)
+							{
+								checked = true
+							}
+							else
+							{
+								checked = false
+							}for (var i =0; i < aa.elements.length; i++){ aa.elements[i].checked = checked;}
+							}
+						</script>';
+				}
+		echo '	</head>
 	
 			<body>';
 				require 'menu.php';
@@ -219,13 +221,24 @@
 							// Checking internet connection
 								$host = 'www.google.com'; 
 								$port = 80; 
-								$waitTimeoutInSeconds = 1; 
+								$waitTimeoutInSeconds = 1;
+								echo "Internet: <span style=\"color:";
 								if($fp = fsockopen($host,$port,$errCode,$errStr,$waitTimeoutInSeconds)){   
-									echo "Internet: <span style=\"color:green;\">Up</span><br />";
+									echo "green;\">Up";
 								} else {
-									echo "Internet: <span style=\"color:red;\">Down</span><br />";
-								} 
+									echo "red;\">Down";
+								}
+								echo "</span><br />";
 								fclose($fp);
+							// Ping Ticket integration server
+							//	$sql = $DBH->prepare('SELECT parameter FROM settings WHERE setting="integration_db_host"');
+							//	$sql->execute();
+							//	$DBHostResult = $sql->fetch();
+							//	$DBHost = "${DBHostResult[parameter]}";
+							//	$DBPing = shell_exec("ping $DBHost -c 1");
+							//	//echo $DBPing;
+							//	$BDPingResult = preg_match('[0-9]{1,3}%',"$DBPing",$matches);
+							//	echo $matches[0];
 							// Checking integration servers
 								// http://stackoverflow.com/questions/6263443/pdo-connection-test
 						}

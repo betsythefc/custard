@@ -1,12 +1,12 @@
 <?php
 	//Database Credentials
-	$host = 'localhost';
-	$database = 'custard';
-	$DBUsername = 'custard_admin';
-	$password = 'apache';
+	$DatabaseHost = 'localhost';
+	$Database = 'custard';
+	$DatabaseUsername = 'custard_admin';
+	$DatabasePassword = 'apache';
 
 	try {
-		$DBH = new PDO("mysql:host=$host;dbname=$database", $DBUsername, $password);
+		$DBH = new PDO("mysql:host=$DatabaseHost;dbname=$Database", $DatabaseUsername, $DatabasePassword);
 	}
 	
 	catch(PDOException $e) {
