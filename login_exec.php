@@ -4,7 +4,7 @@
  
 	//Include database connection details
 	require 'connection.php';
-	require 'mysqlconnect.php';
+	require 'mysql.php';
  
 	//Array to store validation errors
 	$errmsg_arr = array();
@@ -38,16 +38,16 @@
 		header("location: index.php");
 		exit();
 	}
- 
- 	//Get Salt
+
+//	Get & Hash password 	
+// 	$mode = "verify";
+//	require 'passwordhash.php';
+	
 	$sql = $DBH->prepare("SELECT salt FROM member WHERE username='$username'");
 	$sql->execute();
-	$salt = $sql->fetch();
-	$salt = $salt[salt];
- 	
- 	//Hash password
- 	$password = "${password}${salt}";
- 	$password = hash('sha256', "$password");
+	$result = $sql->fetch();
+	$salt = "{$result[salt]}";
+	$password = hash('sha256', "{$password}{$salt}");
 
 	//Create query
 // Not working yet

@@ -1,7 +1,7 @@
 <?php
 	// Dependencies //
 	require 'rights.php';
-	require 'mysqlconnect.php';
+	require 'mysql.php';
 	
 	// Top Menu //
 	echo '	<ul id="topmenu">
@@ -37,54 +37,38 @@
 		
 		$section = $_GET['section'];
 		if ("${UserType[UserType]}" == "admin") {
-			echo '<ul id="settingsmenu">
-				<li><a href="settings.php?section=admin&page=general" ';
-					if ("$section" == "admin") {
+			$FirstMenuArr = array('administration','user');
+			echo '<ul id="settingsmenu">';
+			foreach($FirstMenuArr as $FirstMenuTab) {
+				echo "	<li><a href=\"settings.php?section={$FirstMenuTab}&page=general\" ";
+					if ("$section" == "$FirstMenuTab") {
 						echo "$FirstMenuSelectedStyle";
 					}
-				echo '>Administration</a></li>
-				<li><a href="settings.php?section=user&page=general" ';
-					if ("$section" == "user") {
-						echo "$FirstMenuSelectedStyle";
-					}
-				echo '>User</a></li>
-			</ul>';
-			if ("$section" == "admin") {
-				echo '<ul id="settingsmenu_admin">
-					<li><a href="settings.php?section=admin&page=general" ';
-					if ("$page" == "general") {
+				echo '>'.ucfirst("$FirstMenuTab").'</a></li>';
+			}
+			echo '</ul>';
+			if ("$section" == "administration") {
+				$AdminMenuArr = array('general','users','integration','about');
+				echo '	<ul id="settingsmenu_admin">';
+				foreach ($AdminMenuArr as $AdminMenuTab) {
+					echo "<li><a href=\"settings.php?section=administration&page={$AdminMenuTab}\" ";
+					if ("$page" == "$AdminMenuTab") {
 						echo "$SecondMenuSelectedStyle";
 					}
-					echo '>General</a></li>
-					<li><a href="settings.php?section=admin&page=status" ';
-					if ("$page" == "status") {
-						echo "$SecondMenuSelectedStyle";
-					}
-					echo '>Status</a></li>
-					<li><a href="settings.php?section=admin&page=users" ';
-					if ("$page" == "users") {
-						echo "$SecondMenuSelectedStyle";
-					}
-					echo '>Users</a></li>
-					<li><a href="settings.php?section=admin&page=integration" ';
-					if ("$page" == "integration") {
-						echo "$SecondMenuSelectedStyle";
-					}
-					echo '>Integration</a></li>
-					<li><a href="settings.php?section=admin&page=about" ';
-					if ("$page" == "about") {
-						echo "$SecondMenuSelectedStyle";
-					}
-					echo '>About</a></li>
-				</ul>';
+					echo '>'.ucfirst("$AdminMenuTab").'</a></li>';
+				}
+				echo '</ul>';
 			} elseif ("$section" == "user" ) {
-				echo '<ul id="settingsmenu_admin">
-					<li><a href="settings.php?section=user&page=general" ';
-					if ("$page" == "general") {
+				$UserMenuArr = array('general');
+				echo '	<ul id="settingsmenu_admin">';
+				foreach ($UserMenuArr as $UserMenuTab) {
+					echo "<li><a href=\"settings.php?section=user&page={$UserMenuTab}\" ";
+					if ("$page" == "$UserMenuTab") {
 						echo "$SecondMenuSelectedStyle";
 					}
-					echo '>General</a></li>
-				</ul>';
+					echo '>'.ucfirst("$UserMenuTab").'</a></li>';
+				}
+				echo '</ul>';
 			}
 		} else {
 			echo '<ul id="settingsmenu">

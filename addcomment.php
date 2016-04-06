@@ -1,5 +1,5 @@
 <?php
-	require 'mysqlconnect.php';
+	require 'mysql.php';
 	$Comment = $_POST['comment'];
 	$ID = $_GET['id'];
 

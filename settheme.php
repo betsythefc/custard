@@ -1,6 +1,6 @@
 <?php
 	require_once('auth.php');
-	require 'mysqlconnect.php';
+	require 'mysql.php';
 	require 'rights.php';
 	$setfor = $_GET['setfor'];
 	$NewTheme = $_GET['theme'];

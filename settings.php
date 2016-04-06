@@ -1,6 +1,6 @@
 <?php
 	require_once('auth.php');
-	require "mysqlconnect.php";
+	require "mysql.php";
 	require 'rights.php';
 	$section = $_GET['section'];
 	$page = $_GET['page'];
@@ -64,7 +64,7 @@
 		<div>
 			<div align="center">';
 				require 'msg.php';
-					if ("${UserType[UserType]}" == "admin" && $section == "admin") {
+					if ("${UserType[UserType]}" == "admin" && $section == "administration") {
 						if ($page == "general") {
 						// General Settings //
 							// Theme //
@@ -139,7 +139,7 @@
 										</form>";					
 						} elseif ($page == "integration") {
 							// Get a the list of integration settings into an array //
-							$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting LIKE \"%integration%\"");
+							$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting LIKE \"%ticket_integration%\"");
 							$sql->execute();
 							$IntegrationSettings = $sql->fetchAll();
 							echo '	<div id="integration_container">
@@ -230,17 +230,6 @@
 								}
 								echo "</span><br />";
 								fclose($fp);
-							// Ping Ticket integration server
-							//	$sql = $DBH->prepare('SELECT parameter FROM settings WHERE setting="integration_db_host"');
-							//	$sql->execute();
-							//	$DBHostResult = $sql->fetch();
-							//	$DBHost = "${DBHostResult[parameter]}";
-							//	$DBPing = shell_exec("ping $DBHost -c 1");
-							//	//echo $DBPing;
-							//	$BDPingResult = preg_match('[0-9]{1,3}%',"$DBPing",$matches);
-							//	echo $matches[0];
-							// Checking integration servers
-								// http://stackoverflow.com/questions/6263443/pdo-connection-test
 						}
 					} else {
 						// Personal Settings

@@ -1,6 +1,6 @@
 <?php
 
-require "mysqlconnect.php";
+require "mysql.php";
 session_start();
 
 if(isset($_SESSION['SESS_MEMBER_ID'])) {

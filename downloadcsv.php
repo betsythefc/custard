@@ -1,6 +1,6 @@
 <?php
 	// Dependencies //
-	require 'mysqlconnect.php';
+	require 'mysql.php';
 	$SearchScore = $_GET['score'];
 	$SearchStartDate = $_GET['startdate'];
 	$SearchEndDate = $_GET['enddate'];

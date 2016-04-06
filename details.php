@@ -1,5 +1,5 @@
 <?php
-	require 'mysqlconnect.php';
+	require 'mysql.php';
 	require_once('auth.php');
 
 	echo '	<html>

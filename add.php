@@ -1,6 +1,6 @@
 <?php 
 	// Dependencies //
-	require 'mysqlconnect.php';
+	require 'mysql.php';
 	$ReviewString = $_GET['review'];
 	$Review = (int)$ReviewString;
 	$Ticket = $_GET['ticket'];

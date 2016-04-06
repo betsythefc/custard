@@ -1,5 +1,5 @@
 <?php
-	require 'mysqlconnect.php';
+	require 'mysql.php';
 	$LoggedInUserName = $_SESSION['SESS_FIRST_NAME'];
 	$UserTypeQuery = $DBH->prepare("SELECT user_type AS UserType FROM member WHERE username='$LoggedInUserName'");
 	$UserTypeQuery->execute();
