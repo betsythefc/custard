@@ -9,7 +9,7 @@
 			<li><a href="index.php">CSat</a></li>
 			<li><a href="reviews.php">Reviews</a></li>';
 	if ("${UserType[UserType]}" == "admin") {
-		echo '	<li><a href="settings.php?section=admin&page=general">Settings</a></li>';
+		echo '	<li><a href="settings.php?section=administration&page=general">Settings</a></li>';
 	} else {
 		echo '	<li><a href="settings.php?section=user&page=general">Settings</a></li>';
 	}

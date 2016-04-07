@@ -83,12 +83,13 @@ Roadmap
 
  - v1.4
 
-  - Add CSS3 animation.
+  - Stability fixes.
 
 
  - Future
 
   - Make reviews table sortable (http://www.kryogenix.org/code/browser/sorttable/ OR http://www.codeproject.com/Articles/1604/Sorting-HTML-Tables-using-Javascript)
   - "Pageinate" the Search page.
+  - Add CSS3 animation.
 
 
