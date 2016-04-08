@@ -32,6 +32,6 @@
 			$sql->execute();
 		}
 			
-		header("location: settings.php?section=admin&page=general");
+		header("location: settings.php?section=administration&page=general");
 	}
 ?>
