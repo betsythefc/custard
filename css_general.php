@@ -1,56 +1,6 @@
 <?php
 
-require "mysql.php";
-session_start();
-
-	echo "	/* CSS style reset */
-	
-	html, body, div, span, applet, object, iframe,
-	h1, h3, h4, h5, h6, p, blockquote, pre,
-	a, abbr, acronym, address, big, cite, code,
-	del, dfn, em, img, ins, kbd, q, s, samp,
-	small, strike, strong, sub, sup, tt, var,
-	b, u, i, center,
-	dl, dt, dd, ol, ul, li,
-	fieldset, form, label, legend,
-	table, caption, tbody, tfoot, thead, tr, th, td,
-	article, aside, canvas, details, embed, 
-	figure, figcaption, footer, header, hgroup, 
-	menu, nav, output, ruby, section, summary,
-	time, mark, audio, video {
-		margin: 0;
-		padding: 0;
-		border: 0;
-		font-size: 100%;
-		font: inherit;
-		vertical-align: baseline;
-	}
-	
-	/* HTML5 display-role reset for older browsers */
-	article, aside, details, figcaption, figure, 
-	footer, header, hgroup, menu, nav, section {
-		display: block;
-	}
-	body {
-		line-height: 1;
-	}
-	ol, ul {
-		list-style: none;
-	}
-	blockquote, q {
-		quotes: none;
-	}
-	blockquote:before, blockquote:after,
-	q:before, q:after {
-		content: '';
-		content: none;
-	}
-	
-	table {
-		border-collapse: collapse;
-		border-spacing: 0;
-	}
-	/* Login */
+echo "	/* Login */
 		.loginform {
 			width: 400px;
 			height: 200px;
@@ -116,15 +66,12 @@ session_start();
 			padding: 14px 16px;
 			text-decoration: none;
 		}
-	
+		
 		#topmenu li a:hover {
 			color: black;
-		}";
-	
-if(isset($_SESSION['SESS_MEMBER_ID'])) {
-
-	echo "
-	/* Begin CSS */
+		}
+		
+/* Begin CSS */
 	
 	/* Settings Menu */
 		#settingsmenu {
@@ -136,7 +83,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 			top: 44px;
 			width: 100%;
 		}
-	
+		
 		#settingsmenu li {
 			float: left;
 		}
@@ -230,18 +177,18 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 			text-align: center;
 			width: 90%;
 		}
-	
+		
 		#reviews th {
 			border-top: 1px solid gray;
 			margin: auto;
 			text-align: center;
 			font-weight: bold;
 		}
-	
+		
 		.searchoptions {
 			border: 1px solid gray;
 		}
-	
+		
 		.scorecolumn {
 			border-top: 1px solid gray;
 			margin: auto;
@@ -292,7 +239,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 			margin-top: 5px;
 			margin-bottom: 5px;
 		}
-	
+		
 		.exporttocsv {
 			margin: auto;
 			width: 25%;
@@ -323,14 +270,14 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 				text-align: center;
 				vertical-align: middle;
 			}
-	
+			
 			#user {
 				width: 100%;
 				float: left;
 				display: inline-block;
 				text-align: center;
 			}
-	
+			
 			.usertext {
 				float: left;
 				text-align: right;
@@ -360,22 +307,22 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 				text-align: center;
 				vertical-align: middle;
 			}
-	
+			
 			#theme {
 				width: 100%;
 				float: left;
 				display: inline-block;
 				text-align: center;
 			}
-	
+			
 			.themetext {
 				float: left;
 				text-align: right;
 				width: 50%;
 			}
-	
+			
 	/* Integration */	
-		#integration_container {	
+		#integration_container {
 				width: 400px;
 				height: 250px;
 				margin: 0 auto;
@@ -385,19 +332,17 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 				text-align: center;
 				vertical-align: middle;
 			}
-	
+			
 			#integration {
 				width: 100%;
 				float: left;
 				display: inline-block;
 				text-align: center;
 			}
-	
+			
 			.integrationtext {
 				float: left;
 				text-align: right;
 				width: 50%;
-			}
-	";
-}
+			}";
 ?>

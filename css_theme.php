@@ -17,8 +17,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 		$themeResult = $sql->fetch();
 		$theme = "${themeResult[parameter]}";
 	} 
-	echo "/* User: $LoggedInUserName*/ ";
-	echo "/* Theme: $theme */ ";
+	echo "/* Theme: $theme */";
 	
 	// Require the default theme //
 	require "theme/light.php";

@@ -1,6 +1,7 @@
 <?php
 	$CSSFile = "css_general.php";
 	
+	// Find all files with the prefix "css_" and add to the header as a stylesheet //
 	$CSSArr = array();
 	if ($handle = opendir('theme/../')) {
 		echo "\n";
@@ -15,8 +16,6 @@
 	foreach ($CSSArr as $CSSFiles) {
 		echo "\t\t\t\t<link rel=\"stylesheet\" type\"text/css\" href=\"$CSSFiles\">\n";
 	}
-	
-	$Icon = "img/custard_favicon.png";
-	echo "		\t\t<link rel=\"shortcut icon\" type=\"image/png\" href=\"$Icon\">
-			\t<link rel=\"icon\" type=\"image/png\" href=\"$Icon\">\n\t\t";
+	echo "\t\t\t\t<link rel=\"shortcut icon\" type=\"image/png\" href=\"img/icon_custard.png\">\n\t\t";
+
 ?>
