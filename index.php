@@ -8,6 +8,7 @@
 			</title>
 		
 			<head>';
+			$PageName = "Dashboard";
 			require 'header.php';
 		echo '	</head>
 		

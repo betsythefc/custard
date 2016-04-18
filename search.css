@@ -1,0 +1,89 @@
+/* Search page */
+	#reviews {
+		border-top: 1px solid gray;
+		border-bottom: 1px solid gray;
+		margin: auto;
+		text-align: center;
+		width: 90%;
+	}
+	
+	#reviews th {
+		border-top: 1px solid gray;
+		margin: auto;
+		text-align: center;
+		font-weight: bold;
+	}
+	
+	.searchoptions {
+		border: 1px solid gray;
+	}
+	
+	.scorecolumn {
+		border-top: 1px solid gray;
+		margin: auto;
+		text-align: center;
+		width: 10%;
+		font-size: 1.5vw;
+		height: 2vw;
+	}
+	
+	.datecolumn {
+		border-top: 1px solid gray;
+		margin: auto;
+		text-align: center;
+		width: 20%;
+		font-size: 1.5vw;
+	}
+	
+	
+	.idcolumn {
+		border-top: 1px solid gray;
+		margin: auto;
+		text-align: center;
+		width: 10%;
+		font-size: 1.5vw;
+	}
+	
+	.reviewsearchtd {
+		border-top: 1px solid gray;
+	}
+	
+	.reviewsearch {
+		text-align: center;
+	}
+	
+	.scoresearch {
+		width: 50px;
+	}
+	
+	#search {
+		margin-top: 8px;
+		height: 25px;
+		font-size: 1em;
+		width: 25%;
+	}
+	
+	#export_container {
+		width: 100%;
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	
+	.exporttocsv {
+		margin: auto;
+		width: 25%;
+		display: inline-block;
+		color: black;
+		text-decoration: none;
+	}
+	
+	.exporttocsv a {
+		color: black;
+		padding: 0px 0px;
+		text-align: center; 
+		text-decoration: none;
+		display: inline-block;
+		margin: 5px;
+		font-size: 1em;
+		font-weight: normal;
+	}

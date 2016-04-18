@@ -8,6 +8,7 @@
 			</title>
 	
 			<head>';
+				$PageName = "Reviews";
 				require 'header.php';
 		echo '	</head>
 	

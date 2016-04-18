@@ -1,0 +1,43 @@
+/* Settings Menu */
+	#settingsmenu {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		position: fixed;
+		top: 44px;
+		width: 100%;
+	}
+	
+	#settingsmenu li {
+		float: left;
+	}
+	
+	#settingsmenu li a {
+		display: block;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+	}
+	
+	/* admin & user settings */
+		#settingsmenu_admin {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			position: fixed;
+			top: 88px;
+			width: 100%;
+		}
+	
+		#settingsmenu_admin li {
+			float: left;
+		}
+		
+		#settingsmenu_admin li a {
+			display: block;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}

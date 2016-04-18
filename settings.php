@@ -25,6 +25,7 @@
 			</title>
 	
 			<head>';
+				$PageName = "Settings";
 				require 'header.php';
 				if ($page == "users") {
 					echo '	<script type="text/javascript">

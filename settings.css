@@ -1,0 +1,87 @@
+/* User managment */
+	/* Add Users / List & Delete User */
+		#user_container {
+			width: 400px;
+			height: 200px;
+			margin: 0 auto;
+			border: 1px black solid;
+			display: table-cell;
+			border-radius: 25px;
+			text-align: center;
+			vertical-align: middle;
+		}
+		
+		#user {
+			width: 100%;
+			float: left;
+			display: inline-block;
+			text-align: center;
+		}
+		
+		.usertext {
+			float: left;
+			text-align: right;
+			width: 50%;
+		}
+		
+		.usertable {
+			margin: 0 auto;
+			border-top: 1px solid gray;
+			border-bottom: 1px solid gray;
+		}
+		
+		.usertable td {
+			border-top: 1px solid gray;
+			padding: 2px;
+		}
+		
+/* General Settings */
+	/* Theme */
+		#theme_container {
+			width: 400px;
+			height: 200px;
+			margin: 0 auto;
+			border: 1px black solid;
+			display: table-cell;
+			border-radius: 25px;
+			text-align: center;
+			vertical-align: middle;
+		}
+		
+		#theme {
+			width: 100%;
+			float: left;
+			display: inline-block;
+			text-align: center;
+		}
+		
+		.themetext {
+			float: left;
+			text-align: right;
+			width: 50%;
+		}
+		
+/* Integration */	
+	#integration_container {
+			width: 400px;
+			height: 250px;
+			margin: 0 auto;
+			border: 1px black solid;
+			display: table-cell;
+			border-radius: 25px;
+			text-align: center;
+			vertical-align: middle;
+		}
+		
+		#integration {
+			width: 100%;
+			float: left;
+			display: inline-block;
+			text-align: center;
+		}
+		
+		.integrationtext {
+			float: left;
+			text-align: right;
+			width: 50%;
+		}

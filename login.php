@@ -12,6 +12,7 @@
 			</title>
 
 			<head>';
+				$PageName = "Login";
 				require 'header.php';
 		echo '	</head>
 

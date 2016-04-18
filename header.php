@@ -1,21 +1,24 @@
 <?php
-	$CSSFile = "css_general.php";
+	// CSS
+	$CSSDependencies = array(
+		"All" 		=> 	array("stylereset.css","general_css.php","theme_css.php","topmenu.css"),
+		"Reviews" 	=>	array("search.css"),
+		"Settings"	=>	array("settingsmenu.css","settings.css"),
+		"Dashboard"	=>	array("widgets.css"),
+		"Login"		=>	array("login.css")
+	);
 	
-	// Find all files with the prefix "css_" and add to the header as a stylesheet //
-	$CSSArr = array();
-	if ($handle = opendir('theme/../')) {
-		echo "\n";
-		while (false !== ($entry = readdir($handle))) {
-			if ("$entry" !== "." and  "$entry" !== ".." and strpos($entry, 'css_') !== false) {
-				$CSSArr[] = "${entry}";
-			}
-		}
-		closedir($handle);
+	echo "\n";
+	
+	foreach ($CSSDependencies['All'] as $CSSFiles) {
+		echo "\t\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"$CSSFiles\">\n";
 	}
 	
-	foreach ($CSSArr as $CSSFiles) {
-		echo "\t\t\t\t<link rel=\"stylesheet\" type\"text/css\" href=\"$CSSFiles\">\n";
+	foreach ($CSSDependencies["$PageName"] as $CSSFiles) {
+		echo "\t\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"$CSSFiles\">\n";
 	}
+	
+	// Icon
 	echo "\t\t\t\t<link rel=\"shortcut icon\" type=\"image/png\" href=\"img/icon_custard.png\">\n\t\t";
 
 ?>

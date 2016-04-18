@@ -1,42 +1,53 @@
 #!/bin/bash
 
-date
+date=`date`
+echo "[INF] $date"
 
-echo "Starting sync..."
+echo "[INF] Starting sync..."
 
-echo "Collecting information from Custard database..."
-Integration=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='integration'"`)
-IntegrationHost=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='integration_db_host'"`)
-IntegrationDB=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='integration_db'"`)
-IntegrationUser=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='integration_db_user'"`)
-IntegrationPW=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='integration_db_pw'"`)
-IntegrationQuery=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='integration_ticketquery'"`)
+CustardUsername="custard_admin"
+CustardPassword="apache"
+CustardDatabase="custard"
+
+echo "[INF] -- Collecting information from Custard database..."
+Integration=(`mysql -u $CustardUsername -p${CustardPassword} -D $CustardDatabase -e "SELECT parameter FROM settings WHERE setting='ticket_integration'"`)
+echo "[INF] ---- Collected integration setting."
+IntegrationHost=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='ticket_integration_db_host'"`)
+echo "[INF] ---- Collected integration host."
+IntegrationDB=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='ticket_integration_db'"`)
+echo "[INF] ---- Collected integration database."
+IntegrationUser=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='ticket_integration_db_user'"`)
+echo "[INF] ---- Collected integration user."
+IntegrationPW=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='ticket_integration_db_pw'"`)
+echo "[INF] ---- Collected integration password."
+IntegrationQuery=(`mysql -u custard_admin -papache -D custard -e "SELECT parameter FROM settings WHERE setting='ticket_integration_query'"`)
 QueryLength=`echo "${#IntegrationQuery[@]}-1" | bc`
 Query="${IntegrationQuery[@]:1:$QueryLength}"
+echo "[INF] ---- Collected integration query."
 
-echo "Collected information."
+echo "[INF] -- Collected information."
 
 if [ "${Integration[1]}" != "disabled" ]
 then
 	if [ "${Integration[1]}" = "mysql" ]
 	then
-		echo "Connecting to the database..."
+		echo "[INF] -- Running Databse query..."
 		ARR=(`mysql -h ${IntegrationHost[1]} -u ${IntegrationUser[1]} -p${IntegrationPW[1]} -D ${IntegrationDB[1]} -e "$Query"`)
-	
+		echo "[INF] ---- Checking tickets..."
+		
 		for ticket in ${ARR[@]}
 		do
 			if [ $ticket != "number" ]
 			then
-				echo "Checking tickets..."
 				Links=(`mysql -u custard_admin -papache -D custard -e "SELECT * FROM links WHERE link='$ticket'"`)
 				CSat=(`mysql -u custard_admin -papache -D custard -e "SELECT id FROM csat WHERE id='$ticket'"`)
 				if [ "${Links[1]}" = "$ticket" ] || [ "${CSat[1]}" = "$ticket" ]
 				then
 					echo "" >> /dev/null	
 				else 
-					echo "Copying ticket numbers to Custard database..."
+					echo "[INF] ---- Copying ticket numbers to Custard database..."
 					mysql -u custard_admin -papache -D custard -e "INSERT INTO links VALUES ($ticket);"
-					echo "Imported ticket: $ticket"
+					echo "[INF] ------ Imported ticket: $ticket"
 				
 					IP=`ip addr | grep "inet " | grep -v "127.0.0.1" | grep -oh '[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*' | grep -v 255`
 					Domain="http://$IP/custard"
@@ -48,4 +59,4 @@ then
 	fi
 fi
 
-echo "Sync complete."
+echo "[INF] Sync complete."

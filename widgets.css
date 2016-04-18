@@ -1,0 +1,48 @@
+/* Home Page Widgets */
+	#widgets {
+		margin: auto;
+		margin-top: 75px;
+	}
+	
+	#widgetcontainer {
+		width: 50%;
+		float: left;
+		display: inline-block;
+		text-align: center;
+	}
+	
+	#widget {
+		width: 75%;
+		height: 60%;
+		margin: 0 auto;
+		border: 1px black solid;
+		display: inline-block;
+		border-radius: 25px;
+		text-align: center;
+	}
+	
+	#widgettitle {
+		margin-top: 5px;
+		font-size: 4.5vmin;
+	}
+	
+	#widgettext {
+		font-size: 21vw;
+		height: 100%;
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+		top: 25%;
+	}
+	
+	#reviewscontainer {
+		width: 80%;
+		float: left;
+		display: inline-block;
+		text-align: center;
+		margin: auto;
+		border: 1px black solid;
+		display: inline-block;
+		border-radius: 25px;
+		background-color: #f2f2f2;
+	}
