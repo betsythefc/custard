@@ -74,11 +74,11 @@
 							$themeResult = $sql->fetch();
 							$CurrentTheme = "${themeResult[parameter]}";
 			
-							echo '	<div id="theme_container">
-									<div id="theme">
+							echo '	<div class="theme">
+									<div>
 										<h2>Global Theme</h2>
 										<form action="settheme.php" method="get"><br />
-											<div class="themetext">Theme: </div><select name="theme">';
+											<div>Theme: </div><select name="theme">';
 											foreach ($ThemeArr as $Themes) {
 												echo "<option value=\"{$Themes[1]}\" ";
 													if (strpos($CurrentTheme, "{$Themes[1]}") !== false) {
@@ -99,8 +99,8 @@
 							$sql = $DBH->prepare('SELECT username,user_type FROM member');
 							$sql->execute();
 							$userArr = $sql->fetchAll();
-							echo "	<form action=\"usermod.php\" method=\"post\" id=\"userlist\">
-											<table width=\"80%\" class=\"usertable\">
+							echo "	<form action=\"usermod.php\" method=\"post\">
+											<table width=\"80%\" class=\"users\">
 												<tr class=\"rowtype1\">
 													<td width=\"25%\" style=\"font-weight:bold;\"><input type=\"checkbox\" name='checkall' onclick='checkedAll(userlist);'>Select / Clear All</td>
 													<td width=\"15%\" style=\"font-weight:bold;\">User</td>
@@ -143,8 +143,8 @@
 							$sql = $DBH->prepare("SELECT parameter FROM settings WHERE setting LIKE \"%ticket_integration%\"");
 							$sql->execute();
 							$IntegrationSettings = $sql->fetchAll();
-							echo '	<div id="integration_container">
-									<div id="integration">
+							echo '	<div class="integration">
+									<div>
 										<h2>Ticket Integration</h2>
 										<form action="ticketintegration.php" method="post">
 											<div class="integrationtext">Database Type: </div><select name="dbtype">
@@ -155,32 +155,32 @@
 													}
 												echo '>MySQL</option>
 											</select><br />
-											<div class="integrationtext">Database Host: </div><input name="dbhost" type="text" ';
+											<span class="integrationtext">Database Host: </span><input name="dbhost" type="text" ';
 													if ("{$IntegrationSettings[2][parameter]}" !== "NULL" ) {
 														echo "value=\"{$IntegrationSettings[2][parameter]}\"";
 													}
 											echo '><br />
-											<div class="integrationtext">Database: </div><input name="dbname" type="text" ';
+											<span class="integrationtext">Database: </span><input name="dbname" type="text" ';
 													if ("{$IntegrationSettings[1][parameter]}" !== "NULL" ) {
 														echo "value=\"{$IntegrationSettings[1][parameter]}\"";
 													}
 											echo '><br />
-											<div class="integrationtext">Username: </div><input name="dbusername" type="text" ';
+											<span class="integrationtext">Username: </span><input name="dbusername" type="text" ';
 													if ("{$IntegrationSettings[3][parameter]}" !== "NULL" ) {
 														echo "value=\"{$IntegrationSettings[3][parameter]}\"";
 													}
 											echo '><br />
-											<div class="integrationtext">Password: </div><input name="dbpw" type="password" ';
+											<span class="integrationtext">Password: </span><input name="dbpw" type="password" ';
 													if ("{$IntegrationSettings[4][parameter]}" !== "NULL" ) {
 														echo "value=\"123456\"";
 													}
 											echo '><br />
-											<div class="integrationtext">Verify Password: </div><input name="dbpw_verify" type="password" ';
+											<span class="integrationtext">Verify Password: </span><input name="dbpw_verify" type="password" ';
 													if ("{$IntegrationSettings[4][parameter]}" !== "NULL" ) {
 														echo "value=\"123456\"";
 													}
 											echo '><br />
-											<div class="integrationtext">Query: </div><input name="dbquery" type="text" ';	
+											<span class="integrationtext">Query: </span><input name="dbquery" type="text" ';	
 													if ("{$IntegrationSettings[5][parameter]}" !== "NULL" ) {
 														echo "value=\"{$IntegrationSettings[5][parameter]}\"";
 													}

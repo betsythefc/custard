@@ -14,13 +14,13 @@
 		
 			<body>';
 			require 'menu.php';
-			echo '	<div id="widgets">
-					<div id="widgetcontainer">
+			echo '	<div class="widget">
+					<div id="container">
 						<div id="widget">
-							<div id="widgettitle">
+							<div id="title">
 								Number of reviews<br />
 							</div>
-							<div id="widgettext">';
+							<div id="text">';
 								$sql = $DBH->prepare('SELECT COUNT(*) AS TotalScores FROM csat');
 								$sql->execute();
 								$resultTotal = $sql->fetch();
@@ -28,12 +28,12 @@
 						echo '	</div>
 						</div>
 					</div>';
-				echo '	<div id="widgetcontainer">
+				echo '	<div id="container">
 						<div id="widget">
-							<div id="widgettitle">
+							<div id="title">
 								CSAT Score
 							</div>
-							<div id="widgettext">';
+							<div id="text">';
 								$sql = $DBH->prepare('SELECT SUM(score) AS Score FROM csat');
 								$sql->execute();
 								$resultPercent = $sql->fetch();

@@ -74,11 +74,11 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 		background-color: $MenuHoverColor;
 	}
 	
-	#widget {
+	.widget #widget {
 		background-color: $WidgetBackgroundColor;
 	}
 	
-	#reviews th {
+	.reviews th {
 		background-color: $ReviewsPageTableRowColor;
 	}
 	
@@ -115,10 +115,6 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 		background-color: $WidgetBackgroundColor;
 	}
 	
-	#user_container {
-		background-color: $WidgetBackgroundColor;
-	}
-	
 	.userrow0 {
 		backgroundcolor: $ReviewsPageTableRowColor;
 	}
@@ -127,11 +123,11 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 		backgroundcolor: $WidgetBackgroundColor;
 	}
 	
-	#theme_container {
+	.theme {
 		background-color: $WidgetBackgroundColor;
 	}
 	
-	#integration_container {
+	.integration {
 		background-color: $WidgetBackgroundColor;
 	}";
 } else {

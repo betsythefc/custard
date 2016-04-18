@@ -30,6 +30,7 @@
 					array(6,"1|2","","checked","checked"),
 					array(7,"0|1|2","checked","checked","checked"),
 				);
+				
 				foreach ($SearchScoreArr as $SearchScoreVar) {
 					if ("$SearchScoreChecks" == "{$SearchScoreVar[0]}") {
 						$SearchScore = "{$SearchScoreVar[1]}";
@@ -64,30 +65,31 @@
 				$SearchID = $_GET['id'];
 				
 				$SearchComment = $_GET['comment'];
-				$SmileyDivStyleCommon = 'display: inline-block; color: black; font-weight: bold; height: 1.75vw; width: 1.75vw; border-radius: 2px; margin-top: 1px; font-size: 1.5vw; background-color: ';
-			
+						
 					echo '	<form>
-							<table id="reviews">
+							<table class="reviews">
 								<tr>
 									<th>
-										<label>
-											<input type="checkbox" value="4" name="happysmiley" '.$HappySmileyChecked.'>
-											<div style="'.$SmileyDivStyleCommon.'green">
-												:)
-											</div>
-										</label>
-										<label>
-											<input type="checkbox" value="2" name="neutralsmiley" '.$NeutralSmileyChecked.'>
-											<div style="'.$SmileyDivStyleCommon.'#ffa500">
-												:|
-											</div>
-										</label>
-										<label>
-											<input type="checkbox" value="1" name="sadsmiley" '.$SadSmileyChecked.'>
-											<div style="'.$SmileyDivStyleCommon.'#c70000;">
-												:(
-											</div>
-										</label><br />
+										<div class="Smiley-Small">
+											<label>
+												<input type="checkbox" value="4" name="happysmiley" '.$HappySmileyChecked.'>
+												<div id="Happy">
+													:)
+												</div>
+											</label>
+											<label>
+												<input type="checkbox" value="2" name="neutralsmiley" '.$NeutralSmileyChecked.'>
+												<div id="Neutral">
+													:|
+												</div>
+											</label>
+											<label>
+												<input type="checkbox" value="1" name="sadsmiley" '.$SadSmileyChecked.'>
+												<div id="Sad">
+													:(
+												</div>
+											</label><br />
+										</div>
 										<div id="export_container"><div class="exporttocsv">
 										<a href="downloadcsv.php?score='.$SearchScore.'&startdate='.$SearchStartDate.'&enddate='.$SearchEndDate.'&id='.$SearchID.'">
 											Export
