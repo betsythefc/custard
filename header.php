@@ -1,7 +1,7 @@
 <?php
 	// CSS
 	$CSSDependencies = array(
-		"All" 		=> 	array("stylereset.css","general_css.php","theme_css.php","topmenu.css"),
+		"All" 		=> 	array("stylereset.css","general.css","theme_css.php","topmenu.css"),
 		"Reviews" 	=>	array("search.css"),
 		"Settings"	=>	array("settingsmenu.css","settings.css"),
 		"Dashboard"	=>	array("widgets.css"),

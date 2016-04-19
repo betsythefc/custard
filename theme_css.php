@@ -16,22 +16,13 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 		$sql->execute();
 		$themeResult = $sql->fetch();
 		$theme = "${themeResult[parameter]}";
-	} 
-	echo "/* Theme: $theme */";
+	}
 	
 	// Require the default theme //
 	require "theme/light.php";
-	//Any missing elements from the custom theme will be taken from the default theme //
-	require "theme/${theme}.php";
 	
-	$ThemeArr = file("theme/$theme.theme");
-	foreach ($ThemeArr as $ThemeVar) {
-		preg_match("/^(.*)=/", $ThemeVar, $output_array);
-		$ThemeVarSetting = "${output_array[1]}";
-		preg_match("/=(.*)$/", $ThemeVar, $output_array);
-		$ThemeVarParam = "${output_array[1]}";
-		echo "${ThemeVarSetting}: ${ThemeVarParam}";
-	}
+	//Any missing elements from the custom theme will be taken from the default theme //
+	include "theme/${theme}.php";
 
 	echo "body {
 		background-color: $PageBackgroundColor;
