@@ -84,6 +84,7 @@ Roadmap
  - v1.4
 
   - Stability fixes.
+  - Add Tech field to database and review / search page.
 
 
  - Future
