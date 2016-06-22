@@ -1,3 +1,9 @@
+# Help Needed!
+
+We are looking for a web designer who would like to help us develop a more responsive, and prettier design.
+
+If you would like to help, please fork us and send a pull request with some changes to the design!
+
 # Custard
 Open Source CSat
 
